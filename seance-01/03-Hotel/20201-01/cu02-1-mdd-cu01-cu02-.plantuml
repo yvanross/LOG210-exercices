@@ -1,0 +1,40 @@
+@startuml Notez une réservation
+skinparam Style strictuml
+class "Emplacement" as e <C06>
+class "Commis" as CO  <C05>
+class "Client" as CL <C05> {
+    nom: String 
+    telephone: String 
+}
+class "Reservation" as RE <C01>{
+    noConfirmation: String 
+}
+class "Hotel" as HO <C06,C08>
+class "Chambre" as CH <C03>
+note right: Multiplicité entre Séjour et Chambre\n correspond à la quantité de chambres\n demandé par le client
+
+class "Categorie" as CA <C09>{
+    nom: String
+}
+
+class "Sejour" as SE <C02>{
+    dateArrive: DateTime 
+    dateDépart: DateTime 
+}
+
+class "Cle" as cle <C08>
+
+CO "1" -- "*" RE : A04\neffectue >
+CL "1" -- "*" RE : A04\ndemande >
+RE "1" -- "*" SE : A02\nest contenu dans <
+SE "1" -- "*" CH : A03\nest contenu dans <
+HO "1" -- "*" CO : A09\nest employé par <
+HO "1" -- "*" CH : A05\n appartient à <
+CH "*" -- "1" CA : A07 decrit <
+CH "*" -- "1" e : C09\nindique la \nlocalisation <
+CH "1" -- "*" cle: A11\nest ouverte avec >
+ 
+@enduml
+
+
+

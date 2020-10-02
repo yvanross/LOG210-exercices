@@ -1,0 +1,47 @@
+@startuml
+skinparam Style strictuml
+participant "ctrl:ControleurTransferSejour" as ctrl
+participant "h:Hotel" as h
+participant "mc:map<no,:Chambre>" as mc
+participant "chambreActuel:Chambre" as cha
+participant "sejour:Sejour" as s
+participant "r:Reservation" as r
+participant "lcs:list<:chambre>" as lcs
+
+title rdcu transfertChambre
+
+note left of ctrl: Controleur de session
+ -> ctrl : transferChambre(noActuel:string, noNouvelle:string)
+
+note left of h: Expert\nctrl->h\nctrl->parametre/nh->map<no,:Chambre>
+ctrl -> h: transfertSejour(noActuel,noNouvelle)
+
+note left of mc: Expert\nh->noNouvelle\nh->map<no,:Chambre>
+h->mc: chambreNouvelle = get(noNouvelle)
+
+note left of mc: Expert\nh->noActuel\nh->map<no,:Chambre>
+h->mc: chambreActuel = get(noActuel)
+
+note left of cha: Expert\nh->chambre Actuel\nChambre est contenu dans un séjour
+h->cha: sejour = getSejourCourant()
+
+note left of s: Expert\nh->s\nsejour appartient à une réservation
+h->s: r = getReservation()
+
+note left of r: Expert\nh->r\nr createur de séjour
+h->r: nouveauSejour = creerSejour(now(),sejour.dateDepart, chambreNouvelle)
+
+note left of nouveauSejour: Createur(PUCE)\nReservation contient des Sejour\nr possède les paramêtres pour créer le séjour
+r->nouveauSejour ** : create(dateArrive,dateDepart,chambreNouvelle)
+
+note left of lcs: Createur\nSejour possède des Chambres
+nouveauSejour->lcs ** : create()
+
+note left of lcs: Expert\nnouveauSejour a un paramètre chambreNouvelle\nnouveauSejour->map<no,:Chambre>
+nouveauSejour->lcs: add(chambreNouvelle)
+
+note left of cha: Expert\nh->cha\ncha mutateur de l'attribut dateDepart
+h->cha: setDateDepart(now())
+
+
+@enduml

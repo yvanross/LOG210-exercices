@@ -1,0 +1,77 @@
+@startuml transferChambre
+skinparam Style strictuml
+title rdcu transfertChambre
+
+participant "ctrl:ControleurTransfertChambre" as ctrl
+participant "h:Hotel" as h 
+participant "mc:Map<noChambre,:Chambre>" as mc 
+participant "chambreActuelle:Chambre" as ca 
+participant "sejourActuel:Sejour" as sa
+participant "r:Reservation" as r
+
+participant "sejourModifie:Sejour" as sm  
+participant "lcsm:List<:Chambre>" as lcsm 
+
+participant "nouveauSejour:Sejour" as ns 
+participant "lcns:List<:Chambre>" as lcns 
+participant "sejourModifie:Sejour" as sm  
+
+participant "sejourModifie:Sejour" as sm 
+
+note left of ctrl: Controleur de session
+-> ctrl: transfererChambre(\nnoChambreActuel, \nnoNouvelleChambre)
+
+note left of h: Expert\nctrl a une visibilité sur l'objet racine Hotel\nHotel possède plusieurs chambres
+ctrl -> h: chambreActuelle = getChambre(\nnoChambreActuelle)
+
+note left of mc: Expert\nh possède plusieurs chambres
+h->mc: chambreActuel = get(\nnoChambreActuel)
+
+note left of ca: Expert\nControleur connait chambreActuel\nSejour contient des Chambres
+ctrl->ca: sejourActuel = getSejourActuel()
+
+note left of sa: Expert\nControleur connait sejourActuel\nSejourActuel possède une liste de chambre
+ctrl->sa: enleverChambre(chambreActuelle)
+
+note left of sa: Expert\nControleur connait sejourActuel\nSejour connait son parent Reservation
+ctrl -> sa: r = getReservation()
+
+note left of r: Expert\nControleur connait la reservation\nReservation est le créateur de Sejour
+ctrl->r: sejourModifie = dupliqueSejour(sejourActuel.dateDebut,now(),r:Reservation)
+
+note left of sm: Createur\nReservation contient plusieurs sejour
+r-->sm **: sejourModifie = create(\ndateDebut,dateFin,r:Reservation)
+
+note right of lcsm: Expert\nSejour contient plusieurs chambre
+sm-->lcsm **: create()
+
+note left of sm: Expert\nControleur a un visibilité sur le sejourModifié\nSejour contient plusieurs chambres
+ctrl->sm: ajouterChambre(chambreActuelle)
+
+note right of lcsm: Expert\nSejour contient une liste de Chambre
+sm->lcsm: add(chambreActuelle)
+
+
+note left of r: Expert\nControleur connait la reservation\nReservation est le créateur de Sejour
+ctrl->r: sejourNouveau = dupliqueSejour(now(),sejourActuel.dateFin,r:Reservation)
+
+note left of ns: Createur\nReservation contient plusieurs sejour
+r-->ns **: create(dateDebut,dateFin,r:Reservation)
+
+note left of lcns: Createur\nSejour contient plusieurs chambre
+ns-->lcns **: create()
+
+note left of h: Expert\nctrl a une visibilité sur l'objet racine Hotel\nHotel possède plusieurs chambres
+ctrl->h: nouvelleChambre = getChambre(\nnoNouvelleChambre)
+
+note left of mc: Expert\nh possède plusieurs chambres
+h->mc: nouvelleChambre = get(\nnoNouvelleChambre)
+
+note left of ns: Expert\nControleur a une visibilité sur nouveauSejour\nSejour possède plusieurs Chambre
+ctrl->ns: ajouterChambre(nouvelleChambre)
+
+note left of lcns: Expert\nSejour contient une liste de Chambre
+ns->lcns: add(nouvelleChambre)
+
+
+@enduml

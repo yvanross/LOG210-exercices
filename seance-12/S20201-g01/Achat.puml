@@ -1,0 +1,31 @@
+@startuml
+title processus d’achat
+|Client|
+start
+:catalogue;
+:Choisir produit;
+:achemine sa commande;
+|Fournisseur\n(siteWeb)|
+:siteWeb;
+:no Carte Crédit;
+:analyse des commandes;
+if (dateLivraison=dateJour) then (yes)
+|Client|
+:expediercommande\nBondeFacturation;
+:receptionproduit;
+if (produitpasfectueux) then (yes)
+:confirmerPaiement;
+else (no)
+|Fournisseur\n(siteWeb)|
+:aviser Fournisseur;
+|Client|
+:expedier accusé de réception;
+if (garderLeproduit) then (yes)
+|Fournisseur\n(siteWeb)|
+:autoriser le paiement; 
+else (no)
+stop
+endif
+|Client|
+stop
+@enduml

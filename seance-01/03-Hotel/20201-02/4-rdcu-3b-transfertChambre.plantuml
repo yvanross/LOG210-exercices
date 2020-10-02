@@ -1,0 +1,26 @@
+@startuml
+skinparam Style strictuml
+participant "ctrl:ControleurTransferSejour" as ctrl 
+participant "r:Reservation" as r
+participant "nouveauSejour:Sejour" as ns
+participant "chambreNouvelle" as cn 
+participant "h:Hotel" as h
+participant "mc:Map<noChambre,:Chambre>" as mc 
+participant "chambreActuelle:Chambre" as ca 
+
+title rdcu transfertChambre
+
+note left of ctrl: Controleur de session
+ -> ctrl : transferChambre(noActuel:string, noNouvelle:string)
+
+ctrl->h: sejour = getSejourActuel(noActuel)
+h->mc: chambreAcutelle = get(noActuel)
+h->ca: sejour = getSejour()
+
+ctrl->r: creerSejour(now(()),sejour.dateDepart)
+
+ r-> ns **: create(dateArrive,dateDepart)
+
+
+
+@enduml

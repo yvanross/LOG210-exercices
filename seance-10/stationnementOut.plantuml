@@ -1,0 +1,25 @@
+@startuml
+title Sortir du stationnement
+|Client|
+start
+:enter Carte Credit;
+|BorneStationnement|
+:lecture carte;
+:Carte Out/
+if (carte existe) then (yes)
+:calculer tarif\nfacturer client;
+:imprimer recu;
+:remettre carte;
+else (no)
+:generateExecption>
+stop
+endif
+|Client|
+:reprendre carte;
+:prendre recu;
+|BorneStationnement|
+:ouvrir barrière;
+:detecter sortie auto;
+:fermer barrière;
+stop
+@enduml

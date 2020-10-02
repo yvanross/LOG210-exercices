@@ -1,0 +1,19 @@
+@startuml
+skinparam Style strictuml
+actor Commis
+title Noter une réservation
+
+Commis -> Systeme: creerNouvelleReservation()
+Systeme --> Commis : Demande [dateArrivé, dateDépart], retourner list<nomCategory>
+
+loop Tant que client n'a pas terminé
+    Commis -> Systeme: reserverChambre( dateArrive:string, dateDepart:string, nomCategorie: string, quantiteChambre: integer)
+    Systeme --> Commis: dateDepart, dateArrive, nomCategorie, quantiteChambre
+end
+
+Commis -> Systeme: terminerReservation()
+Systeme --> Commis: [dateDepart, dateArrive, nomCategorie, quantiteChambre]
+
+Commis -> Systeme: ConfirmerReservation(nomClient: String, telephone:string)
+Systeme --> Commis: [dateDepart, dateArrive, nomCategorie, quantiteChambre], noConfirmation
+@enduml 

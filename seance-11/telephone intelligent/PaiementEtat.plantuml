@@ -1,0 +1,12 @@
+@startuml
+skinparam Style strictuml
+
+title Etats - Téléphone intelligent
+[*] -> AttenteDemarrage
+AttenteDemarrage --> TelephoneAllumé: cliquerBoutonDemarrage()
+TelephoneAllumé --> AttenteDemarrage: [tél allumé]\nÉtendreTelephone
+AttenteDemarrage --> TelephoneEnCharge: brancherTéléphone()
+TelephoneAllumé --> TelephoneEnCharge: brancherTéléphone()
+TelephoneEnCharge --> TelephoneEteint: [tél allumé]DébrancherTéléphone()
+
+@enduml

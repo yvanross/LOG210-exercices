@@ -1,0 +1,31 @@
+Contrat: creerNouvelleReservation()
+ref: Cu01-noter une réservation
+pre: c:Commis est authentifié
+post:
+    - Une instance r:Reservation a été créée
+    - une association a été créée entre r:Reservation et c:Commis
+
+CContrat: reserverChambre()
+opération: réserverCatégorie(arrivée : date, départ : date, nom : string, quantité:int)
+Prés conditions:
+Une Réservation “r” est en cours.
+Il existe au moins une Catégorie de chambre
+Post conditions:
+Une instance “lr” de LigneRéservation a été créée.
+lr.date arrivée a pris la valeur du paramètre “arrivée”
+lr.date départ a pris la valeur du paramètre “départ”
+lr.quantité a pris la valeur du paramètre “quantité”
+Une association entre “lr” et l’instance Catégorie de Chambre nommée a été formée.
+Une association entre “lr” et “r” a été formée.
+
+
+Contrat: confirmerReservatin(nomclient:string, dateDepart:integer, dateArrive:integer, nomCategorie:string)
+ref: cu01-noter une réservation
+pré: r:Reservation existe
+post:
+    - r.dateDepart est devenu dateDepart
+    - r.dateArrive est devenue dateArrive
+    - une instance cl:Client à été créée
+    - cl.nom est devenu nomclient
+    - Une association a été créée entre r:Reservation et Chambre sur la base de correspondance avec Chambre.categorie.nom == nomCategorie
+    

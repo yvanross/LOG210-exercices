@@ -54,12 +54,12 @@ class ME as "MaisonEdition" {
   string nom
 
 }
-BDD "1" --> "*" DL: gère
-BDD "1" --> "*" C: offe un service au membre
-C "1" --> "*" L: possède 
-L "*" --> "1" DL: sont décrit  
-A "1" -up- "*" DL: écrit des livres décrit par 
-ME "1" -up- "*" DL: édite les libres décrit par 
+BDD "1" -- "*" DL: gère >
+BDD "1" -- "*" C: offe un service au membre >
+C "1" -- "*" L: possède >
+L "*" -- "1" DL: sont décrit >
+A "1" -up- "*" DL: écrit des livres décrit par >
+ME "1" -up- "*" DL: édite les libres décrit par >
 @enduml
 ```
 

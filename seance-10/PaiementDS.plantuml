@@ -1,0 +1,49 @@
+@startuml
+skinparam Style strictuml
+
+participant ":Caisse" as Caisse
+participant "attenteVente:AttenteVente" as AttenteVente
+participant "attenteVente2:AttenteVente" as AttenteVente2
+participant "creationVente:CreationVente" as CreationVente
+participant "attentePaiement:AttentePaiement" as AttentePaiement
+participant "{abstract}\n:EtatVente" as EtatVente
+
+-> Caisse: creerNouvelleVente()
+note right of Vente: Etat initiale AttenteVente
+Caisse -> Caisse : IEtatVente attenteVente = getState()
+activate Caisse
+opt etat == null 
+Caisse -> AttenteVente**: IEtatVente attenteVente = create()
+end 
+deactivate Caisse
+
+Caisse -> AttenteVente: IEtatVente etat = creerNouvelleVente()
+AttenteVente -> CreationVente**: IEtatVente creationVente = create()
+Caisse -> Caisse: setState(creationVente)
+
+-> Caisse: saisirArtiche(codeArticle, quantite)
+Caisse -> Caisse : IEtatPaiement attentePaiement = getState()
+Caisse -> CreationVente: IEtatVente nouvelEtat = saisirArtiche(codeArticle, quantite)
+Caisse -> Caisse : setState(nouvelEtat)
+
+-> Caisse: terminerVente()
+Caisse -> Vente : getState()
+Vente -> CreationVente: terminerVente()
+AttenteVente -> AttentePaiement**: IEtatVente attentePaiement = create()
+Vente -> Vente: setState(attentePaiement)
+
+-> Vente: creerPaiement(montant)
+Vente -> Vente: getState()
+Vente -> AttentePaiement: IEtatVente attenteVente = creerPaiement(montant)
+AttentePaiement -> AttenteVente2**: IEtatVente attenteVente2 = create()
+Vente -> Vente: setState(attenteVente2)
+
+note right of Vente: Appel d'une opération dans le mauvais état -> génération d'une exception
+-> Vente: creerPaiement(montant)
+Vente -> Vente: attenteVente = getState()
+Vente -> AttenteVente2: IEtatVente attenteVente2 = creerPaiement(montant)
+AttenteVente -> EtatVente: IEtatVente attenteVente2 = creerPaiement(montant)
+EtatVente -> Exception**: create("Erreur operation invalide")
+
+
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+skinparam Style strictuml
+
+title Etats - Guichet
+[*] -> AttendreCarte
+
+AttendreCarte --> [*]: éteindre()
+AttendreCarte --> AttendreNIP: insérerCarte()
+AttendreNIP --> Pret: nipValide()
+AttendreNIP --> AttendreNIP: saisirNIP() [NIP invalide]
+AttendreNIP --> AttendreCarte: cancel()
+Pret --> AttendreCarte: cancel()
+@enduml

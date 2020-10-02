@@ -1,0 +1,37 @@
+@startuml
+skinparam Style strictuml
+
+title Macallan order
+participant ":OrderEntryWindow" as oew
+participant ":Order" as o
+participant "MacallanLine[i]:OrderLine" as ol
+participant "MacallanStock:StokItem" as si 
+participant ":DeliveryItem" as di 
+participant ":ReorderItem" as ri 
+
+oew -> o : prepare()
+
+loop for all order lines
+o -> ol: prepare()
+ol->si: hasStock = check()
+
+opt hasStock
+ol->si: remove()
+activate si 
+si->si: needsReorder = needToReorder()
+
+opt needsReorder
+si->ri**: create {new}
+end 
+deactivate si 
+
+ol->di**: create {new}
+end
+
+
+
+end 
+
+
+
+@enduml

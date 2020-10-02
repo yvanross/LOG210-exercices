@@ -1,0 +1,28 @@
+@startuml
+
+
+|Client|
+start
+
+:choisie produit du catalogue;
+:passe la commande;
+:indique son numéro de carte de crédit;
+
+|Fourniseur|
+:Analyse la commande;
+:expedie tous les commandes avec la date de livraison désirée;
+:joint la facture;
+
+|Client|
+fork
+    :retourne le produit au fournisseur;
+    
+    end
+fork again
+    |Fourniseur| 
+    :produit confirme sa commande;
+end fork
+
+end
+
+@enduml

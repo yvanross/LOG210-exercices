@@ -1,0 +1,35 @@
+@startuml Redirection Proxy
+skinparam style strictuml
+skinparam BackgroundColor transparent
+skinparam SequenceMessageAlignment center
+participant ":Register" as r
+participant "accounting:Accounting\nRedirection\nProxy" as p
+participant "externalAccounting:SAP\nAccounting\nAdapter" as sap
+participant "localAccounting:Local\nAccounting" as local
+participant "SAP\nAccounting\n(externe)" as sape
+-> r : makePayment(...)
+activate r
+r -> r : completeSaleHandling(...)
+activate r
+r -> p : postSale(currentSale)
+activate p
+p -> sap : postSale(sale)
+activate sap
+note right : Échec possible
+sap -> sape : (service externe)
+activate sape
+deactivate sape
+deactivate sap
+alt externalAccounting fails
+    p -> local : postSale(sale)
+    activate local
+    note right
+        Sauvegarder sale 
+        dans fichier local
+    end note
+    deactivate local
+end
+deactivate p
+deactivate r
+deactivate r
+@enduml

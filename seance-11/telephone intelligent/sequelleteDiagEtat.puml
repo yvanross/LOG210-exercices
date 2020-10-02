@@ -1,0 +1,14 @@
+@startuml
+skinparam Style strictuml
+
+title Etats - Types de paiements
+[*] -> Eteint
+Eteint --> Actif: appuyerBoutonDroite()
+Actif --> Eteint: appuyerBoutonDroite()
+Actif --> EnCharge: brancher()
+Eteint --> EnCharge: brancher()
+EnCharge --> Eteint : débrancher()
+
+
+
+@enduml

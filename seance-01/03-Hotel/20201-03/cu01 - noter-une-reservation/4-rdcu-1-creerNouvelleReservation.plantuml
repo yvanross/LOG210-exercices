@@ -1,0 +1,10 @@
+@startuml
+skinparam Style strictuml
+actor Commis #green
+title rdcu creerNouvelleReservation
+note left of ControleurNoterReservation: Controleur de session
+ --> ControleurNoterReservation : creerNouvelleReservation()
+note right: créateur par défault
+ControleurNoterReservation --> Reservation ** : create()
+
+@enduml

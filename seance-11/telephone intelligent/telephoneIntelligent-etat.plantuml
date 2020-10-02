@@ -1,0 +1,12 @@
+@startuml
+skinparam Style strictuml
+
+title État du téléphone intélligent
+[*] -> Éteint
+Éteint --> Allumé: power()
+Allumé --> Éteint: power()
+Allumé --> Encharge: branche()
+Éteint --> Encharge: branche()
+Encharge --> Éteint: débranche()
+
+@enduml

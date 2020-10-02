@@ -1,0 +1,34 @@
+@startuml
+title Authentifiaction
+hide empty description
+[*] --> IntroduireCarte
+IntroduireCarte -> AttenteDeNIP : Introduit carte
+AttenteDeNIP --> [*] : NIP valide
+AttenteDeNIP --> AttenteDeNIP : NIP invalide
+AttenteDeNIP --> AttenteDeRecuperationCarte : Annuler
+AttenteDeRecuperationCarte --> [*] : Carte recuperer
+@enduml
+
+@startuml
+title Gerer guichet
+hide empty description
+[*] --> AttendreCarteBancaire : Carte bancaire introduite
+AttendreCarteBancaire --> [*] : Eteindre
+AttendreCarteBancaire --> [*] : Carte valide introduite
+@enduml
+
+@startuml
+title Achat
+|Client|
+:Choisit produit;
+|Fournisseur|
+:Analyse les commandes et expédie;
+|Client|
+if (defectueux?) then (yes)
+  :Retourne le produit;
+  |Fournisseur|
+  :Expedie accusé de reception;
+else
+  :Autoriser paiement via site web;
+endif
+@enduml

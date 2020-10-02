@@ -1,0 +1,31 @@
+@startuml terminerReservation
+skinparam Style strictuml
+title rdcu terminerReservation
+participant "ctrl:ControleurTransferSejour" as ctrl 
+participant "r:Reservation" as r
+participant "h:Hotel" as h 
+participant "mc:map<noChambre,:chambre>" as mc
+participant "chambreActuelle:Chambre" as chambreActuel
+participant "sejourActuel:Sejour" as sa 
+participant "cat:Categorie" as cat
+
+
+note left of ctrl: Controleur de session
+-> ctrl: rechercheChambreComparables(noChambreActuel:string)  
+
+note left of h: Expert\nctrl visibilité sur h\nh possède plusieurs Chambres
+ctrl->h: [sejourActuel,chambreActuelle] = getSejour(noChambreActuel)
+
+note left of mc: h possède plusieurs chambres
+h->mc: chambreActuelle = get(noChambreActuel)
+
+note left of chambreActuel: Expert\nh a une visibilité sur la chambre actuelle\nChambre appartient à un Sejour
+h->chambreActuelle: sejourActuel = getSejour()
+
+note left of chambreActuel: Expert\nh connait la chambreActuelle\nChambreActuelle appartient à un categorie
+ctrl->chambreActuelle : cat = getCategorieChambre()
+
+note left of cat: Expert\nh 
+ctrl->cat: list<:Chambre> lc = getChambresDisponible(now(),sejourActuel.dateFin)
+
+@enduml

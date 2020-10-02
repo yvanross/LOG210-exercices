@@ -1,0 +1,28 @@
+@startuml
+|Client|
+start
+:Choisir produit dans catalogue;
+:Acheminer commande et no carte de crédit;
+
+|Fournisseur|
+:Commande]
+:Analyser commandes;
+:Expédier commandes du jour;
+|Client|
+:Bon de facturation]
+:produit]
+if (produit défectueux) then (yes)
+:Aviser fournisseur produit défectueux;
+:retourner produit;
+|Fournisseur|
+:produit\n!défectueux!]
+:Génére accusé de réception;
+|Client|
+:accusé reception]
+else (no)
+|Fournisseur|
+:Confirmer paiement par le site web;
+endif
+
+stop
+@enduml

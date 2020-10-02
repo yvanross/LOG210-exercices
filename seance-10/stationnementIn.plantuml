@@ -1,0 +1,18 @@
+@startuml
+title Entrer dans le stationnement
+|Client|
+start
+:enter Carte Credit;
+|BorneStationnement|
+:lecture carte;
+:Carte/
+:remettre carte;
+|Client|
+:reprendre carte;
+
+|BorneStationnement|
+:ouvrir barrière;
+:detecter entree auto;
+:fermer barrière;
+stop
+@enduml

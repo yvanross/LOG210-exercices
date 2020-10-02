@@ -1,0 +1,29 @@
+@startuml
+skinparam Style strictuml
+participant "ctrl:ControleurTransferSejour" as ctrl
+participant "h:Hotel" as h
+participant "mc:map<no,:Chambre>" as mc
+participant "ch:Chambre" as ch
+participant "cat:Categorie" as cat
+
+title rdcu creerNouvelleReservation
+
+note left of ctrl: Controleur de session
+ -> ctrl : demarrerTransferChambre(noChambre:string)
+
+note left of h: Expert\nctrl->h\nctrl->noChambre\nh->map<:Chambre>
+ctrl -> h: [chambre,Sejour] = getSejour(noChambre:string)
+
+note left of mc: Expert\nh->noChambre\nh->map<no,:Chambre>
+h->mc: chambre = get(noChambre)
+
+note left of ch: Expert\nh->ch\nch appartient à Sejour
+h->ch: sejour=getSejourCourrant()
+
+note left of ch: Expert\nh->ch\nch appartient à une categorie
+h->ch: cat=getCategorie()
+
+note left of cat: Expert\nh->s\nh->cat\ncat->list<:Chambre> 
+h->cat: chambres = getChambreDisponibles(sejour.dateArrive,sejour.dateFin,quantite:integer=1)
+
+@enduml

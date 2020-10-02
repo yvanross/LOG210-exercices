@@ -1,0 +1,11 @@
+@startuml
+hide empty description
+[*] --> WaitingCardState 
+WaitingCardState --> NipWaiting : insertCard()
+
+NipWaiting --> autre  : enterNip(nip:number) [nipValid]
+NipWaiting -->NipWaiting  :enterNip(nip:number) [nipInvald]
+NipWaiting --> WaitingCardState : cancel()
+autre --> WaitingCardState : cancel()
+autre --> [*]
+@enduml

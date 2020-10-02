@@ -1,0 +1,48 @@
+@startuml
+
+
+class Caisse {
+creerNouvelleVente()
+saisirArtiche(codeArticle, quantite)
+terminerVente()
+creerPaiement(montant)
+getState(): IEtatCaisse
+setState(IEtatCaisse)
+
+}
+
+interface IEtatCaisse{
+creerNouvelleVente()
+saisirArtiche(codeArticle, quantite)
+terminerVente()
+creerPaiement(montant)
+
+}
+
+abstract class EtatCaisse {
+{abstract} creerNouvelleVente()
+{abstract} saisirArtiche(codeArticle, quantite)
+{abstract} terminerVente()
+{abstract} creerPaiement(montant)
+
+}
+class AttenteVente  {
+    creerNouvelleVente()
+} 
+
+class CreationVente {
+saisirArtiche(codeArticle, quantite)
+terminerVente()
+}
+
+class AttentePaiement {
+creerPaiement(montant)
+}
+
+Caisse "1" -right- "1" IEtatCaisse
+IEtatCaisse <|-down- EtatCaisse
+EtatCaisse <|-- AttenteVente
+EtatCaisse <|-- AttentePaiement
+EtatCaisse <|-- CreationVente
+note left of EtatCaisse: Toutes ces opérations\ngénèrent une exception\npar défault
+@enduml

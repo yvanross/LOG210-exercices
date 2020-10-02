@@ -1,0 +1,22 @@
+@startuml
+skinparam Style strictuml
+title rdcu creerNouvelleReservation
+
+participant "ctrl:ControleurNoterReservation" as ctrl 
+participant "c:Commis" as c
+participant "r:Reservation" as r
+participant "Categorie" as cat
+participant "llr:list<:ligneReservation" as llr
+
+note left of ctrl: Controleur de session
+-> ctrl: creerNouvelleReservation()
+
+note left of r: Createur(PUCE)\npar default\nfaible couplage avec parametre c\nforte cohesion
+ctrl -> r ** : create(c)
+
+note left of llr: Createur(PUCE)\nr contient lr
+r -> llr: create()
+
+note left of cat: Expert\nctrl a une visibilité sur Categorie\nCategorie -> list<:Categorie> 
+ctrl -> cat: list<:Categorie> lc = getListCategorie()
+@enduml

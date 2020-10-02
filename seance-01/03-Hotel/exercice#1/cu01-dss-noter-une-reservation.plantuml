@@ -1,0 +1,10 @@
+@startuml
+skinparam Style strictuml
+actor Commis
+title Noter une réservation
+
+Commis -> Systeme: creerNouvelleReservation()
+Systeme --> Commis : Demande [dateArrivé, dateDépart], retourner list<nomCategory>
+Commis -> Systeme: ConfirmerReservation(nomClient: String, dateDpart:string, dateArrive:string, nomCategorie: string)
+Systeme --> Commis: noChambre?
+@enduml

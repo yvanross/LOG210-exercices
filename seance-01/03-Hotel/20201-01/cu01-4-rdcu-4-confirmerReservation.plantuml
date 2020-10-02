@@ -1,0 +1,22 @@
+@startuml confirmerReservation
+skinparam Style strictuml
+title rdcu confirmerReservation
+participant "ctrl:ControleurNoterReservation" as ctrl
+participant "cl:Client" as cl
+participant "r:Reservation" as r 
+participant "llr:List<:LigneReservation>" as llr
+
+
+note left of ctrl: Controleur de session
+-> ctrl: confirmerReservation(nomclient:string, telephone: string)
+
+note left of cl: Createur (PUCE) par default
+ctrl-->cl **: create(nom,telephone)
+
+note left of r: Cohesion r est une transaction qui connais le role
+ctrl->r: setClient(c)
+
+note left of r: Cohesion, mutateur d'attribut
+ctrl->r: noConfirmation = initNoConfirmationUnique()
+
+@enduml

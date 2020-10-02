@@ -1,0 +1,27 @@
+Opération: demarrerTransfer()
+Prés conditions:
+Post conditions:
+Aucune
+
+Opération: rechercherChambreComparables(noChambreActuel:string)
+Prés conditions:
+Post conditions: AUCUNE
+
+
+Opération: transfererChambre(noChambreActuel, noNouvelleChambre)
+Prés conditions:
+Post conditions:
+    - Un instance sejourModifié:Sejour a été créée
+    - sn.dateArrive est devenu Chambre.sejour.dateArrive sur la base de correspondance avec noChambreActuel
+    - sn.dateDepart est devenu Chambre.sejour.dateDepart sur la base de correspondance avec noChambreActuel
+    - un association entre sejourModifié et Reservation a été créée sur la base de correspondance avec Reservation.sejour.chambre.no == noChambreActuelle
+    - l'association entre Chambre et Séjour est détruite sur la base de correspondance avec Chambre.no == noChambreActuelle
+    - Une association entre sejourModifie et Chambre à été créé sur la base de correspondance avec Chambre.no == noChambreActuelle
+
+    - une instance nouveauSejour:Sejour a été créée
+    - un association entre nouveauSejour et Reservation a été créée sur la base de correspondance avec Reservation.sejour.chambre.no == noChambreActuelle
+    - Une association entre nouveauSejour et Chambre à été créé sur la base de correspondance avec Chambre.no == noNouvelleChambre
+
+    - nouveauSejour.dateDebut est devenu maintenant
+    - nouveauSejour.dateFin est devenu sejourModifié.dateFin 
+    - sejourModifie.dateFin est devenu maintenant

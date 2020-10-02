@@ -1,0 +1,10 @@
+@startuml
+skinparam Style strictuml
+participant "ctrl:ControleurTransferSejour" as ctrl
+
+title rdcu demarrerTransfertChambre
+
+note left of ctrl: Controleur de session
+ -> ctrl : demarrerTransferChambre(noChambre:string)
+
+@enduml

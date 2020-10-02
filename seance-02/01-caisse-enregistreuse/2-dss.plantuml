@@ -1,0 +1,18 @@
+@startuml
+skinparam Style strictuml
+
+actor ":Caissier" as c
+participant ":Systeme" as sys 
+title mise en plateau
+c->sys: demarrerMiseEnPlateau()
+sys -->> c : demande identifiant et mdp
+c->sys: authentifierPourMiseEnPlateau(identifiant: string, mdp:string)
+sys-->>c: ouvrir tirroir caisse, demander le plateau
+c->sys: poserPlateau(identfiant)
+sys-->>c: demander montant
+c->sys: initialiserMontantPlateau(montant: float)
+sys-->>c: demander fermeture du tirroir caisse
+c->sys: fermerTirroirCaisse()
+sys-->>c: option menu
+
+@enduml

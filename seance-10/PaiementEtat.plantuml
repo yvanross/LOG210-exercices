@@ -1,0 +1,11 @@
+@startuml
+skinparam Style strictuml
+
+title Etats - Types de paiements
+[*] -> AttenteVente
+AttenteVente --> CreationVente: creerNouvelleVente()
+CreationVente --> CreationVente: [reste des artiches]\nsaisirArtiche(codeArticle, quantite)
+CreationVente --> AttentePaiement: terminerVente()
+AttentePaiement --> AttenteVente: creerPaiement(montant)
+
+@enduml
