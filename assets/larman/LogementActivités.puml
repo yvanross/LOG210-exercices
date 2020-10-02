@@ -1,0 +1,16 @@
+@startuml ElementsActivite
+skinparam style strictuml
+start
+fork
+:Trouver colocataires;
+fork again
+:Trouver appartement(s);
+end fork
+:Signer bail;
+if () then ([Cable])
+    :Acheter modem câble;
+else ([DSL])
+    :Acheter modem ADSL;
+endif
+stop
+@enduml

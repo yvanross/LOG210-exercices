@@ -1,0 +1,22 @@
+@startuml ElementsActivite
+skinparam style strictuml
+start
+note left : A
+:B;
+if () then ([C])
+    :E;
+else ([else])
+    :F;
+'G
+endif 
+:H]
+'I
+fork
+    :J;
+fork again
+    :K;
+'L
+end fork
+stop
+note left : N
+@enduml

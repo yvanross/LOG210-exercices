@@ -1,0 +1,17 @@
+@startuml F22.1-adapter
+skinparam style strictuml
+skinparam BackgroundColor transparent
+class "IAdaptateurCalculateurTaxes" as IAC <<interface>> {
+    getTaxes(Vente) : Liste<TaxesLignesArticles>
+}
+class AdaptateurTaxMaster implements IAC {
+    getTaxes(Vente) : Liste<TaxesLignesArticles>
+}
+class AdaptateurGoodAsGoldTaxPro implements IAC {
+    getTaxes(Vente) : Liste<TaxesLignesArticles>
+}
+class Adaptateur??? implements IAC {
+    ...
+    ...()
+}
+@enduml

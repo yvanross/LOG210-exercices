@@ -1,0 +1,28 @@
+@startuml DSS Traiter Vente Système externe
+skinparam style strictuml
+skinparam backgroundcolor transparent
+skinparam SequenceMessageAlign center
+title DSS <i>Traiter Vente</i>
+actor ":Caissier" as c
+participant ":Système" as s
+participant ":Servcie\nAutorisation\nCrédit" as sac <<actor>>
+participant ":Servcie\nAutorisation\nChèque" as sach <<actor>>
+c->s : créerNouvelleVente
+loop reste articles
+ c->s : saisirArticle\n(code:string, quantity:int)
+ c<<--s : description, total
+end loop
+c->s : terminerVente()
+c<<--s : total avec taxes
+alt paiementEnEspèces
+c->s : créerPaiementEnEspèces(montant:string)
+c<<--s : monnaie
+else paiementÀCrédit
+c->s : créerPaiementÀCrédit(montant:string,idCC:string)
+s->sac : authorisé = autoriser
+else paiementParChèque
+c->s : créerPaiementParChèque(montant:string,idPermisConduire:string)
+s->sach : authorisé = autoriser
+end
+c<<--s : reçu
+@enduml

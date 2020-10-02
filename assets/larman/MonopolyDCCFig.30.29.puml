@@ -1,0 +1,48 @@
+@startuml F30.29
+skinparam style strictuml
+skinparam BackgroundColor transparent
+skinparam classAttributeIconSize 0
+class "Joueur" as J {
+    nom
+    cash
+    nbGares
+    prendreTour()
+    tenterAchat()
+    diminuerCash()
+}
+
+class Case <<abstract>> {
+    nom
+    indice
+    {abstract} atterirSur()
+}
+
+class "CaseOrdinaire" extends Case {
+    atterirSur()
+    ...()
+}
+class "CaseDépart" extends Case {
+    atterirSur()
+    ...()
+}
+
+class "CasePropriétaire" as CaseP <<abstract>> extends Case {
+    prix
+    +atterrirSur()
+    -payerLoyer()
+    +{abstract} getLoyer()
+}
+
+class "CaseTerrain" extends CaseP {
+    getLoyer()
+}
+class "CaseGare" extends CaseP {
+    getLoyer()
+}
+class "CaseServicePublic" extends CaseP {
+    getLoyer()
+}
+J -> "1\r<U+202F><U+202F><U+202F><U+202F>" Case : "    position"
+CaseP --> "0..1" J : propriéataire\n\n
+J -> "*" CaseP : \l\lpropriétés
+@enduml

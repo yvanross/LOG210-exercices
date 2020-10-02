@@ -1,0 +1,17 @@
+@startuml Invocation de méthode de classe
+skinparam style strictuml
+skinparam backgroundcolor transparent
+participant ":C" as c
+participant "Calendar" as mc <<metaclass>>
+-> c : messageX
+activate c
+note over c,mc
+message envoyé à une classe,
+un appel de méthode statique
+(de classe)
+end note
+c -> mc : locales = getAvailableLocales
+activate mc
+deactivate mc
+deactivate c
+@enduml
