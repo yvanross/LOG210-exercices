@@ -1,11 +1,9 @@
-## Inscription a un cours
+## Système de caisse enregistreuse
 
-# Mise en plateau
-https://docs.google.com/document/d/1nGiQOeRyrY-Tx-J82z3qa0vAoUsF1rvHMNjyPGXH2mY/edit
+### Diagramme des cas d'utilisation
 
 ```plantuml
 @startuml
-title Diagramme des cas d'utilisation
 left to right direction
 package system {
  usecase "Traiter une vente" as V

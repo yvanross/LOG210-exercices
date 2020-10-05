@@ -112,7 +112,7 @@ E <<-- S: [livre du client]
 - Aucune
 
 
-
+# RDCU's
 
 
 ```plantuml
@@ -120,14 +120,17 @@ E <<-- S: [livre du client]
 skinparam style strictuml
 title RDCU CU01 - Ajouter un livre à échanger
 
-participant "ctrl:ControleurAjoutLivre" as S
-participant "c:Client" as E
-note right of E: est visible par le controleur puisque c'est une précondition
-participant "l:Livre" as L
-participant "ll:List<Livre>" as LL
-note right of LL: est visible par l'étudiant\npuisque l'étudiant possède une liste de livre
+participant "ctrl:Bdd" as S
+note left of S: controleur de façade de type objet racine
 
-note left of S: controleur de session
+participant "c:Client" as C
+note left of C: est visible par le controleur puisque c'est une précondition
+
+participant "l:Livre" as L
+
+participant "ll:List<Livre>" as LL
+note left of LL: est visible par le client\npuisqu'il possède une liste de livre
+
  -> S: demarrerAjoutLivre()
 activate S
 deactivate S
@@ -136,44 +139,33 @@ deactivate S
 
  -> S: ajouterLivre(isbn:string, codeCondition:string)
 activate S
-note left of L: postcondition: Une instance l:Livre a été créée\npostcondition: l.codeCondition est devenu codeCondition (paramètre)\n\npatron créateur par défaut\npuisque PUCE ne donne aucune option valable
- S --> L**: create(string isbn, string codeCondition)
 
-note right of S: postcondition: Une association a été créé entre l:Livre et c:Client (précondition)
-
- note left of L: Non cohésif\nAjoute du couplage
- S ->L: <s>ajouterClient(c:Client)</s>
-
-
-note left of E: Expert en information\nControleur à une visibilité sur e\nControleur possède l\ne possèle ll
-S -> E: ajouterLivre(l:livre)
-note left of LL: Expert en information\ne possède ll
-E->LL: add(l:Livre)
-
-
-note right of S: postcondition: Une association a été crée entre l:Livre et la classe DescriptionLivre sur la base de correspondance entre DescriptionLivre.isbn == isbs (paramètre)\nAjoute d'une association entre le BDD et DescriptionLivre
-
-participant "bdd:BDD" as B
-note left of B: bdd est un objet racine visible par le controleur
-note left of B: Expert en information\nContrleur a une visibilité sur bdd\nbdd a une visibilité sur une mdl
-S -> B: descriptionLivre = getDescriptionLivre(string isbn)
+note right of S: postcondition: Une association a été crée entre l:Livre et la classe DescriptionLivre\nsur la base de correspondance entre DescriptionLivre.isbn == isbs (paramètre)\nAjoute d'une association entre le BDD et DescriptionLivre
 
 participant "mdl:Map<isbn,DescriptionLibre>" as MDL
-note left of MDL: Expert en information\nbdd a une visibilité sur mdl
-B -> MDL: descriptionLivre = get(string isbn)
+note left of MDL: bdd gère les DescriptionLivre
+note right of S: Expert en information\nbdd a une visibilité sur mdl
+S -> MDL: descriptionLivre = get(string isbn)
 
-note left of L: Expert en information\forte cohesion c'est le livre qui doit connaitre sa description
-note left of L: Pour respecter faible couplage\n il faudra déplacer getDescriptionLivre au dessus du create l:Livre \net passer al descriptionLivre en paramàtre du create l:livre
-S -> L: <s>ajouterDescription(descriptionLibre:DescriptionLivre)</s>
+note right of S: postcondition: Une instance l:Livre a été créée\npostcondition: l.codeCondition est devenu codeCondition (paramètre)\n\npatron créateur par défaut\npuisque PUCE ne donne aucune option valable
 
+note right of S: Expert en information\nctrl possède les paramètre\ctrl a un visibilité sur Client\nClient possède la liste de livre
+S -> C: ajouterLivre(descriptionLivre:DescriptionLivre, codeCondition:string)
+
+note right of C: Patron createur\nClient possède les livres
+C --> L**: create(descriptionLivre:DescriptionLivre, string codeCondition)
+
+note right of C: postcondition: Une association a été créé entre l:Livre et c:Client (précondition)
+note right of C: Patron expert\nClient a une visibilité sur la ll\nll est une liste de livre
+C -> LL: add(l:livrre)
 
 deactivate S
 
 
  -> S: terminerAjoutLivre()
  activate S
- note left of E: Expert en information\nctrl a une visibilité sur e\ne possède ll
-S->E: ll =  getLivres()
+ note right of S: Expert en information\BDD a une visibilité sur e\ne possède ll
+S->C: ll =  getLivres()
 
 
 
@@ -181,14 +173,6 @@ S->E: ll =  getLivres()
 
 @enduml
 ```
-
-
-
-
-
-
-
-
 
 #### CU02 - Proposer un échange de livres 
 Acteur principal : Client (étudiant)
@@ -242,16 +226,15 @@ class ME as "MaisonEdition" {
 class "Bureau\nDéveloppement\nDurable" as BDD
 Client "1" -- "*" Livre : veut-échanger >
 BDD "1" -- "*" DescriptionLivre : permet-\nd'échanger >
-BDD "1" - "*" Client : fournit-\nservice-à >
+BDD "1" -- "*" Client : fournit-\nservice-à >
 Livre "*" -- "1" DescriptionLivre : est-décrit-par >
 class "PropositionÉchange" as PE <<Transaction>>{
   dateHeure : DateHeure
 }
 PE "1" -- "1..*" Livre : offre >
 PE "1" -- "1..*" Livre : reçoit >
-BDD "1" - "*" PE : enregistre >
-PE "1" - "1" Client : est-proposée-par >
-PE "1" - "1" Client : est-proposée-à >
+PE "1" -- "1" Client : est-proposée-par >
+PE "1" -- "1" Client : est-proposée-à >
 
 A "1" -up- "*" DescriptionLivre: écrit des livres décrit par 
 ME "1" -up- "*" DescriptionLivre: édite les libres décrit par 
@@ -305,8 +288,7 @@ Une instance bdd de BureauDeveloppementDurable existe
 
 **Postconditions :**
 Une instance p de PropositionEchange a été créée
-Une association a été créée entre l’instance p :PropositionEchange et c :Client
-Une association a été créée entre l’instance bdd :BureauDeveloppement et p :PropositionEchange
+Une association **"est-proposé-par"** a été créée entre l’instance p :PropositionEchange et c :Client
 
 #### CU02-Contrat-choisirClient 
 
@@ -317,18 +299,30 @@ Une instance c de Client existe
 Une instance p de PropositionEchange existe
 
 **Postconditions :**
-Une assocation entre p :PropositionEchange et client a été créée sur la base de correspondance avec le parametre idEtudiant
+Une assocation **"est-proposé-a"** entre p :PropositionEchange et client a été créée sur la base de correspondance avec le parametre idEtudiant
  
-#### CU02-Contrat-proposerLivre
+#### CU02-Contrat-proposerLivreRecevoir
 
-**Opération :** proposerLivre(idLivre :CodeLivre, estOffert :boolean)
+**Opération :** proposerLivreRecevoir(idLivre :CodeLivre)
 
  **Préconditions :**
 Une instance c de Client existe
 Une instance p de PropositionEchange existe
 
 **Postconditions :**
-Une association a été créée entre p :PropositionEchange et Livre sur la base de correspondance avec le paramètre idLivre
+Une association **"recoit"** a été créée entre p :PropositionEchange et Livre sur la base de correspondance avec le paramètre idLivre
+
+
+#### CU02-Contrat-proposerLivreOffrir
+
+**Opération :** proposerLivreOffrir(idLivre :CodeLivre)
+
+ **Préconditions :**
+Une instance c de Client existe
+Une instance p de PropositionEchange existe
+
+**Postconditions :**
+Une association **"offre"** a été créée entre p :PropositionEchange et Livre sur la base de correspondance avec le paramètre idLivre
 
 #### CU02-Contrat-terminerProposition 
 
@@ -358,69 +352,118 @@ title RDCU-CU02-Proposer un échange de livres
 skinparam style strictuml
 participant "bdd:BDD" as CTRL
 note left of CTRL: controleur de façade objet racine
-participant "proposeur:Client" as O
+participant "proposeur:Client" as CP
+note left of CP: controleur le voit puisque c'est une précondition
+participant "lpe:List<PropositionEchange>" as LPE
+note left of LPE: Client a une liste de proposition d'échange
 participant "pe:PropositionEchange" as PE
 participant "mc:Map<nomUtilisateur,Client>" as MC
+note left of MC: BDD a une visibilité sur plusieurs clients
 participant "client[i]:Client" as LC
 participant "clientProposeA:Client" as CPA
 participant "llo:List<Livre>" as LLO
 participant "llr:List<Livre>" as LLR
+participant  "mlc:Map<isbn,Livre>" as MLC
 
 
 ->CTRL : démarrerPropositionÉchange()
 activate CTRL
-  note left of PE: Patron Createur\n bdd enregistre pe
-  CTRL -> PE**: create(Client proposeur)
-  note left of LLR: liste de livre a recevoir\nPatron createur\npe contient la liste de livre
+  
+  note right of CTRL: patron expert en information\nbdd voit proposeur\nproposteur possède une liste de porposition
+  CTRL -> CP: createPropositionEchange()
+
+  note right of CP: Patron Createur\n bdd enregistre pe
+  CP -> PE**: create()
+
+note right of CP: Patron expert en information\nClient possède une nouvelle propositionEchange\nClient possède une liste de propositionEchange\nPostCondition: une association a été créée entre Client et propositionEchange
+  CP -> LPE: add(pe)
+
+  note right of PE: liste de livre a recevoir\nPatron createur\npe contient la liste de livre
   PE->LLR**: create()
-  note left of LLO: liste de livre a offrir\nPatron createur\npe contient la liste de livre
+
+  note right of PE: liste de livre a offrir\nPatron createur\npe contient la liste de livre
   PE->LLO**: create()
+  
+  note right of CTRL: traitement du retour d'information\nBdd possède une liste de client sur lequel il veut itérer
   loop i < nbClient
-    note left of LC: Expert en information\nbdd connait les clients\nChaque client connait sa liste de livre
+    note right of CTRL: Expert en information\nbdd connait les clients\nChaque client connait sa liste de livre
     CTRL ->  LC: [Livre] = getLivres()
   end
   <<--CTRL : étudiants et livres à échanger
 deactivate CTRL
 
 
+note right of CTRL: Meme controleur que l'opération précédente puisque l'opération fait partie du même DSS
 -> CTRL: choisirClient(nomUtilisateur : String)
   activate CTRL
-  note left of MC: Expert en information\nbdd possède mc
+  note right of CTRL: Expert en information\nbdd possède mc
   CTRL->MC: clientProposeA = get(nomUtilisateur:string)
-  note left of PE: Expert en information\nbdd est le créateur de pe\npe est une transaction qui identifie le client auxquel on veut offrir des livres
-  CTRL->PE:   offrirAClient(clientProposeA:Client)
-  note left of O: Expert en information!\nbdd connais proposeur\nproposeur possède des livres
-  CTRL->O: [LivreAProposer] = getLivres()
-  note left of O: Expert en information!\nbdd connais clientProposerA\nclientProposerA possède des livres
+  
+  note right of CTRL: Expert en information\nBDD connait le client proposeur\nProposeur connait la propositionEchange
+  CTRL->CP:   offrirAClient(clientProposeA:Client)
+
+  note right of CTRL: Expert en information\nClient proposeur connait la propositionEchange\npe est une transaction qui identifie le client auxquel on veut offrir des livres
+  CP->PE:   offrirAClient(clientProposeA:Client)
+  
+  note right of CTRL: Expert en information!\nbdd connais proposeur\nproposeur possède des livres
+  CTRL->CP: [LivreAProposer] = getLivres()
+  
+  note left of CP: Expert en information!\nbdd connais clientProposerA\nclientProposerA possède des livres
+  
   CTRL -> CPA: [livreARecevoir] = getLivres()
   <<--CTRL: : liste de livres de l'étudiant choisi et du client
 deactivate CTRL
 
-->CTRL: proposerLivreRecevoir(idLivre : string)
+->CTRL: proposerLivreRecevoir(isbn : string)
 activate CTRL
-note left of PE: Expert en information\nbdd connait pe\npe possède une liste de livre a recevoir llr
-CTRL -> PE :ajouterLivreARecevoir(idLivre:string)
-note left of LLR: Expert en information\n pe possède la liste llr
-PE -> LLR: add(idLivre)
+note right of CTRL: Expert en information\nbdd connait le client proposeur\nLe client proposeur connait la proposition d'échange
+CTRL -> CP :ajouterLivreARecevoir(idLivre:string)
+
+note right of CP: Expert en information\nle client auxquel on proposose l'échange connait sa map de livre
+CP -> CPA: livre = get(idLivre:string)
+
+note right of CP: Expert en information\nClient possède une map de livre
+CPA --> MLC: livre = get(idLivre:string)
+
+note right of CP: Expert en informmation\nclient proposeur connait la proposition d'échange\npe possède une liste de livre a recevoir
+CP -> PE: ajouterLivreARecevoir(Livre livre)
+
+note right of PE: Expert en information\n pe possède la liste llr
+PE -> LLR: add(Livre livre)
 deactivate CTRL
 
-->CTRL: proposerLivreOffrir(idLivre : CodeLivre)
+->CTRL: proposerLivreOffrir(isbn : CodeLivre)
 activate CTRL
-note left of PE: Expert en information\nbdd connait pe\npe possède une liste de livre a offrir llo
-CTRL -> PE:ajouterLivreAOffrir(idLivre:string)
-note left of LLO: Expert en information\n pe possède la liste llo
-PE -> LLO: add(idLivre)
+
+note right of CTRL: Expert en information\nbdd connait client proposeur\nclient proposeur connait la proposition d'échange
+CTRL -> CP:ajouterLivreAOffrir(idLivre:string)
+
+note right of CP: Expert en information\nClient possède une map de livre
+CP -> MLC: livre=get(idLivre)
+
+note right of CP: Expert en information\nclient proposeur connait la proposition d'échange\npe possède une liste de livre a offrir llo
+CP -> PE:ajouterLivreAOffrir(Livre livre)
+
+note right of PE: Expert en information\n pe possède la liste llo
+PE -> LLO: add(Livre livre)
 deactivate CTRL
 
 ->CTRL: terminerProposition()
 activate CTRL
-note left of PE: Expert en information\nbdd est le créateur de pe\npe possède les listes de livres
-CTRL -> PE: [nbLivreAOffrir, nbLivreARecevoir] = terminerProposition()
-note left of LLR: Expert en information, pe possède la liste de livre
+
+note right of CTRL: Expert en information\nbdd connait le client proposeur\nClient proposeur connait la proposition d'échange
+CTRL -> CP: [nbLivreAOffrir, nbLivreARecevoir] = terminerProposition()
+
+note right of CP: Expert en information\nClient proposeur connait la proposition d'échange\npe possède les listes de livres
+CP->PE:[nbLivreAOffrir, nbLivreARecevoir] = terminerProposition()
+
+note right of PE: Expert en information, pe possède la liste de livre
 PE->LLR: nbLivreARecevoir = getSize()
-note left of LLR: Expert en information, pe possède la liste de livre
+
+note right of PE: Expert en information, pe possède la liste de livre
 PE->LLO: nbLivreAOffrir = getSize()
-note left of PE: Expert en information, mutateur d'attribut
+
+note right of PE: Expert en information, mutateur d'attribut
 PE -> PE: setDateTime()
 
 <<--CTRL: nombre livres a offrir et a recevoir
@@ -434,6 +477,116 @@ deactivate CTRL
 @enduml
 ```
 
+
+# Diagramme de classe logiciel CU01 et CU02
+
+```plantuml
+@startuml
+@startuml
+skinparam style strictuml
+class "Client" as C {
+  nomUtilisateur : String
+  MotDePasse : String
+  courriel : AdresseCourriel
+  PropositionEchange = createPropositionEchange()
+  offrirAClient(clientProposeA:Client)
+  [LivreAProposer] = getLivres()
+  ajouterLivreARecevoir(idLivre:string) 
+  ajouterLivreAOffrir(idLivre:string)
+  [nbLivreAOffrir, nbLivreARecevoir] = terminerProposition()
+  ajouterLivre(descriptionLivre:DescriptionLivre, codeCondition:string)
+}
+class "Livre" as L {
+ idLivre : integer
+ condition : CodeCondition
+ Livre(descriptionLivre:DescriptionLivre, string codeCondition)
+}
+
+class "DescriptionLivre" as DL {
+  string isbn
+  string titre
+  int nombrePages
+  int noEdition
+}
+
+class "PropositionÉchange" as PE <<Transaction>>{
+  dateHeure : DateHeure
+  PropositionEchanbge()
+  offrirAClient(clientProposeA:Client)
+  ajouterLivreARecevoir(idLivre:string)
+  ajouterLivreAOffrir(idLivre:string)
+  nbLivreAOffrir, nbLivreARecevoir] = terminerProposition()
+  - setDateTime()
+
+}
+
+
+class "Auteur" as A {
+  string nom
+}
+
+class ME as "MaisonEdition" {
+  string nom
+
+}
+class "Bureau\nDéveloppement\nDurable" as BDD{
+  string démarrerPropositionÉchange()
+  string choisirClient(string nomUtilisateur )
+  string proposerLivreRecevoir(string idLivre)
+  string proposerLivreRecevoir(string idLivre)
+  string terminerProposition()
+  string confirmerÉchange()
+}
+
+class "mc:Map<nomUtilisateur,Client>" as MC{
+  Client get(string nomClient)
+}
+class "lpe:List<PropositionEchange>" as LPE{
+  add(PropositionEchange propositionEchange)
+}
+class "llo:List<Livre>" as LLO{
+  add(Livre livre)
+  integer getSize()
+}
+class "llr:List<Livre>" as LLR{
+  add(Livre livre)
+  integer getSize()
+}
+
+
+class "mlc:Map<isbn,Livre>" as MLC{
+  add(Livre livre)
+  Livre get(string)
+}
+
+class "mc:Map<string,DescriptionLivre>" as MDL{
+  DescriptionLivre get(string isbn)
+}
+
+BDD "1" --> "1" MC
+MC "1" --> "*" C
+C "1" --> "1" LPE 
+LPE "1" --> "*" PE
+PE "1" --> "1" C 
+PE "1" --> "1" LLO
+LLO "1" --> "*" L
+PE "1" --> "1" LLR
+LLR "1" --> "*" L
+
+
+BDD "1" --> "1" MDL
+MDL "1" --> "*" DL
+DL "1" <-- "*" L 
+
+A "1" <-up- "*" DL
+ME "1" <-up- "*" DL
+C "1" -->"1" MLC
+MLC "1" -->"*" L
+
+@enduml
+
+@enduml
+```
 
 
 
