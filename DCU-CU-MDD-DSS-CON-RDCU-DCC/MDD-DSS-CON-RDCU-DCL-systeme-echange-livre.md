@@ -118,7 +118,24 @@ E <<-- S: [livre du client]
 ```plantuml
 @startuml
 skinparam style strictuml
-title RDCU CU01 - Ajouter un livre à échanger
+title RDCU CU01 -  demarrerAjoutLivre()
+
+
+participant "ctrl:Bdd" as S
+note left of S: controleur de façade de type objet racine
+
+
+ -> S: demarrerAjoutLivre()
+activate S
+deactivate S
+@enduml
+```
+
+```plantuml
+@startuml
+title RDCU CU01 -  ajouterLivre()
+skinparam style strictuml
+
 
 participant "ctrl:Bdd" as S
 note left of S: controleur de façade de type objet racine
@@ -130,12 +147,6 @@ participant "l:Livre" as L
 
 participant "ll:List<Livre>" as LL
 note left of LL: est visible par le client\npuisqu'il possède une liste de livre
-
- -> S: demarrerAjoutLivre()
-activate S
-deactivate S
-
-
 
  -> S: ajouterLivre(isbn:string, codeCondition:string)
 activate S
@@ -160,6 +171,19 @@ note right of C: Patron expert\nClient a une visibilité sur la ll\nll est une l
 C -> LL: add(l:livrre)
 
 deactivate S
+@enduml
+```
+
+```plantuml
+@startuml
+title RDCU CU01 -  terminerAjoutLivre()
+skinparam style strictuml
+
+participant "ctrl:Bdd" as S
+note left of S: controleur de façade de type objet racine
+
+participant "c:Client" as C
+note left of C: est visible par le controleur puisque c'est une précondition
 
 
  -> S: terminerAjoutLivre()
@@ -348,22 +372,18 @@ Aucune
 
 ```plantuml
 @startuml
-title RDCU-CU02-Proposer un échange de livres
+title RDCU-CU02-démarrerPropositionÉchange()
 skinparam style strictuml
 participant "bdd:BDD" as CTRL
 note left of CTRL: controleur de façade objet racine
 participant "proposeur:Client" as CP
 note left of CP: controleur le voit puisque c'est une précondition
-participant "lpe:List<PropositionEchange>" as LPE
-note left of LPE: Client a une liste de proposition d'échange
 participant "pe:PropositionEchange" as PE
-participant "mc:Map<nomUtilisateur,Client>" as MC
-note left of MC: BDD a une visibilité sur plusieurs clients
-participant "client[i]:Client" as LC
-participant "clientProposeA:Client" as CPA
 participant "llo:List<Livre>" as LLO
 participant "llr:List<Livre>" as LLR
-participant  "mlc:Map<isbn,Livre>" as MLC
+participant "lpe:List<PropositionEchange>" as LPE
+note left of LPE: Client a une liste de proposition d'échange
+participant "client[i]:Client" as LC
 
 
 ->CTRL : démarrerPropositionÉchange()
@@ -375,8 +395,7 @@ activate CTRL
   note right of CP: Patron Createur\n bdd enregistre pe
   CP -> PE**: create()
 
-note right of CP: Patron expert en information\nClient possède une nouvelle propositionEchange\nClient possède une liste de propositionEchange\nPostCondition: une association a été créée entre Client et propositionEchange
-  CP -> LPE: add(pe)
+
 
   note right of PE: liste de livre a recevoir\nPatron createur\npe contient la liste de livre
   PE->LLR**: create()
@@ -384,14 +403,31 @@ note right of CP: Patron expert en information\nClient possède une nouvelle pro
   note right of PE: liste de livre a offrir\nPatron createur\npe contient la liste de livre
   PE->LLO**: create()
   
-  note right of CTRL: traitement du retour d'information\nBdd possède une liste de client sur lequel il veut itérer
+note right of CP: Patron expert en information\nClient possède une nouvelle propositionEchange\nClient possède une liste de propositionEchange\nPostCondition: une association a été créée entre Client et propositionEchange
+  CP -> LPE: add(pe)
+    note right of CTRL: traitement du retour d'information\nBdd possède une liste de client sur lequel il veut itérer
   loop i < nbClient
     note right of CTRL: Expert en information\nbdd connait les clients\nChaque client connait sa liste de livre
     CTRL ->  LC: [Livre] = getLivres()
   end
   <<--CTRL : étudiants et livres à échanger
 deactivate CTRL
+@enduml
+```
 
+```plantuml
+@startuml
+title RDCU-CU02-choisirClient()
+skinparam style strictuml
+participant "bdd:BDD" as CTRL
+note left of CTRL: controleur de façade objet racine
+participant "mc:Map<nomUtilisateur,Client>" as MC
+note left of MC: BDD a une visibilité sur plusieurs clients
+participant "proposeur:Client" as CP
+note left of CP: controleur le voit puisque c'est une précondition
+participant "pe:PropositionEchange" as PE
+
+participant "clientProposeA:Client" as CPA
 
 note right of CTRL: Meme controleur que l'opération précédente puisque l'opération fait partie du même DSS
 -> CTRL: choisirClient(nomUtilisateur : String)
@@ -413,25 +449,53 @@ note right of CTRL: Meme controleur que l'opération précédente puisque l'opé
   CTRL -> CPA: [livreARecevoir] = getLivres()
   <<--CTRL: : liste de livres de l'étudiant choisi et du client
 deactivate CTRL
+@enduml
+```
+
+```plantuml
+@startuml
+title RDCU-CU02-proposerLivreRecevoir
+skinparam style strictuml
+participant "bdd:BDD" as CTRL
+note left of CTRL: controleur de façade objet racine
+participant "proposeur:Client" as CP
+note left of CP: controleur le voit puisque c'est une précondition
+participant "pe:PropositionEchange" as PE
+participant "clientProposeA:Client" as CPA
+participant  "mlc:Map<isbn,Livre>" as MLC
+participant "llr:List<Livre>" as LLR
 
 ->CTRL: proposerLivreRecevoir(isbn : string)
 activate CTRL
 note right of CTRL: Expert en information\nbdd connait le client proposeur\nLe client proposeur connait la proposition d'échange
 CTRL -> CP :ajouterLivreARecevoir(idLivre:string)
 
-note right of CP: Expert en information\nle client auxquel on proposose l'échange connait sa map de livre
-CP -> CPA: livre = get(idLivre:string)
+note right of CP: Expert en information\nproposeur a une visibilité sur pe\npe connait le clientProposéA\nclientProposeA connait ses livres 
+CP -> PE: ajouterLivreARecevoir(idLivre:string)
 
-note right of CP: Expert en information\nClient possède une map de livre
-CPA --> MLC: livre = get(idLivre:string)
+note right of PE: Expert en information\npe connait le clientProposéA\nclientProposeA connait ses livres
+PE->CPA: livre = ajouterLivreARecevoir(idLivre:string)
 
-note right of CP: Expert en informmation\nclient proposeur connait la proposition d'échange\npe possède une liste de livre a recevoir
-CP -> PE: ajouterLivreARecevoir(Livre livre)
+note right of CPA: Expert en information\nclientProposeA possède des livres
+CPA -> MLC: livre = get(idLivre:string)
 
 note right of PE: Expert en information\n pe possède la liste llr
 PE -> LLR: add(Livre livre)
 deactivate CTRL
+@enduml
+```
 
+```plantuml
+@startuml
+title RDCU-CU02-proposerLivreOffrir
+skinparam style strictuml
+participant "bdd:BDD" as CTRL
+note left of CTRL: controleur de façade objet racine
+participant "proposeur:Client" as CP
+note left of CP: controleur le voit puisque c'est une précondition
+participant  "mlc:Map<isbn,Livre>" as MLC
+participant "pe:PropositionEchange" as PE
+participant "llo:List<Livre>" as LLO
 ->CTRL: proposerLivreOffrir(isbn : CodeLivre)
 activate CTRL
 
@@ -447,6 +511,20 @@ CP -> PE:ajouterLivreAOffrir(Livre livre)
 note right of PE: Expert en information\n pe possède la liste llo
 PE -> LLO: add(Livre livre)
 deactivate CTRL
+@enduml
+```
+
+```plantuml
+@startuml
+title RDCU-CU02-terminerProposition()
+skinparam style strictuml
+participant "bdd:BDD" as CTRL
+note left of CTRL: controleur de façade objet racine
+participant "proposeur:Client" as CP
+note left of CP: controleur le voit puisque c'est une précondition
+participant "pe:PropositionEchange" as PE
+participant "llo:List<Livre>" as LLO
+participant "llr:List<Livre>" as LLR
 
 ->CTRL: terminerProposition()
 activate CTRL
@@ -468,7 +546,15 @@ PE -> PE: setDateTime()
 
 <<--CTRL: nombre livres a offrir et a recevoir
 deactivate CTRL
+@enduml
+```
 
+```plantuml
+@startuml
+title RDCU-CU02-terminerProposition()
+skinparam style strictuml
+participant "bdd:BDD" as CTRL
+note left of CTRL: controleur de façade objet racine
 ->CTRL: confirmerÉchange()
 activate CTRL
 <<--CTRL: resumé de l'échange
