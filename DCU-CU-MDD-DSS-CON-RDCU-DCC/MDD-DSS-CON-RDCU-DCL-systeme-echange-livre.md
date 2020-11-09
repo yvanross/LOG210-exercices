@@ -6,7 +6,7 @@ Le Bureau du Développement Durable (BDD) de l'Université a mis en place un sys
 
 Acteur principal : Client (étudiant)
 
-****Préconditions :****
+**Préconditions :**
 
 Le Client est identifié (par son nom d'utilisateur) et authentifié par son mot de passe.
 
