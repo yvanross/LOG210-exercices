@@ -1,0 +1,19 @@
+@startuml
+
+participant ":Register" as R 
+participant ":Sale" as S 
+-> R: msg1
+activate R
+R -> S: msg2
+R -> S: msg3
+activate S
+S -> R: msg5
+activate R
+R --> S
+deactivate R
+S --> R 
+deactivate S
+R -> S: msg4
+deactivate R
+
+@enduml

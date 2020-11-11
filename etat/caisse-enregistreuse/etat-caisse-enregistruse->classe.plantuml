@@ -5,7 +5,10 @@ class Caisse {
 creerNouvelleVente()
 saisirArtiche(codeArticle, quantite)
 terminerVente()
-creerPaiement(montant)
+creerPaiementenEspeces(montant:string)
+creerPaiementACredit(montant:string, idCC:string)
+creerPaiementParCheque(montant:string, idPermisConcuire:string)
+autoriser()
 getState(): IEtatCaisse
 setState(IEtatCaisse)
 
@@ -15,34 +18,98 @@ interface IEtatCaisse{
 creerNouvelleVente()
 saisirArtiche(codeArticle, quantite)
 terminerVente()
-creerPaiement(montant)
+creerPaiementenEspeces(montant:string)
+creerPaiementACredit(montant:string, idCC:string)
+creerPaiementParCheque(montant:string, idPermisConcuire:string)
+autoriser()
 
 }
 
 abstract class EtatCaisse {
 {abstract} creerNouvelleVente()
 {abstract} saisirArtiche(codeArticle, quantite)
-{abstract} terminerVente()
-{abstract} creerPaiement(montant)
-
+{abstract} terminerVente()z
+{abstract} creerPaiementenEspeces(montant:string)
+{abstract} creerPaiementACredit(montant:string, idCC:string)
+{abstract} creerPaiementParCheque(montant:string, idPermisConcuire:string)
+{abstract} autoriser()
 }
 class AttenteVente  {
     creerNouvelleVente()
 } 
 
-class CreationVente {
+class SaisieArticle {
 saisirArtiche(codeArticle, quantite)
 terminerVente()
 }
 
 class AttentePaiement {
-creerPaiement(montant)
+creerPaiementenEspeces(montant:string)
+creerPaiementACredit(montant:string, idCC:string)
+creerPaiementParCheque(montant:string, idPermisConcuire:string)
+}
+
+class AutorisationPaiement {
+    autoriser()
 }
 
 Caisse "1" -right- "1" IEtatCaisse
 IEtatCaisse <|-down- EtatCaisse
 EtatCaisse <|-- AttenteVente
 EtatCaisse <|-- AttentePaiement
-EtatCaisse <|-- CreationVente
+EtatCaisse <|-- SaisieArticle
+EtatCaisse <|-- AutorisationPaiement
 note left of EtatCaisse: Toutes ces opérations\ngénèrent une exception\npar défault
+@enduml
+
+
+@startuml
+skinparam Style strictuml
+
+participant ":Caisse" as C
+participant "av:AttenteVente"  as AV
+participant "sa:SaisieArticles" as SA 
+Participant ":EtatCaisse" as IS <<Abstract>>
+
+ --> C**: create()
+ activate C
+C --> AV**: create()
+C -> C: setState(av)
+activate C
+deactivate C
+deactivate C
+
+ --> C: creerNouvelleVente()
+activate C
+C -> C: av = getState();
+activate C
+deactivate C
+C -> AV: IEtatCaisse sa = \ncreerNouvelleVente(this)
+activate AV
+AV -> AV: IEtatCaisse sa = \ncreerNouvelleVente(this)
+activate AV
+AV -> SA**: create()
+deactivate AV
+C <-- AV
+deactivate AV
+
+C -> C: setState(sa)
+activate C
+deactivate C
+ <-- C 
+deactivate C
+
+
+
+
+ -> C: creerNouvelleVente()
+activate C
+C -> C: sa = getState();
+activate C
+deactivate C
+C -> SA: IEtatCaisse av2 = \ncreerNouvelleVente(this)
+SA -> IS : IEtatCaisse av2 = \ncreerNouvelleVente(this)
+IS --> Exception**: throw("Operation not \navailable for this state")
+<-- IS 
+deactivate C
 @enduml
