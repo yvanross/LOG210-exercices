@@ -18,7 +18,10 @@ ol->si: hasStock = check()
 opt hasStock
 ol->si: remove()
 activate si 
+
 si->si: needsReorder = needToReorder()
+activate si
+deactivate si
 
 opt needsReorder
 si->ri**: create {new}
@@ -27,11 +30,6 @@ deactivate si
 
 ol->di**: create {new}
 end
-
-
-
 end 
-
-
-
 @enduml
+

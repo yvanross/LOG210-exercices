@@ -6,3 +6,4 @@
 
 ![](/assets/exercices.gddoc.docx/image109.jpg){width="4.701388888888889in" height="3.526042213473316in"}
 
+

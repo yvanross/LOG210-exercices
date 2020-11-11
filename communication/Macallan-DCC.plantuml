@@ -1,0 +1,33 @@
+@startuml
+title Diagramme de classe logiciel Macallan Stock 
+class "OrderEntryWindow" as OEW {
+
+}
+
+class "Order" as O {
+  prepare()
+}
+
+class "OrderLine" as OL {
+  prepare()
+}
+
+class "StockItem" as SI {
+  check(): Bool
+  remove(): void 
+  -needtoRedorder(): bool
+}
+
+class DeliveryItem {
+  DeliveryItem()
+}
+class ReorderItem{
+ReorderItem()
+}
+
+OEW --> O
+O "1" --> "*" OL
+OL --> SI
+SI --> ReorderItem
+OL --> DeliveryItem
+@enduml

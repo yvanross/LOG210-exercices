@@ -31,3 +31,18 @@ Pour la solution, voir la page suivante.
 height="5.569444444444445in"}
 
 ![](http://www.plantuml.com/plantuml/img/PP31IWD138RlUOhSR4\_Unr8HGH6ab1MyzJ3iPjlGQMR9P2g5VI3tEVR5dArIBLx2aFpvvykVzYoTLt\_0PAT0fIhNbWy1qcMoyz9yA9kHe6acCBOYNUHbHHQpOaDuZ6nP2KFCuq2Bsxo4\_Z4mYVMGpAk1gqWQlIZleA\_6eQREE8fmCkh1lV-ua64TnY5jmAsYaUAUGpoCdwP-Eqr1-4W-OtD3AP7KnQsDkWVtF0uo3besMbz\_V-EUlb-RNo2tzgShoRe0iXQaX-rPC9cXtteMS2-IEgedY0ivjpZhD7PAztEqNObb5ZFFWK8Yd4cKEQ1xzSU\_E-WgBg1NdRSImEwwjIApEC6nM3c4AHUi4XotKyNpbV-3InQxBm00]{.underline}](http://www.plantuml.com/plantuml/img/PP31IWD138RlUOhSR4_Unr8HGH6ab1MyzJ3iPjlGQMR9P2g5VI3tEVR5dArIBLx2aFpvvykVzYoTLt_0PAT0fIhNbWy1qcMoyz9yA9kHe6acCBOYNUHbHHQpOaDuZ6nP2KFCuq2Bsxo4_Z4mYVMGpAk1gqWQlIZleA_6eQREE8fmCkh1lV-ua64TnY5jmAsYaUAUGpoCdwP-Eqr1-4W-OtD3AP7KnQsDkWVtF0uo3besMbz_V-EUlb-RNo2tzgShoRe0iXQaX-rPC9cXtteMS2-IEgedY0ivjpZhD7PAztEqNObb5ZFFWK8Yd4cKEQ1xzSU_E-WgBg1NdRSImEwwjIApEC6nM3c4AHUi4XotKyNpbV-3InQxBm00)
+
+
+
+Edit online
+@startuml
+
+(*) --> ===B1===
+--> "Parallel Action 1"
+--> ===B2===
+
+===B1=== --> "Parallel Action 2"
+--> ===B2===
+
+--> (*)
+@enduml
