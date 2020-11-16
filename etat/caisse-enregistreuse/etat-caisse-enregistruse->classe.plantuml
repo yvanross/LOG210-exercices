@@ -66,12 +66,13 @@ note left of EtatCaisse: Toutes ces opérations\ngénèrent une exception\npar d
 @startuml
 skinparam Style strictuml
 
+participant X
 participant ":Caisse" as C
 participant "av:AttenteVente"  as AV
 participant "sa:SaisieArticles" as SA 
 Participant ":EtatCaisse" as IS <<Abstract>>
 
- --> C**: create()
+ X --> C**: create()
  activate C
 C --> AV**: create()
 C -> C: setState(av)
@@ -79,7 +80,7 @@ activate C
 deactivate C
 deactivate C
 
- --> C: creerNouvelleVente()
+X --> C: creerNouvelleVente()
 activate C
 C -> C: av = getState();
 activate C
@@ -96,13 +97,13 @@ deactivate AV
 C -> C: setState(sa)
 activate C
 deactivate C
- <-- C 
+X <-- C 
 deactivate C
 
 
 
 
- -> C: creerNouvelleVente()
+X -> C: creerNouvelleVente()
 activate C
 C -> C: sa = getState();
 activate C
@@ -110,6 +111,6 @@ deactivate C
 C -> SA: IEtatCaisse av2 = \ncreerNouvelleVente(this)
 SA -> IS : IEtatCaisse av2 = \ncreerNouvelleVente(this)
 IS --> Exception**: throw("Operation not \navailable for this state")
-<-- IS 
+X <-- IS 
 deactivate C
 @enduml

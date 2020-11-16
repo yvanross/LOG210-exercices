@@ -13,7 +13,7 @@ note left of ctrl: Controleur de session
 -> ctrl: confirmerReservation(nomclient:string, telephone: string)
 
 note left of cl: Create(PUCE)\npar default
-ctrl -> cl **: create(nomClient,telephone)
+ctrl --> cl **: create(nomClient,telephone)
 
 note left of r: Expert\nctrl->r\nctrl->c\nCohesion r est une transaction
 ctrl->r: setClient(c)

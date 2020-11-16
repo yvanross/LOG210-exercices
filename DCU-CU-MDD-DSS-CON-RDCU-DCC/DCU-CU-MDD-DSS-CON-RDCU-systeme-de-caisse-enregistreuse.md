@@ -185,7 +185,7 @@ note right of C: Createur (PUCE), Caisse enregistre mp\nfaible couplage en passa
 
  C-> MPL: plateau = get(identifiant:string)
 
- C -> MP**: create(c:Caisse, ca:Caissier,p:Plateau)
+ C --> MP**: create(c:Caisse, ca:Caissier,p:Plateau)
  MP -> MP: setDateArrive()
 
 -> C: crediterPlateau(montant:float)
