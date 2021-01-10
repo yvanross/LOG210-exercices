@@ -152,10 +152,10 @@ Commis <<-- Systeme: confirmation?, menu principale
 ```
 
 ## Contrat
-**demarrerReservation()**
+[**demarrerReservation()**](#rdcu-demarrerReservation)
   - aucune
 
-  **reserverChambre(dateArrive:string, dateDepart:string, nomCategorie: String)**
+[reserverChambre](#rdcu-reserverchambre)(dateArrive:string, dateDepart:string, nomCategorie: String)
   - Précondition:
     - c:Commis est authentifier
 
@@ -170,7 +170,8 @@ Commis <<-- Systeme: confirmation?, menu principale
 
 ## RDCU
 
-### demarrerReservation()
+
+### demarrerReservation() {#rdcu-demarrerReservation}
 ```plantuml
 @startuml
 skinparam style strictuml

@@ -126,21 +126,27 @@ M <<-- S: noReservation, nom du membre, code de l'exemplaire
 
 
 
-# RDCU
+## RDCU demarrerRechercheLivre
 ```plantuml
 @startuml
-title: Réserver un livre à la bibliothèque
+skinparam style strictuml
+participant ":ControleurReservation" as S
+note left of S: Controlleur de session
+
+ -> S: demarrerRechercheLivre() 
+
+@enduml
+```
+
+## RDCU rechercherLivre
+```plantuml
+@startuml
+title: rechercherLivre
 skinparam style strictuml
 participant ":ControleurReservation" as S
 note left of S: Controlleur de session
 participant ":Bibliotheque" as B
 participant "ll:List<:Livre>" as LL
-participant "ml:Map<nom, :Livre>" as ML
-participant "m:Membre" as M
-participant "l:Livre" as L
-participant "me:Map<code:string, :Exemplaire>" as ME
-
- -> S: demarrerRechercheLivre() 
 
  -> S: [livre] = rechercherLivre(texte:string)
 note left of B: Expert en information,\ncontroleur possède la Bibliotheque,\nBibliotheque possède la liste de livre
@@ -148,6 +154,19 @@ S -> B: [livre] =rechercherLivre(texte:string)
 note left of LL: List<:Livre> est l'expert pour trouver les livres en sachant un texte
 B -> LL: [livre] = find(texte:string)
 
+@enduml
+```
+
+
+# RDCU selectionnerLivre
+```plantuml
+@startuml
+skinparam style strictuml
+participant ":ControleurReservation" as S
+note left of S: Controlleur de session
+participant ":Bibliotheque" as B
+participant "ml:Map<nom, :Livre>" as ML
+participant "l:Livre" as L
 
  -> S: selectionnerLivre(livre:string)
  note left of B: Expert en information \nControleur -> Bibliotheque\nBibliotheque -> map de livre
@@ -157,10 +176,25 @@ B -> LL: [livre] = find(texte:string)
 
  note left of L: Expert Livre décrit plusieurs exemplaire
  B->L: [exemplaire] = getExemplaires()
+@enduml
+```
 
+
+# RDCU
+```plantuml
+@startuml
+title: Réserver un livre à la bibliothèque
+skinparam style strictuml
+participant ":ControleurReservation" as S
+note left of S: Controlleur de session
+participant ":Reservation" as Reservation
+participant ":Bibliotheque" as B
+participant "ml:Map<nom, :Livre>" as ML
+participant "l:Livre" as L
+participant "me:Map<code:string, :Exemplaire>" as ME
 
  -> S**: reserverExemplaire(livre:string, code:string)
-note right of S: Createur par default, faible couplage avec parametre m:Membre
+note right of S: Createur par default, \nfaible couplage avec parametre m:Membre
 S->B: exemplaire =  getExemplaire(livre:string, code:string)
 B -> ML: l = get(livre:string)
 note left of L: expert en information\nl possède une map d'exemmplaires
@@ -172,8 +206,6 @@ note left of Reservation: createur par default, PUCE n'est pas application
 note left of Reservation: r.noConfirmation est devenu no unique
 S -> Reservation**: create(m:Membre, exemplaire:Exemplaire)
 Reservation ->Reservation: initNoConfirmation()
-
-
 
 @enduml
 ```

@@ -160,7 +160,7 @@ note right of PA : Il y a un double lien entre Caissier et PlateauArgent
 @enduml
 ```
 
-### nettoyage du MDD pour enlever les liens/classes inutiles/redondants
+### Nettoyage du MDD pour enlever les liens/classes inutiles/redondants
 ```plantuml
 @startuml
 skinparam style strictuml
@@ -228,7 +228,7 @@ V "1" -- "1" Cl : Effectué-par >
 V "*" -left- "1" MP : Capturée-dans >
 @enduml
 ```
-
+##  DSS
 ```plantuml
 @startuml
 skinparam style strictuml
@@ -256,7 +256,9 @@ C <<-- S: option pour caissier
 ```
 
 
-###  Contrat CU03-créerMisePlateau
+## Contrat 
+
+### Contrat - CU03-créerMisePlateau
 **Opération :**	créerMisePlateau ()
 **Références croisées :**	Cas d’utilisation : Cash In
 **Préconditions :**
@@ -305,7 +307,9 @@ C <<-- S: option pour caissier
 - mp.heure est devenue l’heure actuelle.
 
 
-### RDCU CU03-créerMisePlateau
+## RDCU's
+
+### RDCU - CU03-créerMisePlateau
 
 ```plantuml
 @startuml
@@ -383,7 +387,7 @@ participant ":Caisse" as C
 participant "mp:MisePlateau" as mp
 -> C : saisirMontant\n(montant : Monnaie)
 note right : Par contrôleur\n(Caisse est un\néquipement)
-C -> mp : setMontant(montant)
+C -> mp : setMontant(montant:float)
 note right : Expert (mutateur d'attribut)
 @enduml
 ```
@@ -408,19 +412,16 @@ note right : Expert (mutateur d'attribut)
 
 # CU04 - Traiter une vente
 
+# RDCU - CU04 - creerNouvelleVente
 ```plantuml
 @startuml
 skinparam Style strictuml
 
 participant ":Caisse" as Caisse
 participant "attenteVente:AttenteVente" as AttenteVente
-participant "attenteVente2:AttenteVente" as AttenteVente2
 participant "creationVente:CreationVente" as CreationVente
-participant "attentePaiement:AttentePaiement" as AttentePaiement
-participant "{abstract}\n:EtatVente" as EtatVente
 
 -> Caisse: creerNouvelleVente()
-note right of Vente: Etat initiale AttenteVente
 Caisse -> Caisse : IEtatVente attenteVente = getState()
 activate Caisse
 opt etat == null 
@@ -432,29 +433,94 @@ Caisse -> AttenteVente: IEtatVente etat = creerNouvelleVente()
 AttenteVente -> CreationVente**: IEtatVente creationVente = create()
 Caisse -> Caisse: setState(creationVente)
 
+
+@enduml
+```
+
+# RDCU - CU04 - saisirArtiche
+```plantuml
+@startuml
+skinparam Style strictuml
+
+participant ":Caisse" as Caisse
+participant "creationVente:CreationVente" as CreationVente
+
 -> Caisse: saisirArtiche(codeArticle, quantite)
 Caisse -> Caisse : IEtatPaiement attentePaiement = getState()
 Caisse -> CreationVente: IEtatVente nouvelEtat = saisirArtiche(codeArticle, quantite)
 Caisse -> Caisse : setState(nouvelEtat)
 
+
+@enduml
+```
+
+# RDCU - CU04 - terminerVente
+```plantuml
+@startuml
+skinparam Style strictuml
+
+participant ":Caisse" as Caisse
+participant ":Vente" as Vente
+participant "creationVente:CreationVente" as CreationVente
+participant AttenteVente
+participant "attentePaiement:AttentePaiement" as AttentePaiement
+
 -> Caisse: terminerVente()
 Caisse -> Vente : getState()
 Vente -> CreationVente: terminerVente()
+CreationVente -> AttenteVente: terminerVente()
 AttenteVente -> AttentePaiement**: IEtatVente attentePaiement = create()
 Vente -> Vente: setState(attentePaiement)
 
--> Vente: creerPaiement(montant)
+@enduml
+```
+
+# RDCU - CU04 - creerPaiement
+```plantuml
+@startuml
+skinparam Style strictuml
+
+participant ":Caisse" as Caisse
+participant ":Vente" as Vente
+participant "attentePaiement:AttentePaiement" as AttentePaiement
+participant "attenteVente2:AttenteVente" as AttenteVente2
+
+
+-> Caisse: creerPaiement(montant: float)
+Caisse -> Vente: creerPaiement(montant: float)
 Vente -> Vente: getState()
-Vente -> AttentePaiement: IEtatVente attenteVente = creerPaiement(montant)
+Vente -> AttentePaiement: IEtatVente attenteVente = creerPaiement(montant:float)
+AttentePaiement -> AttenteVente2**: IEtatVente attenteVente2 = create()
+Vente -> Vente: setState(attenteVente2)
+
+@enduml
+```
+
+# RDCU - CU04 - creerPaiement execption
+```plantuml
+@startuml
+skinparam Style strictuml
+
+participant ":Caisse" as Caisse
+participant ":Vente" as Vente
+participant "attentePaiement:AttentePaiement" as AttentePaiement
+participant "attenteVente2:AttenteVente" as AttenteVente2
+participant "{abstract}\n:EtatVente" as EtatVente
+
+--> Caisse: creerPaiement(montant:float)
+Caisse -> Vente: creerPaiement(montant:float)
+Vente -> Vente: getState()
+Vente -> AttentePaiement: IEtatVente attenteVente = creerPaiement(montant:float)
 AttentePaiement -> AttenteVente2**: IEtatVente attenteVente2 = create()
 Vente -> Vente: setState(attenteVente2)
 
 note right of Vente: Appel d'une opération dans le mauvais état -> génération d'une exception
--> Vente: creerPaiement(montant)
+-> Vente: creerPaiement(montant:float)
 Vente -> Vente: attenteVente = getState()
-Vente -> AttenteVente2: IEtatVente attenteVente2 = creerPaiement(montant)
-AttenteVente -> EtatVente: IEtatVente attenteVente2 = creerPaiement(montant)
+Vente -> AttenteVente2: IEtatVente attenteVente2 = creerPaiement(montant:float)
+AttenteVente2 -> EtatVente: IEtatVente attenteVente2 = creerPaiement(montant:float)
 EtatVente -> Exception**: create("Erreur operation invalide")
+Caisse <-- EtatVente
 
 
 @enduml

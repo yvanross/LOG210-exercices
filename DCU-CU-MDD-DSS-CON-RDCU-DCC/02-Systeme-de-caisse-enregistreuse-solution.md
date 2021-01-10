@@ -1,4 +1,4 @@
-## Système de caisse enregistreuse
+# Système de caisse enregistreuse
 
 ### Diagramme des cas d'utilisation
 
@@ -31,7 +31,7 @@ MP --> SystemeRessourcesHumaines
 @enduml
 ```
 
-### UC03 : Mise en plateau
+# UC03 : Mise en plateau
 Acteur principal : Caissier
 - **Préconditions :**
 La caisse est libre et son tiroir-caisse est vide (il n’y a pas de plateau dedans).
@@ -52,6 +52,9 @@ Le caissier est authentifié. Le plateau du caissier est inséré dans le tiroir
 
 Pose hypothèse qu'une caisse à seulement un tirroir caisse.
 
+## Interface usagé
+
+## MDD
 ```plantuml
 
 @startuml
@@ -151,7 +154,9 @@ C <-- S: option menu principal ?
 - Postcondition
   - c.tirroirCaisseOuvert est devenu false
 
-## RDCU
+## RDCU's
+
+### RDCU - demarrerMiseEnPlateau
 Question pour trouver le controleur de facade:
   - objet racine, équipement, systeme globale, sous-système
   - 
@@ -159,15 +164,20 @@ Question pour trouver le controleur de facade:
 @startuml
 skinparam style strictuml
 Participant "c:Caisse" as C
-Participant "mp:MiseEnPlateau" as MP
-Participant "MC:Map<identifiant:string, :Caissier>" as MC
-Participant "ca:Caissier" as CA
-Participant "MPL:Map<identifiant:string, :Plateau>" as MPL
-Participant "p:Plateau" as P
 
 note right of C: Controleur de facade de type équipement
  -> C: demarrerMiseEnPlateau()
  
+ 
+@enduml
+```
+### RDCU authentifier
+```plantuml
+@startuml
+skinparam style strictuml
+Participant "c:Caisse" as C
+Participant "MC:Map<identifiant:string, :Caissier>" as MC
+Participant "ca:Caissier" as CA
  
 -> C: authentifier(identifiant:string, mdp:string)
 
@@ -180,17 +190,48 @@ C->C: OuvrirTirroirCaisse()
 end
 
 
+@enduml
+```
+
+### RDCU PoserPlateau
+```plantuml
+@startuml
+skinparam style strictuml
+Participant "c:Caisse" as C
+Participant "mp:MiseEnPlateau" as MP
+Participant "MPL:Map<identifiant:string, :Plateau>" as MPL
+Participant "plateau:Plateau" as P
+
+
 -> C: PoserPlateau(identifiant: string)
 note right of C: Createur (PUCE), Caisse enregistre mp\nfaible couplage en passant les paramètres c et ca\nForte cohesion puisque mp est une transaction
 
  C-> MPL: plateau = get(identifiant:string)
 
- C --> MP**: create(c:Caisse, ca:Caissier,p:Plateau)
+ C --> MP**: create(c:Caisse, ca:Caissier,plateau:Plateau)
  MP -> MP: setDateArrive()
+
+@enduml
+```
+### RDCU crediterPlateau
+```plantuml
+@startuml 
+skinparam style strictuml
+Participant "c:Caisse" as C
+Participant "mp:MiseEnPlateau" as MP
 
 -> C: crediterPlateau(montant:float)
 note right of C: exper en information, mutateur d'attribut
 C->MP: setMontant(montant:float)
+
+
+@enduml
+```
+### RDCU fermerTirroirCaisse
+```plantuml
+@startuml
+skinparam style strictuml
+Participant "c:Caisse" as C
 
 
 ->C: fermerTirroirCaisse()
@@ -199,6 +240,7 @@ C->C: fermetureDuTiroirCaisse()
 
 @enduml
 ```
+
 ## DCL/DCC
 ```plantuml
 @startuml

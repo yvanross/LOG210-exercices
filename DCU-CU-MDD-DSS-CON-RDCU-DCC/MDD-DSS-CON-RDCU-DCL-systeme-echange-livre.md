@@ -114,16 +114,12 @@ E <<-- S: [livre du client]
 
 # RDCU's
 
-
+## RDCU - demarrerAjoutLivre
 ```plantuml
 @startuml
 skinparam style strictuml
-title RDCU CU01 -  demarrerAjoutLivre()
-
-
 participant "ctrl:Bdd" as S
 note left of S: controleur de façade de type objet racine
-
 
  -> S: demarrerAjoutLivre()
 activate S
@@ -131,12 +127,10 @@ deactivate S
 @enduml
 ```
 
+## RDCU CU01 -  ajouterLivre()
 ```plantuml
 @startuml
-title RDCU CU01 -  ajouterLivre()
 skinparam style strictuml
-
-
 participant "ctrl:Bdd" as S
 note left of S: controleur de façade de type objet racine
 
@@ -174,9 +168,9 @@ deactivate S
 @enduml
 ```
 
+## RDCU CU01 -  terminerAjoutLivre()
 ```plantuml
 @startuml
-title RDCU CU01 -  terminerAjoutLivre()
 skinparam style strictuml
 
 participant "ctrl:Bdd" as S
@@ -369,10 +363,10 @@ Une instance p de PropositionEchange existe
 **Postconditions :**
 Aucune
 
-
+## RDCU-CU02-démarrerPropositionÉchange()
 ```plantuml
 @startuml
-title RDCU-CU02-démarrerPropositionÉchange()
+
 skinparam style strictuml
 participant "bdd:BDD" as CTRL
 note left of CTRL: controleur de façade objet racine
@@ -395,8 +389,6 @@ activate CTRL
   note right of CP: Patron Createur\n bdd enregistre pe
   CP -> PE**: create()
 
-
-
   note right of PE: liste de livre a recevoir\nPatron createur\npe contient la liste de livre
   PE->LLR**: create()
 
@@ -415,9 +407,10 @@ deactivate CTRL
 @enduml
 ```
 
+## RDCU-CU02-choisirClient()
 ```plantuml
 @startuml
-title RDCU-CU02-choisirClient()
+
 skinparam style strictuml
 participant "bdd:BDD" as CTRL
 note left of CTRL: controleur de façade objet racine
@@ -452,9 +445,9 @@ deactivate CTRL
 @enduml
 ```
 
+## RDCU-CU02-proposerLivreRecevoir
 ```plantuml
 @startuml
-title RDCU-CU02-proposerLivreRecevoir
 skinparam style strictuml
 participant "bdd:BDD" as CTRL
 note left of CTRL: controleur de façade objet racine
@@ -485,9 +478,9 @@ deactivate CTRL
 @enduml
 ```
 
+## RDCU-CU02-proposerLivreOffrir
 ```plantuml
 @startuml
-title RDCU-CU02-proposerLivreOffrir
 skinparam style strictuml
 participant "bdd:BDD" as CTRL
 note left of CTRL: controleur de façade objet racine
@@ -514,9 +507,9 @@ deactivate CTRL
 @enduml
 ```
 
+## RDCU-CU02-terminerProposition()
 ```plantuml
 @startuml
-title RDCU-CU02-terminerProposition()
 skinparam style strictuml
 participant "bdd:BDD" as CTRL
 note left of CTRL: controleur de façade objet racine
@@ -549,9 +542,10 @@ deactivate CTRL
 @enduml
 ```
 
+## RDCU-CU02-terminerProposition()
 ```plantuml
 @startuml
-title RDCU-CU02-terminerProposition()
+
 skinparam style strictuml
 participant "bdd:BDD" as CTRL
 note left of CTRL: controleur de façade objet racine
@@ -567,7 +561,6 @@ deactivate CTRL
 # Diagramme de classe logiciel CU01 et CU02
 
 ```plantuml
-@startuml
 @startuml
 skinparam style strictuml
 class "Client" as C {
