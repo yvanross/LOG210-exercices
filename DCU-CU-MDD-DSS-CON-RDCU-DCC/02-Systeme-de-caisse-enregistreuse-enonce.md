@@ -62,6 +62,34 @@ Pour voir comment un plateau-argent peut être enlevé d’un tiroir-caisse, reg
 
 ## Interface usagé
 ## MDD
+
+```plantuml
+@startuml
+class Caisse <<Objet physique>>{
+  ouvert: bool
+
+}
+class Caissier <<Role>>{
+ identifiant: string
+ mdp: string
+}
+class Plateau <<objet physique, contenu>>{
+ 
+  identificateur: String
+}
+
+class MiseEnPlateau <<Transaction>>{
+  montant: Float
+heureDebut:DateTime
+heureFin:DateTime
+}
+
+MiseEnPlateau -- Caissier: est fait par >
+MiseEnPlateau -- Caisse: est fait sur >
+MiseEnPlateau -- Plateau: utilise >
+
+@enduml
+```
 ## DSS
 ## Contrats
 ## RDCU's

@@ -2,22 +2,7 @@
 #CU01 - Noter une réservation
 Le propriétaire d’un petit hôtel désire se doter d’une application pour gérer les réservations et les séjours de ses clients. Il ne veut pas que l’application s’occupe de la facturation. La figure 1 illustre les tâches accomplies par un commis à la réception. Vous devez analyser et concevoir une application permettant de noter les réservations, démarrer les séjours et transférer les séjours de chambre.
 ## Diagramme de cas d'utilisation
-
-```plantuml
-@startuml
-left to right direction
-package "Application de gestion hotelière" {
- usecase "CU01-Noter une reservartion d'une seule chambre" as N
- usecase "CU02-Noter une reservartion de plusieurs séjour" as S
- usecase "CU03-Transférer un séjour de chambre" as T
- 
-}
-Commis --> N
-Commis --> S
-Commis --> T
-
-@enduml
-```
+![DCU](https://www.plantuml.com/plantuml/svg/TL0x3i8m3DrpYYSMfafyTWGgCmlb024rRI1jAZjXGTm7pj6BaLP2AWERt_FxMDvAq1nYux3FJyhH9I1uiAtgWD8ocM1zgpfjRheYp7PTvwpH0ucIK96CO-q3ETk_c6PuA4GXeoN9yzDYcHtIaX5R0fCGtrFVQ9yFb51q15FhvZoOjU3mwr_zzHCw5yLIP87qxwkFF0OSVmFMMS6wbKl_vZ7cgnq2fhs5Wdggt3UD5MJP9Xqo0SSfA9JQKbkchtq0 "DCU")
 
 ## CU01-Cas d'utilisation «Noter une réservation»
 **Pré(s) condition(s) :**
@@ -61,95 +46,17 @@ Le 2011-06-02 comme date de départ
 Le commis terminera ensuite la réservation en entrant le nom du client et communiquera le numéro de confirmation à monsieur Hernandez.
 
 ## Interfaces usagé
-```plantuml
-@startuml
-(*) --> "
-{{
-salt
-{
-Menu Principal
-~~
-[Noter une réservation]
-}
-}}
-" as main
+![IU1](https://www.plantuml.com/plantuml/svg/TPBDQiCm3CVlUWgHoxumf1tiCEXQo2uxh8p2Jg45asgT8R6BukIIfS-oQrvZUR7PwPekj0KZBFs5h9_aMMubso9ByULz1DUtDoZ44mPGLP3Br485hwGBV6Eb4xMLAUns4C-D9SP24tBRvCIbjChe9THGrn2Wp36JIWDuYuBLvjCEYzu1ulaYJX32cMTf2TTNabcLRODV68p3SIZ2UtU2NdUdRROEO93mu1CYQTjcOrYHqrREeyvPeTCmZgHEA5qwALxiNoV-tp_JFWPmk5tWE9rEPFI7ugoZyHsMnZBX53gikS6arxLvT0rCJsbz68-yPt1znf5tWEkad-_am3k2oUJomlomXqjRK2__WH30ZFJQVP5V "IU1")
 
-main -right-> "
-{{
-salt
-{+
-  Noter une réservation
-  --
-  Date d'arrivé | "2020-03-03"
-  Date de départ | "2020-03-06"
-  Catégorie | ^Categorie^ 
-   [Cancel] | [Réserver]
-}
-}}
-" as reserver
-
-reserver -right-> "
-{{
-salt
-{+
-Menu Principal
-~~
-Confirmation de votre ?
---
-  No confirmatino: | ?
-  Date d'arrivé : |  2020-03-03
-  Date de départ : | 2020-03-06
-  Catégorie: | categorie1
-==
-[Noter une réservation]
-  --}
-}}
-" as mainReservationConfirme
-
-@enduml
-```
 
 ## CU01-Modèle du domaine
 
-```plantuml
-@startuml
-class Hotel <<Conteneur, Object physique>>
-class Categorie <<Description d'entité>> {
-  nom: String
-}
-class Reservation <<Transaction>>{
-  dateArrive: date
-  dateDepart: date
-}
-class Commis <<Role>>
-class Chambre <<Objet physique, Contenu dans l'hotel, Produit d'une transaction>>
-class Client <<Role>>{
-  string nom
-}
+![CU01](https://www.plantuml.com/plantuml/svg/RPBTIiD048Nlzoc6t1Ia1NiRGgYaWdTArGVO9aExiZznTb8GyNtiS_J5dCrFZU3LPYTdpdndaaraJTmv2zNhxLhLLiS83u7HGb5KmJDwx6W9Z_ith1dQuqSqxnsMvIYjDECXa46HRp7MP5esmKEpGC-6B-UoX4y5u8FBuPd9-8Fw6djt695EkjSNnGjf7tMTRcMPMXgnlYCo9ypxvx6qnLQ8nz9aLGNdJ1INNR0pkADsUqfe2V-NVWb3iavCV0IxEAR0ItYYq7I61Rxp23m7cXojaLpNEGapzg5IGA5Hm-goTGQh5MGtsSIGGnjYl7mtg2Qgz3Q9H7lTOWwwJV7I53KEcypac6rC5e1E--GtP9_D_2Eh2V4VhA4fXtlNsc1GpJ_6d6o4pG4Z0_MYonc44GgrGT_8h_C3 "CU01")
 
-Hotel "1" -- "*" Chambre: possède
-Chambre "*" -- "1" Categorie: appartient
-Client "1" -- "1" Reservation: demande
-Commis "1" -- "*" Reservation: cree
-Hotel "1" -- "*" Commis : Emploie
-Reservation "*" -- "1" Chambre : est reservé par <
-@enduml
-```
 
 ## Diagramme de séquence système
 
-```plantuml
-@startuml
-title: Noter une réservation
-skinparam style strictuml
-Actor ":Commis" as Commis
-Participant ":Systeme" as Systeme
-Commis -> Systeme: demarrerReservation()
-Commis <<-- Systeme: demander dateArrive,dateDepart, categorie, [nomCategorie] 
-Commis -> Systeme: reserverChambre(dateArrive:string, dateDepart:string, nomCategorie: String)
-Commis <<-- Systeme: confirmation?, menu principale
-@enduml
-```
+![DSS1](https://www.plantuml.com/plantuml/svg/TL11JiCm4Bpx5QkUYkGSk5eLj4hF294Zuc2SRR6QNKVhJQK-YNVmCPoKj22LYpKUZsTcTvtLYmxKmRPfxer6xT31Kr8K61X1lZupoj5hJ6po8NBlnHDaFNLOJebX_6msGPF0mjM9AEO5-0ndQ9wBVGonzwpblJbbHS99y8FDMGZLmymuQ96y2CeBNiANTxDmjQgglr9kIzlMAsv4uX7j2BTOcgg5KF0-IKGBhvoedgzlS2jOfa2K-iFJk-3oQkh6ONbluMf-eNxxEcWczf-w8V4k2aqZFLeWv07weXytrA5P8xTbdzy0 "DSS1")
 
 ## Contrat
 [**demarrerReservation()**](#rdcu-demarrerReservation)
@@ -172,89 +79,18 @@ Commis <<-- Systeme: confirmation?, menu principale
 
 
 ### demarrerReservation() {#rdcu-demarrerReservation}
-```plantuml
-@startuml
-skinparam style strictuml
-Participant ":ControleurReservation" as S
-Participant "mc:Map<nom:String,categorie:Categorie>" as MC
+![rdcu-demarrerReservation](https://www.plantuml.com/plantuml/svg/RL3DIWCn4BxdAOQUMh0-mAAbq7D1NF1YFSJiT3iqFsjc8kmZwMlqnPoiMbRmaeJ9zyttisMnMKhma3jNrXq6cpFcHsJCxrOeHSDdYeFDDW3Bw57FJAvIp8DIoT5Wey2YsQKeENaiS_O2B4Fx5nbSixV3NKoXQNLNx6-S5UnJ9cnslw_DnDplZ8b943Br9m58Hnqry4HChsf5RO5UX-YksZ0KuhTIXvAAw3V3IJTuXYBaYL4j768TXyjdq4l5Bn-J9dzhUJnALMfdaQ3JuCXS2vaPcb1G626uspEEl5o19EXHG7kqOmNyX1iDh3SL_Qp1hp5Vu1x-ANsvCcQBiTEMlm00 "rdcu-demarrerReservation")
 
-note right  of MC: Visible par le \ncontroleur puisque \ntout les hotels utilisent \nles mêmes catégories
-note left of S:Controleur de session
-note right of S: use mc.keys() to get array of category
- -> S: [nomCategorie] = demarrerReservation()
-
-@enduml
-```
 
 ### reserverChambre
-```plantuml
-@startuml
-skinparam style strictuml
-Participant ":ControleurReservation" as S
-Participant "c:Commis" as C
-Participant "cl:Client" as CL
-Participant "mc:Map<nom:String,categorie:Categorie>" as MC
-Participant "cat:Categorie" as CAT
-Participant "ch:Chambre" as CH
-Participant "r:Reservation" as R
 
-note right of C: Visible par le \ncontroleur\npuisque c'est une \nprécondition
-note right  of MC: Visible par le \ncontroleur puisque \ntout les hotels utilisent \nles mêmes catégories
-note left of S:Controleur de session
- -> S: reserverChambre(\ndateArrive:String, \ndateDepart:String, \ncategorie: String)
- note right of S: Createur
- S -> CL**: cl = Create(?)
- note right of S: Expert en information
-S -> MC: cat = get(nom: String)
- note right of S: Expert en information
-S -> CAT: ch = getChambreLibre(\ndateArrivé: String, \ndateDepart:String)
-note right of S: Createur, cohésion et couplage
-S -> R**: r=Create(\nch:Chambre, \nc:Commis, \ncl:Client, \ndateArrive:String, dateDepart: String)
-
-@enduml
-```
+![rdcu-reserverChambre](https://www.plantuml.com/plantuml/svg/VPDDRjim48NtEiKWcpf1SW6XIHEe1RgmWS0kklA6eSOIKVuems7G7iczXYxMeMGvjf1w8r9ympV3RyZ7o8euEGjKwtH7697UaAfMkHV28luolbEa74J-Or6-P7GEBvvbcz6cKvxXggo2PmeM4wq71yKc-2jG4JRdaLf2dJDnqAgPPilA6lGyYijprUbofRhFFhXo8rNuvbOhnYQGmRAQPW_3rjNSMF5xo6Z-z6CMqfQ7Cu_wztEPolcvraNX0oEGQLg6i8EgX9yccXUX9CH0XgtNHonRtoKJNnE2_eIH8VciTzJl9QOssVRKBnkkBZl2PBZr71AB7A4L1niXiR4c2aZHyhBh_peP14E_7nZ4CPV5tL3wvgH_K4kNCSPS4DmzY0QpIx7O-bfWFX6PDvnw0UFYLvHA-MJnlKSmBbuNSCvD4bI44fQeW4rEMIrlRahG5kuFokBBHxk-_UwG6D23yRj0RkXDCJXaT99P31haHRuo5x9Vy95h8aRjw7Cu_jBC6FJxoVr32jV5Vyzx2pgq_Jwp1cJvIPrL3Owvrna2tHy82CdZ3Hsu7jxHC9_UpPH_rfgJaeuOYaVqjRpZVm00 "rdcu-reserverChambre")
 
 
 
 ## Diagramme de classe
 
-```plantuml
-@startuml
-class ControleurReservation{
-  demarrerReservation()
-  reserverChambre(dateArrive:string, dateDepart:string, categorie: String)
-}
-class "Map<nom:String,categorie:Categorie>" as MC {
-  get(nom:String): Categorie
-}
-
-class Hotel <<Conteneur, Object physique>>
-class Categorie <<Description d'entité>> {
-  nom: String
-  getChambreLibre(dateArrivé: String,dateDepart:String): Chambre
-}
-class Reservation <<Transaction>>{
-  dateArrive: date
-  dateDepart: date
-  Reservation(ch:Chambre,c:Commis,cl:Client,dateArrive:String, dateDepart: String)
-}
-class Commis <<Role>>
-class Chambre <<Objet physique, Contenu dans l'hotel, Produit d'une transaction>>
-class Client <<Role>> {
-  Client(?)
-}
-
-Hotel  *--> "*" Chambre: possède
-Chambre "*" --o Categorie: appartient
-Client  <--  Reservation: demande
-Commis  <--  Reservation: cree
-Hotel  *-- "*" Commis : Emploie
-Reservation "*" --> "1" Chambre : est reservé par <
-ControleurReservation --> MC
-ControleurReservation --> Commis
-MC --> "*" Categorie
-@enduml
-```
+![DCL-cu01](https://www.plantuml.com/plantuml/svg/VLDBRjim4Dth50DlOWSKa6m9GKqX5-WYHeEa5s2eWSr28bMI2X0KkKzz3b-imuy-GOBkoCUPDs_USEwS5zQFVGVxvhwKuyrj8JlX73H6Usiw7EqZEhGlmYkZ_nG0BVR2Mbp3sntXDjxHDYVHFrlSjiBZLslL2tBdhT971W7Quq05PqWIT3HM8OUd2EsAjwnWSn13fKtFqmDRGflfL6z0E3Wq48GTqM-Ny1s7EOmeC-Ttux63gWhTeQRc6Fnu_eNImt1wTUhtY7Kz6J1bK_WUdRHg2Br2UuNQAtyvrtKi6qfcxKb4Dk1UlNFXSfwYsCg6HMjAcfjVkKlrVrgXdP3XLjTn28kvyPoXp3f1wn794yyrcEIDwNlbcEnuqobgXwtudZuEwyDeKZu9UwGViZYM-0aEdYwMCaXsZyIf7NHNfp051W_MjAFovEYe4VownuangflhHByJjlqIr1Hfdd1TbZLihZUJ10w3SUxojyLY4XLUoz8iO-KWXj1TO2jo8QZAyfrjF7vt7NXIovz4I8ku4f9qf6WEt_gXC_G3r_DCKaZmxIoO8j7vl4ENCv0mg8fFTp2c7fh_FARY1Qt5RCky2NUeMzhsVm00 "DCL-cu01")
 
 
 ### CU01-Exercices-Notez une réservation
@@ -358,92 +194,10 @@ Le commis terminera ensuite la réservation et communiquera le numéro de confir
 
 
 ## Interfaces usagé
-```plantuml
-@startuml
-(*) --> "
-{{
-salt
-{
-**Menu Principal**
-~~
-[Noter une réservation]
-}
-}}
-" as main
-
-main -right-> "
-{{
-salt
-{+
-  **Noter une réservation**
-  --
-  Quantité de chambre | "99"
-  Date d'arrivé | "2020-03-03"
-  Date de départ | "2020-03-06"
-  Catégorie | ^Categorie^ 
-[Réserver] |
-[Terminer la réservation]
-== | ==
-**Réservations**
-~~ | ~~
-  Quantité chambres: | 2
-  Date d'arrivé : |  2020-03-03
-  Date de départ : | 2020-03-06
-  Catégorie: | Luxe
-~~ | ~~
-  Quantité chambres: | 2
-  Date d'arrivé : |  2020-03-03
-  Date de départ : | 2020-03-06
-  Catégorie: | Luxe
-  }
-}}
-" as reservations
-
-reservations -right-> "
-{{
-salt
-{+
-**Menu Principal**
-~~ | ~~
-  No confirmation: | A1234
-== | ==
-[Noter une réservation]
-  }
-}}
-" as mainReservationConfirme
-
-@enduml
-```
-
+![IU-CU02](https://www.plantuml.com/plantuml/svg/nLFRIiD047sVhnZoegu4OYf2XKWblWXQjDYdqiBQhEr2iYcJJH5w-Pz-Ht_CsLIRLDjdOLcOERDdpfbCEeMLPCiiHNpi-t4_2E5SNA3ltw47YmKKChMm026UbIdnXRGPwvbCXO3r6WRTt2h2qYYaxQPGD9TMvsO8ArYjm4DPO2Qr0N0t-gGdKtj8V0c8GXoduHx8GlXwBQMnscutc2WSJsNsJWgNwBNR7gCFqYfCpYIHddC9vyCW3FoWnQV6-MmtC_PwK73Z2cB9r9ESj2CTSQIgO8GmwEtqA1hY4WPlYZ9jM6egVncE8duQHJodNYDVL6DYX6VLTF5jeRXbAFphmAMnzd34GlLmx-70WeEUoa_rVuqHwy_FlVR306X69zRXwABz6EdcECxDXwQiud0Txw_2rlL-_2SNigd9BMElLXBl61L0Hvc4_uGl "IU-CU02")
 ## Modèle du domaine
+![MDD CU01 + CU02](https://www.plantuml.com/plantuml/svg/jLFBJiCm4BpxArQvL88YACSeYeeI90uWK84FS9CbDOhjr7OgLHN_Gx-ZFyOwZpPjpkJY93kUsTcnvzPnusfPmakQGl9vDuDhlzophEJMmfDsM48K9LevL5YRARmklp5pKAssLgnhZECEcd27XJO22PwYpOoedD0AyWag9znXF_KGNkh2Ru8T0r1QXl3kZ505--be5cZHR7YpDOe-35UMP_uhZdTCQMhaInZPr4TxdqMXy9oW-GKvWXioDUgHZTSrzxrjUwReriPKoSdAWp5YWo6az0x__7IIALOKHYjvz9HeAOKb9mjT3eQzud9f_AXz7ASqQCPDKZKHAWlbPEK3dCARqNaj78LHgujPz8obe9nEEgoDFfW5S7C3mLNGQuPGQMiFlpcolWjVzI327az12BpoTZmhwyXxCbe6AOKKZ-JAyxLU1vfdiCmWic6y0-1bz8IcGJJYOoEjJ0YFiYgrG3OwDsFNX4Rhm3IWmnx86aHiZYgdo_C7 "MDD CU01 + CU02")
 
-```plantuml
-@startuml
-class Hotel <<Conteneur, Object physique>>
-class Categorie <<Description d'entité, Catalogue>> {
-  nom: String
-}
-class Reservation <<Transaction>>{
-noConfirmation: String
-}
-class LigneReservation <<Ligne de transaction>> {
-  <s>quantity: String</s>
-  dateArrive: Date                                                                                                
-  dateDepart: Date
-}
-class Commis <<Role>>
-class Chambre <<Objet physique, Contenu dans l'hotel, Produit d'une transaction>>
-class Client <<Role>>
-
-Hotel "1" -- "*" Chambre: possède
-Chambre "*" -- "1" Categorie: appartient
-Client "1" -- "1" Reservation: demande
-Commis "1" -- "*" Reservation: cree
-Reservation "1" -- "*" LigneReservation: contient
-Hotel "1" -- "*" Commis : Emploie
-LigneReservation "1" -- "*" Chambre : est reservé par <
-@enduml
-```
 
 Cette version sous entends que les Catégories sont les même pour tous les Hotels.  Si ce   n’étais pas le cas, on associe Hotel à Catégorie et on enlève l’association entre Hotel et Chambre.
 
@@ -455,25 +209,7 @@ Une Catégorie (Catalogue) contient plusieurs Chambre.
 
 
 ## Diagramme de séquence système
-
-```plantuml
-@startuml
-title: Noter plusieurs réservations
-skinparam style strictuml
-Actor ":Commis" as Commis
-Participant ":Systeme" as Systeme
-Commis -> Systeme: demarrerReservation()
-note right of Commis: Formulaire réservation\ndemander: {quantity,dateArrive,dateDepart, categorie}, retourne: [nomCategorie]] 
-Commis <<-- Systeme: FormulaireReservation, historique réservations = []
-loop [client n'a pas terminé]
-  Commis -> Systeme: reserverChambres(quantity: integer, dateArrive:string, dateDepart:string, nomCategorie: String)
-    Commis <<-- Systeme: formulaire réservation, historique réservations
-
-end
- Commis -> Systeme: terminerReservation()
- Commis <<-- Systeme: Menu principale, noConfirmation
-@enduml
-```
+![DSS - CU02](https://www.plantuml.com/plantuml/svg/TP9DJiCm48NtFiMe6refaH3Bg22gLEn0Y8XLoSAaqtP4RATZfrA5E53FqOinIVgBmiQQZ9rvttlsem-QGsrAc6OPn92-tzwfGA7415vSG8Qgh3rXpHvul_F86nt8MQ_y5zbAipRWmxP4MPcAPfAQ5C4n39BK6KD-0Df3LwfNqQA2Acs3x6TR7z1WU-1Gg-uWn0_7JW9pD9eP-GrFwiEHiW87JCjL0BSup4_WoR6fIqsCLxGVjXaY2oVmlQv5di8sckk04sRQO5jEKUo420gfbuu9Vo9W3AvcAnGpwqnwtCbpE9AEnt5yPZthNz16i28laT2wliRoS0-pN9NELJ0hIaA9nTveg2GGYTwGtUzo1T0J2hVZaTELDf_oCJowIe2iK297SFQND9TZbrshytbgNVfA86kx8n4zoLuxNFGd_Bz7fT3ELP-7pkBVY-sNVKPRGoLipUifiS5EdLqGc_O_zIWYylP-0G00 "DSS - CU02")
 
 ## Contrat
 **demarrerReservation()**
@@ -508,122 +244,21 @@ end
 ## RDCU
 
 ### demarrerReservation()
-```plantuml
-@startuml
-skinparam style strictuml
-Participant ":ControleurReservation" as S
-Participant "r:Reservation" as R
-Participant "c:Commis" as C
-Participant "cl:Client" as CL
-Participant "mc:Map<nom:String,categorie:Categorie>" as MC
-Participant "llr:List<:LigneReservation>" as LLR
 
-note right  of MC: Visible par le \ncontroleur puisque \ntout les hotels utilisent \nles mêmes catégories
-note left of S:Controleur de session
-note right of S: use mc.keys() to get array of category
- -> S: [nomCategorie] = demarrerReservation()
-note right of S: Createur
- S -> CL**: cl = Create(?)
- note right of S: Créateur, cohésion et couplage
-S -> R**: r=Create( \nc:Commis, \ncl:Client)
-note right of R: Createur, r:Reservation possède les lr:LigneReservation
-R --> LLR**: llr=Create()
-@enduml
-```
+![RDCU-CU02-demarrerReservation](https://www.plantuml.com/plantuml/svg/RLBBJkim4DtxAqQiMjGYnD82Bb9O1WcbWWsNXN67rCAFuB6H-aUKtyYFtN7QSfl2nh5yPiwSd3Ctb5HCsLbeRgk7UVLmVZ5VebCnOcoGC7weP88Nz6Pyfw9oG6bjaSzeTEaJzznljEcKJt0Yg-1J31RpOVS9A8B5k3BAuu9cNA2Popb30rOTOLPMrg1FMx0UeqxBEzLT-k3aWcNwTgPLmZP4WxBQtww7rhiZOckZh0sbIpvRZmSIj_LrtGZXGqA8fbqbWF3A718U3PaNjeKj0lxyzVhR1-YoeVTS7bF8YM625JDOWfoCDSI_mLXvTlsNum-hxJU3IDhEilYQogJ5WRsmv12Gg8Hp86YeWam8Jf-zuPecKqW1Map0cQfrATYviHOmloxLJ-pKjo_FS0M_BC1a-dDA5P6xSXImA4nLVNegGLics2AJFrC1ltJrcw5j1Zgi-atv0s1vEkJEgXR5GDOKhdYr8og6xjPXLkxx-8z5DVz5pM2qOT05elvpYOF_GyhZV4K3SvxB0PV9l0VxsLDnWtx9c_uF "RDCU-CU02-demarrerReservation")
 
 ### reserverChambres
-```plantuml
-@startuml
-skinparam style strictuml
-Participant ":ControleurReservation" as S
-Participant "mc:Map<nom:String,categorie:Categorie>" as MC
-Participant "cat:Categorie" as CAT
-Participant "r:Reservation" as R
-Participant "lr:LigneReservation" as LR
-Participant "llr:List<:LigneReservation>" as LLR
 
-note right  of MC: Visible par le \ncontroleur puisque \ntout les hotels utilisent \nles mêmes catégories
-note left of S:Controleur de session
- -> S: reserverChambres(\nquantity:integer\ndateArrive:String, \ndateDepart:String, \ncategorie: String)
- note right of S: Expert en information
-S -> MC: cat = get(categorie: String)
- note right of S: Expert en information
-S -> CAT: [ch] = getChambresLibre(\nquantity:integer\ndateArrivé: String, \ndateDepart:String)
-note right of S: expert en information
-S -> R: r=ajouterChambres(\n[ch]:Chambre, \ndateArrive:String, dateDepart: String)
-note left of LR: Createur, forte cohesion, faible couplage
-R -> LR**: r=create(\n[ch]:Chambre, \ndateArrive:String, dateDepart: String)
-note left of LLR: expert en information\nr a une visibilité sur llr\nllr est une liste de ligne de réservation
-R -> LLR: ajouterLigneReservarion(llr)
-
-@enduml
-```
+![RDCU-CU02-reserverChambres](https://www.plantuml.com/plantuml/svg/hLJ1Rjim3BtxAuYUag81XXsDjcZXxkO2WxFkikoWEeojrfPSIWxMJyf-8p-s9oTkRRVhPRjO4lL8FZvIld9UYM_hYhARv6wHt7twl11sB5kMf5JrFGwHUzIcKQ9gSlwvOdn5vy4f-WfddUj66KydSMAD5rjnAraNGdbjpGafHyiniixZMzMS6rl7IyGonLckF1TMDCT9lxliF6-JiIk0hv0EaLn_6qCadgRFne1AubGNXgUmT8hhWCwVlu4VkALmY8prJAABqXFP3VZ6z5qxVG-Te1bXMPdyHHXgMksUsc3qjlMuTbGYGkMezRhIZf5uPOAvtl-kiQ3W_QwhrXroLRpn8TDoe3UjqHLs3jGYMbpYZgPTdAtCKukoj7-EjO60B2kpXfBN8dhBVIFeOBnXaFS3usk3w62SHpGelUD3NturB9xOa3ORAtMdLRGCZ88kY44NLB2V_Miqz3oc7tdvyn2lhp7L-7vSw7xNftotr7dqXWR_dKO6cI_K0nevqZaGYu_dFij4vK5Y6cNkkviYTY8CM2jdXBouost9eSKugsx0SjisbIeuoWARD3iz3OJopkr_yGX4tfLWPOGKjOPf6-OTmuj19OTXnBl125T2x7m7m5mZv3fiy8x2HlQxbyTqP1yI7RKSFZS1OePWyoYwOhF6N-SF "RDCU-CU02-reserverChambres")
 
 ### terminerReservation
-```plantuml
-@startuml
-skinparam style strictuml
-Participant ":ControleurReservation" as S
-Participant "r:Reservation" as R
 
-note left of S:Controleur de session
- -> S: noConfirmation = terminerReservation()
- note right of S: Expert en information\nMutateur d'attribut
-S -> R: noConfirmation = terminerReservation()
-
-@enduml
-```
+![RDCU-CU02-terminerReservation](https://www.plantuml.com/plantuml/svg/ZP0nQyD038Nt-nKFBqq7G-XeI36u7GF5nbkMIoAtehREwEII_FkSJOQaPCYYvUbxxqbbDAys3JtgZwhDgtRzbXlfm49QKoJzyyP1NFnb6Rtw0T7EFQMfV9WvzvLuFl3enP0LLH3JqDDqIsVm4StzfXR_5shd91YXfyuGEZGtPZYcI8fnheByFMcGaEIETLWSiC63sgjNXyLJ-VldQehFqqXg805B5wxyJhQJULkYNhobw_QJkMREgf_ESYN9CVta0W00 "RDCU-CU02-terminerReservation")
 
 
 ## Diagramme de classe
 
-```plantuml
-@startuml
-class ControleurReservation{
-  demarrerReservation()
-  reserverChambres(quantity:Integer,dateArrive:String, dateDepart:String, categorie: String)
-  terminerReservation()
-}
-class "Map<nom:String,categorie:Categorie>" as MC {
-  get(nom:String): Categorie
-}
-
-class Hotel <<Conteneur, Object physique>>
-class Categorie <<Description d'entité,**Catalogue**>> {
-  nom: String
-  getChambresLibre(quantity:Integer, dateArrivé: String,dateDepart:String): [Chambre]
-}
-class Reservation <<Transaction>>{
-  noConfirmation: String
-  Reservation(commis:Commis, client: Client)
-  ajouterChambres([ch]:Chambre,dateArrive:String, dateDepart: String): String (json)
-  terminerReservation(): String
-}
-
-class LigneReservation <<Ligne de transaction>>{
-   dateArrive: Date
-  dateDepart: Date
-  create([ch]:Chambre,dateArrive:String, dateDepart: String)
-}
-
-class Commis <<Role>>
-class Chambre <<Objet physique, Contenu dans l'hotel, Produit d'une transaction>>
-class Client <<Role>> {
-  Client(?)
-}
-
-Hotel  *--> "*" Chambre: possède
-Chambre "*" --o Categorie: appartient
-Client  <--  Reservation: demande
-Commis  <--  Reservation: cree
-Hotel  *-- "*" Commis : Emploie
-Reservation "1" --> "*" LigneReservation: contient
-LigneReservation "1" --> "*" Chambre : est reservé par <
-ControleurReservation --> MC
-ControleurReservation --> Commis
-MC --> "*" Categorie
-@enduml
-```
+![DCL-CU02](https://www.plantuml.com/plantuml/svg/dLHDZzCm4BtdLunwsMwKIC3HgiAY50caLg05JgizU9CXTPNOMTjPQONuF_Htz8ynjlFLTW69Is9Fni_llPdCZR5SswwfOPrlqlpRgpTHKNDZ85VIQbLZfs_He7xYLYZv8m8eiU5QupoylAQuzdlK-Out3xHPFdPSMc6VsKTfiKATbDpYEwt54x8lLWjP9U12Qso9mXWgA5GfBP1123bmYxeHylpIdptNnPQtAwcQ0ME2o8TLjW1kO9k3ar2XNKxfrmp6D8BiCJyeYpMiLiu7b6H30fyUzbXOQ7VFHZnsc6M3LSDfIb-ZARHe7K4ehz0PS3maSKmvl5PLXt6SPPw48z0h39G6upQ2dfVkmMZVyJ0SJ2xy8p5tFT3zwC_CDQBuLNDfUE5sMHQOaCZlGZS-OqPgxdQXcaOObliNLQaM98wSyszN8hvNdPsL_wxOtRD-zu_ImyWzB62vDqh-iUuZmx5O6r59F5NfGzIiOC_bmemCh6aTmGcPFbHefCN_o9Xu1RU8pItzILE_13GAkuwQ6Yg1q6mTWKe3zTNEzM02dxKgEs6fdpfvfcT0z5KOx_7z5MBBjvvEw6Q8qpI3HRmOA31ebJ77NoL60odtDKtLrDGCUElaERIelmXMQNhI7ioF1UbmWkGNCiXGd149F48sW_TDMolw_-P5NBnsL0BXymeJ77dbELqKVtvkaCK0ZUrdrF4090XMqOippX_Tvd_v64X7D4p6MyRvSOEof6dw6m00 "DCL-CU02")
 
 # CU03-Transférer un séjour de chambre
 **Précondition(s) :**
@@ -651,61 +286,12 @@ Retour à 4
 ## MDD CU01 + CU02 + CU03
 LigneRéservation correspond à Sejour. Il faut aussi modifier les multiplicité entre Séjour et Chambre pour 1 – 1. 
 
+![MDD-CU01+CU02+CU03](https://www.plantuml.com/plantuml/svg/TPBFRi8m3CRlUGghHwPAOxlbn4GdSTbbQ0-GjOPcv0zANAG9xLrsvJdwOdCWBKLY5olvyhC_s-qYaWhKMGDlLLKkFnxd3noUKdWMSQVTNWLb8TAtGOv1rmaMhMuGB5BhcoXgesA4fRTMHnXkHgCZE0e0vwqWDBXllKFnau6LP-ruv-4T8uQ38kqTfzVURNImvwjSKzXgDv9h_F9TOAXHX2yXw0DAgFYymYxWMQsG-wUfEYGlMsK_0tAsyrVHzAVXo1bR7_I5i1BONBijetdGObv0MK8nAsvQbl2wsI1l2KNUmRzWXLQv1iLKdS1vFCcRTPGgYQnCc64AcKkpQLRIQuAOlOuY8NAjikbFTT24iUJjYFENk2bw6P0diNlZDTuXHjknjz5tGl4s6S58fUyE60XdoUzEXyb8rMZJkdAFKLFNdyh-LopGDVpF_G40 "MDD-CU01+CU02+CU03")
 
-```plantuml
-@startuml
-skinparam style strictuml
-hide methods
-class Commis 
-class Client {
-  nom
-telephone
-}
-class Hotel{
-telephone
-}
-class Reservation {
-confirmation:Strgin
-}
-class Sejour {
-dateArrive: DateHeure
-dateDepart: DateHeure
-}
-class Chambre {
-no
-}
-class Clé
-class Categorie {
-nom: String
-}
-Commis "1" -- "*" Reservation : Effectue
-Client "1" -- "*" Reservation : Demande
-Reservation "1" -- "*" Sejour : Contient
-Sejour "1" -- "*" Chambre : Reserve
-Chambre "*" -- "1" Categorie : sont-décrites-par
-Hotel "1" -- "*" Commis : Emploie
-Hotel "1" -- "*" Chambre : Contient
-Chambre "1" -- "*" Clé : est-ouverte*par
-Chambre "*" -- "1" Emplacement : sont-situé-à
-@enduml
-```
 
 ## DSS CU03-Transférer un séjour de chambre
-```plantuml
-@startuml
-skinparam style strictuml
-Actor ":Commis" as C
-participant ":System" as S
 
-C->S: demarrerTransferChanbre(string noChambre)
-C<<--S: information du séjour, chambres disponibles
-
-C->S: transfererChambre(string noChambreActuel, string noNouvelleChambre)
-C<<--S: confirmation
-
-@enduml
-```
-
+![DSS-CU03-demarrerTransferChanbre](https://www.plantuml.com/plantuml/svg/TKyzJaCn3Dvp2giJI8s4n5PLg2ZCB843f7b-O8YT9pj1wf4u1nSZBOK5M3ny_zvPIzew5xYBqOV7gsi_8ITLr0TDOZDgU4woLtJsIh8aJGpM3WN7LSf7gxlDhIgiDg4oawqW6GGtf8qoBKdQeEB16lA9Yiu5VnCty4_HnJ5Oda3g07W0bovijzuF1ybSbLEZAZ1ri8_tbzfr3VbBQ32HBLLeNz2-Mzev_PJFV-MF-HtB6dxm-zhVi1JyrP-hp7GUuDmEPHhlVm80 "DSS-CU03-demarrerTransferChanbre")
 
 ### Contrat CU03-demarrerTransfert
 **Opération:** demarrerTransfer(numeroChambre)
@@ -726,72 +312,7 @@ C<<--S: confirmation
 - Chambre.Sejour.dateDepart et devenu maintenant sur la base de correspondance avec noChambreActuel
 
 
-### RDCU CU03-demarrerTransfert
+### RDCU CU03-demarrerTransfertChambre
 
-```plantuml
-@startuml
-skinparam style strictuml
-title DémarrerRéservation
-
-participant ":SystemeReservation" as sr
-participant ":Reservation" as r
-
-note left of sr : Controleur de facade\n (système) 
-->sr : demarrerReservation()
-activate sr
-
-note right of sr : Par créateur
-create r
-sr-->r : create
-activate r
-
-participant "llr:List<LigneReservation>" as llr
-
-note right of r: Par créateur
-create llr
-r --> llr: create
-
-participant "lr:List<Reservation>" as lr
-
-note right of sr : Expert en\n information
-sr --> lr: add(r:reservation)
-deactivate sr
-deactivate r
-@enduml
-```
 
 ### RDCU CU03-transférerChambre
-
-```plantuml
-@startuml
-skinparam style strictuml
-title - réserverCatégorie(arrivée : date, départ : date, nom : string, quantité:int)
-
-participant ":SystemeReservation" as sr
-participant ":Reservation" as r
-participant "lr:LigneReservation" as lr
-participant ":CatalogueCategorie" as cc
-participant "lc:List<Categorie>" as lc
-participant "llr:List<ligneResevation>" as llr
-
-note left of sr : Controleur de facade\n (système) 
-->sr : réserverCatégorie(arrivée : date, départ : date, nom : string, quantité:int)
-
-activate sr
-note right of sr: expert en information
-sr -> cc : c = getCategorie(nom:String)
-note right of cc : expert en information\nCohésion
-cc -> lc : c=get(nom:String)
-
-note right of sr : Par expert en information
-sr -> r : lr = addReservation(arrivée : date,\n départ : date,\n quantité:int,c:Categorie)
-
-create lr
-note right of r: par createur
-r--> lr : lr = create(arrivée : date,\n départ : date,\n quantité:int,c:Categorie)
-
-note right of r : Par expert en information
-r->llr : add(lr:LigneReservation)
-deactivate sr
-@enduml
-```
