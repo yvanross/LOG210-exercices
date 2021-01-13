@@ -1,0 +1,428 @@
+
+@startuml DCU
+left to right direction
+package "Application de gestion hotelière" {
+ usecase "CU01-Noter une reservartion d'une seule chambre" as N
+ usecase "CU02-Noter une reservartion de plusieurs séjour" as S
+ usecase "CU03-Transférer un séjour de chambre" as T
+ 
+}
+Commis --> N
+Commis --> S
+Commis --> T
+
+@enduml
+
+
+
+@startuml IU1
+(*) --> "
+{{
+salt
+{
+Menu Principal
+~~
+[Noter une réservation]
+}
+}}
+" as main
+
+main -right-> "
+{{
+salt
+{+
+  Noter une réservation
+  --
+  Date d'arrivé | "2020-03-03"
+  Date de départ | "2020-03-06"
+  Catégorie | ^Categorie^ 
+   [Cancel] | [Réserver]
+}
+}}
+" as reserver
+
+reserver -right-> "
+{{
+salt
+{+
+Menu Principal
+~~
+Confirmation de votre ?
+--
+  No confirmatino: | ?
+  Date d'arrivé : |  2020-03-03
+  Date de départ : | 2020-03-06
+  Catégorie: | categorie1
+==
+[Noter une réservation]
+  --}
+}}
+" as mainReservationConfirme
+
+@enduml
+
+@startuml CU01
+class Hotel <<Conteneur, Object physique>>
+class Categorie <<Description d'entité>> {
+  nom: String
+}
+class Reservation <<Transaction>>{
+  dateArrive: date
+  dateDepart: date
+}
+class Commis <<Role>>
+class Chambre <<Objet physique, Contenu dans l'hotel, Produit d'une transaction>>
+class Client <<Role>>{
+  string nom
+}
+
+Hotel "1" -- "*" Chambre: possède
+Chambre "*" -- "1" Categorie: appartient
+Client "1" -- "1" Reservation: demande
+Commis "1" -- "*" Reservation: cree
+Hotel "1" -- "*" Commis : Emploie
+Reservation "*" -- "1" Chambre : est reservé par <
+@enduml
+
+
+@startuml DSS1
+title: Noter une réservation
+skinparam style strictuml
+Actor ":Commis" as Commis
+Participant ":Systeme" as Systeme
+Commis -> Systeme: demarrerReservation()
+Commis <<-- Systeme: demander dateArrive,dateDepart, categorie, [nomCategorie] 
+Commis -> Systeme: reserverChambre(dateArrive:string, dateDepart:string, nomCategorie: String)
+Commis <<-- Systeme: confirmation?, menu principale
+@enduml
+
+@startuml rdcu-demarrerReservation
+skinparam style strictuml
+Participant ":ControleurReservation" as S
+Participant "mc:Map<nom:String,categorie:Categorie>" as MC
+
+note right  of MC: Visible par le \ncontroleur puisque \ntout les hotels utilisent \nles mêmes catégories
+note left of S:Controleur de session
+note right of S: use mc.keys() to get array of category
+ -> S: [nomCategorie] = demarrerReservation()
+
+@enduml
+
+@startuml rdcu-reserverChambre
+skinparam style strictuml
+Participant ":ControleurReservation" as S
+Participant "c:Commis" as C
+Participant "cl:Client" as CL
+Participant "mc:Map<nom:String,categorie:Categorie>" as MC
+Participant "cat:Categorie" as CAT
+Participant "ch:Chambre" as CH
+Participant "r:Reservation" as R
+
+note right of C: Visible par le \ncontroleur\npuisque c'est une \nprécondition
+note right  of MC: Visible par le \ncontroleur puisque \ntout les hotels utilisent \nles mêmes catégories
+note left of S:Controleur de session
+ -> S: reserverChambre(\ndateArrive:String, \ndateDepart:String, \ncategorie: String)
+ note right of S: Createur
+ S -> CL**: cl = Create(?)
+ note right of S: Expert en information
+S -> MC: cat = get(nom: String)
+ note right of S: Expert en information
+S -> CAT: ch = getChambreLibre(\ndateArrivé: String, \ndateDepart:String)
+note right of S: Createur, cohésion et couplage
+S -> R**: r=Create(\nch:Chambre, \nc:Commis, \ncl:Client, \ndateArrive:String, dateDepart: String)
+
+@enduml
+
+
+@startuml DCL-cu01
+class ControleurReservation{
+  demarrerReservation()
+  reserverChambre(dateArrive:string, dateDepart:string, categorie: String)
+}
+class "Map<nom:String,categorie:Categorie>" as MC {
+  get(nom:String): Categorie
+}
+
+class Hotel <<Conteneur, Object physique>>
+class Categorie <<Description d'entité>> {
+  nom: String
+  getChambreLibre(dateArrivé: String,dateDepart:String): Chambre
+}
+class Reservation <<Transaction>>{
+  dateArrive: date
+  dateDepart: date
+  Reservation(ch:Chambre,c:Commis,cl:Client,dateArrive:String, dateDepart: String)
+}
+class Commis <<Role>>
+class Chambre <<Objet physique, Contenu dans l'hotel, Produit d'une transaction>>
+class Client <<Role>> {
+  Client(?)
+}
+
+Hotel  *--> "*" Chambre: possède
+Chambre "*" --o Categorie: appartient
+Client  <--  Reservation: demande
+Commis  <--  Reservation: cree
+Hotel  *-- "*" Commis : Emploie
+Reservation "*" --> "1" Chambre : est reservé par <
+ControleurReservation --> MC
+ControleurReservation --> Commis
+MC --> "*" Categorie
+@enduml
+
+@startuml  IU-CU02
+(*) --> "
+{{
+salt
+{
+**Menu Principal**
+~~
+[Noter une réservation]
+}
+}}
+" as main
+
+main -right-> "
+{{
+salt
+{+
+  **Noter une réservation**
+  --
+  Quantité de chambre | "99"
+  Date d'arrivé | "2020-03-03"
+  Date de départ | "2020-03-06"
+  Catégorie | ^Categorie^ 
+[Réserver] |
+[Terminer la réservation]
+== | ==
+**Réservations**
+~~ | ~~
+  Quantité chambres: | 2
+  Date d'arrivé : |  2020-03-03
+  Date de départ : | 2020-03-06
+  Catégorie: | Luxe
+~~ | ~~
+  Quantité chambres: | 2
+  Date d'arrivé : |  2020-03-03
+  Date de départ : | 2020-03-06
+  Catégorie: | Luxe
+  }
+}}
+" as reservations
+
+reservations -right-> "
+{{
+salt
+{+
+**Menu Principal**
+~~ | ~~
+  No confirmation: | A1234
+== | ==
+[Noter une réservation]
+  }
+}}
+" as mainReservationConfirme
+
+@enduml
+
+
+
+@startuml MDD CU01 + CU02
+class Hotel <<Conteneur, Object physique>>
+class Categorie <<Description d'entité, Catalogue>> {
+  nom: String
+}
+class Reservation <<Transaction>>{
+noConfirmation: String
+}
+class LigneReservation <<Ligne de transaction>> {
+  <s>quantity: String</s>
+  dateArrive: Date                                                                                                
+  dateDepart: Date
+}
+class Commis <<Role>>
+class Chambre <<Objet physique, Contenu dans l'hotel, Produit d'une transaction>>
+class Client <<Role>>
+
+Hotel "1" -- "*" Chambre: possède
+Chambre "*" -- "1" Categorie: appartient
+Client "1" -- "1" Reservation: demande
+Commis "1" -- "*" Reservation: cree
+Reservation "1" -- "*" LigneReservation: contient
+Hotel "1" -- "*" Commis : Emploie
+LigneReservation "1" -- "*" Chambre : est reservé par <
+@enduml
+
+
+@startuml DSS - CU02
+title: Noter plusieurs réservations
+skinparam style strictuml
+Actor ":Commis" as Commis
+Participant ":Systeme" as Systeme
+Commis -> Systeme: demarrerReservation()
+note right of Commis: Formulaire réservation\ndemander: {quantity,dateArrive,dateDepart, categorie}, retourne: [nomCategorie]] 
+Commis <<-- Systeme: FormulaireReservation, historique réservations = []
+loop [client n'a pas terminé]
+  Commis -> Systeme: reserverChambres(quantity: integer, dateArrive:string, dateDepart:string, nomCategorie: String)
+    Commis <<-- Systeme: formulaire réservation, historique réservations
+
+end
+ Commis -> Systeme: terminerReservation()
+ Commis <<-- Systeme: Menu principale, noConfirmation
+@enduml
+
+@startuml RDCU-CU02-demarrerReservation
+skinparam style strictuml
+Participant ":ControleurReservation" as S
+Participant "r:Reservation" as R
+Participant "c:Commis" as C
+Participant "cl:Client" as CL
+Participant "mc:Map<nom:String,categorie:Categorie>" as MC
+Participant "llr:List<:LigneReservation>" as LLR
+
+note right  of MC: Visible par le \ncontroleur puisque \ntout les hotels utilisent \nles mêmes catégories
+note left of S:Controleur de session
+note right of S: use mc.keys() to get array of category
+ -> S: [nomCategorie] = demarrerReservation()
+note right of S: Createur
+ S -> CL**: cl = Create(?)
+ note right of S: Créateur, cohésion et couplage
+S -> R**: r=Create( \nc:Commis, \ncl:Client)
+note right of R: Createur, r:Reservation possède les lr:LigneReservation
+R --> LLR**: llr=Create()
+@enduml
+
+@startuml RDCU-CU02-reserverChambres
+skinparam style strictuml
+Participant ":ControleurReservation" as S
+Participant "mc:Map<nom:String,categorie:Categorie>" as MC
+Participant "cat:Categorie" as CAT
+Participant "r:Reservation" as R
+Participant "lr:LigneReservation" as LR
+Participant "llr:List<:LigneReservation>" as LLR
+
+note right  of MC: Visible par le \ncontroleur puisque \ntout les hotels utilisent \nles mêmes catégories
+note left of S:Controleur de session
+ -> S: reserverChambres(\nquantity:integer\ndateArrive:String, \ndateDepart:String, \ncategorie: String)
+ note right of S: Expert en information
+S -> MC: cat = get(categorie: String)
+ note right of S: Expert en information
+S -> CAT: [ch] = getChambresLibre(\nquantity:integer\ndateArrivé: String, \ndateDepart:String)
+note right of S: expert en information
+S -> R: r=ajouterChambres(\n[ch]:Chambre, \ndateArrive:String, dateDepart: String)
+note left of LR: Createur, forte cohesion, faible couplage
+R -> LR**: r=create(\n[ch]:Chambre, \ndateArrive:String, dateDepart: String)
+note left of LLR: expert en information\nr a une visibilité sur llr\nllr est une liste de ligne de réservation
+R -> LLR: ajouterLigneReservarion(llr)
+
+@enduml
+
+@startuml RDCU-CU02-terminerReservation
+skinparam style strictuml
+Participant ":ControleurReservation" as S
+Participant "r:Reservation" as R
+
+note left of S:Controleur de session
+ -> S: noConfirmation = terminerReservation()
+ note right of S: Expert en information\nMutateur d'attribut
+S -> R: noConfirmation = terminerReservation()
+
+@enduml
+
+
+@startuml DCL-CU02
+class ControleurReservation{
+  demarrerReservation()
+  reserverChambres(quantity:Integer,dateArrive:String, dateDepart:String, categorie: String)
+  terminerReservation()
+}
+class "Map<nom:String,categorie:Categorie>" as MC {
+  get(nom:String): Categorie
+}
+
+class Hotel <<Conteneur, Object physique>>
+class Categorie <<Description d'entité,**Catalogue**>> {
+  nom: String
+  getChambresLibre(quantity:Integer, dateArrivé: String,dateDepart:String): [Chambre]
+}
+class Reservation <<Transaction>>{
+  noConfirmation: String
+  Reservation(commis:Commis, client: Client)
+  ajouterChambres([ch]:Chambre,dateArrive:String, dateDepart: String): String (json)
+  terminerReservation(): String
+}
+
+class LigneReservation <<Ligne de transaction>>{
+   dateArrive: Date
+  dateDepart: Date
+  create([ch]:Chambre,dateArrive:String, dateDepart: String)
+}
+
+class Commis <<Role>>
+class Chambre <<Objet physique, Contenu dans l'hotel, Produit d'une transaction>>
+class Client <<Role>> {
+  Client(?)
+}
+
+Hotel  *--> "*" Chambre: possède
+Chambre "*" --o Categorie: appartient
+Client  <--  Reservation: demande
+Commis  <--  Reservation: cree
+Hotel  *-- "*" Commis : Emploie
+Reservation "1" --> "*" LigneReservation: contient
+LigneReservation "1" --> "*" Chambre : est reservé par <
+ControleurReservation --> MC
+ControleurReservation --> Commis
+MC --> "*" Categorie
+@enduml
+
+
+@startuml MDD-CU01+CU02+CU03
+skinparam style strictuml
+hide methods
+class Commis 
+class Client {
+  nom
+telephone
+}
+class Hotel{
+telephone
+}
+class Reservation {
+confirmation:Strgin
+}
+class Sejour {
+dateArrive: DateHeure
+dateDepart: DateHeure
+}
+class Chambre {
+no
+}
+class Clé
+class Categorie {
+nom: String
+}
+Commis "1" -- "*" Reservation : Effectue
+Client "1" -- "*" Reservation : Demande
+Reservation "1" -- "*" Sejour : Contient
+Sejour "1" -- "*" Chambre : Reserve
+Chambre "*" -- "1" Categorie : sont-décrites-par
+Hotel "1" -- "*" Commis : Emploie
+Hotel "1" -- "*" Chambre : Contient
+Chambre "1" -- "*" Clé : est-ouverte*par
+Chambre "*" -- "1" Emplacement : sont-situé-à
+@enduml
+
+@startuml DSS-CU03-demarrerTransferChanbre
+skinparam style strictuml
+Actor ":Commis" as C
+participant ":System" as S
+
+C->S: demarrerTransferChanbre(string noChambre)
+C<<--S: information du séjour, chambres disponibles
+
+C->S: transfererChambre(string noChambreActuel, string noNouvelleChambre)
+C<<--S: confirmation
+
+@enduml
+
