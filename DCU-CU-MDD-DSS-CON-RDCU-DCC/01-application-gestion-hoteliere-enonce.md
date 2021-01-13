@@ -3,21 +3,7 @@
 Le propriétaire d’un petit hôtel désire se doter d’une application pour gérer les réservations et les séjours de ses clients. Il ne veut pas que l’application s’occupe de la facturation. La figure 1 illustre les tâches accomplies par un commis à la réception. Vous devez analyser et concevoir une application permettant de noter les réservations, démarrer les séjours et transférer les séjours de chambre.
 # Diagramme de cas d'utilisation
 
-```plantuml
-@startuml
-left to right direction
-package "Application de gestion hotelière" {
- usecase "CU01-Noter une reservartion d'une seule chambre" as N
- usecase "CU02-Noter une reservartion de plusieurs séjour" as S
- usecase "CU03-Transférer un séjour de chambre" as T
- 
-}
-Commis --> N
-Commis --> S
-Commis --> T
-
-@enduml
-```
+![DCU](https://www.plantuml.com/plantuml/svg/TL0x3i8m3DrpYYSMfafyTWGgCmlb024rRI1jAZjXGTm7pj6BaLP2AWERt_FxMDvAq1nYux3FJyhH9I1uiAtgWD8ocM1zgpfjRheYp7PTvwpH0ucIK96CO-q3ETk_c6PuA4GXeoN9yzDYcHtIaX5R0fCGtrFVQ9yFb51q15FhvZoOjU3mwr_zzHCw5yLIP87qxwkFF0OSVmFMMS6wbKl_vZ7cgnq2fhs5Wdggt3UD5MJP9Xqo0SSfADIMsZ8zxGC0 "DCU")
 
 # CU01-Cas d'utilisation «Noter une réservation»
 **Pré(s) condition(s) :**
