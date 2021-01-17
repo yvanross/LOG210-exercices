@@ -4,7 +4,6 @@ Le propriétaire d’un petit hôtel désire se doter d’une application pour g
 # Diagramme de cas d'utilisation
 
 ![DCU](https://www.plantuml.com/plantuml/svg/TL0x3i8m3DrpYYSMfafyTWGgCmlb024rRI1jAZjXGTm7pj6BaLP2AWERt_FxMDvAq1nYux3FJyhH9I1uiAtgWD8ocM1zgpfjRheYp7PTvwpH0ucIK96CO-q3ETk_c6PuA4GXeoN9yzDYcHtIaX5R0fCGtrFVQ9yFb51q15FhvZoOjU3mwr_zzHCw5yLIP87qxwkFF0OSVmFMMS6wbKl_vZ7cgnq2fhs5Wdggt3UD5MJP9Xqo0SSfADIMsZ8zxGC0 "DCU")
-
 # CU01-Cas d'utilisation «Noter une réservation»
 **Pré(s) condition(s) :**
 •	Le commis est authentifié.
