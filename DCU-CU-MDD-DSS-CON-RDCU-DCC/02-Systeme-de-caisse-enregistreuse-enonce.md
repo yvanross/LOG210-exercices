@@ -1,34 +1,7 @@
 # Système de caisse enregistreuse
 
-```plantuml
-@startuml
-title Diagramme des cas d'utilisation
-left to right direction
-package system {
- usecase "Traiter une vente" as V
- usecase "Traiter les retours" as R
- usecase "Mise en plateau" as MP
- usecase "Analyse activité" as A
- usecase "Gérer la sécurité" as S
- usecase "Gérer les usager" as U
-}
-Client --> V
-Client --> R
-Caissier --> V
-Caissier --> R
-Caissier --> MP
-Gérant --> V
-Gérant --> R
-SystemVente --> A
-AdministrateurSystem --> S
-AdministrateurSystem --> U
+![Diagramme des cas d'utilisation](https://www.plantuml.com/plantuml/svg/TPB1Ri8m38RlUGgBoqwymaJLITi52RN0tMizPYr9KUoWeMdliYklCLvi9Z3KIUnInVa__tRipaGnQGuU7XWt2KCWw4cWGu7-BYjx5bGUelFqeg039DwyAlISg2ltM-pUS4CWUr4AyE4W2rawmMIPa9KIv4YmewWq0RDTto2ybKoaGqvIc6R4pDc-567hKGbpqUUB4L15z7ixe3MqOpqU2bADYCVZ8Psg8CZnqELqXTeRaBMInLwK2h5odwxsRDt3T7flpO-2njN88cnP5sqS_bM_lwpdKmcyEesZnhLbVklJcCfDvQe-S6JHPE_EwQmNgVrVMZctFZEKTjnHbNL8bnKka2cO_uMeqNVP5uCbljDlNl6YUWXRL7os_Tkit7mn5XiIiLLr94yv84SIDwFOsr_q0m00 "Diagramme des cas d'utilisation")
 
-V --> ServiceAutorisationPaiement
-V --> CalculateurTaxe
-V --> SystemeCompatabilité
-MP --> SystemeRessourcesHumaines
-@enduml
-```
 
 ## Glossaire
 **plateau (plateau d’argent)**
@@ -62,34 +35,6 @@ Pour voir comment un plateau-argent peut être enlevé d’un tiroir-caisse, reg
 
 ## Interface usagé
 ## MDD
-
-```plantuml
-@startuml
-class Caisse <<Objet physique>>{
-  ouvert: bool
-
-}
-class Caissier <<Role>>{
- identifiant: string
- mdp: string
-}
-class Plateau <<objet physique, contenu>>{
- 
-  identificateur: String
-}
-
-class MiseEnPlateau <<Transaction>>{
-  montant: Float
-heureDebut:DateTime
-heureFin:DateTime
-}
-
-MiseEnPlateau -- Caissier: est fait par >
-MiseEnPlateau -- Caisse: est fait sur >
-MiseEnPlateau -- Plateau: utilise >
-
-@enduml
-```
 ## DSS
 ## Contrats
 ## RDCU's

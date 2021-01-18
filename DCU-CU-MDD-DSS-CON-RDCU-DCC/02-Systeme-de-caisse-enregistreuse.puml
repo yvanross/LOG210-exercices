@@ -1,0 +1,27 @@
+
+@startuml Diagramme des cas d'utilisation
+left to right direction
+package system {
+ usecase "Traiter une vente" as V
+ usecase "Traiter les retours" as R
+ usecase "Mise en plateau" as MP
+ usecase "Analyse activité" as A
+ usecase "Gérer la sécurité" as S
+ usecase "Gérer les usager" as U
+}
+Client --> V
+Client --> R
+Caissier --> V
+Caissier --> R
+Caissier --> MP
+Gérant --> V
+Gérant --> R
+SystemVente --> A
+AdministrateurSystem --> S
+AdministrateurSystem --> U
+
+V --> ServiceAutorisationPaiement
+V --> CalculateurTaxe
+V --> SystemeCompatabilité
+MP --> SystemeRessourcesHumaines
+@enduml
