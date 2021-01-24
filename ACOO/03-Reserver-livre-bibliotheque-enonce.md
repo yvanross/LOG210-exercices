@@ -1,8 +1,7 @@
 # Réserver un livre à la bibliotheque
-https://drive.google.com/file/d/1wclLv1Zt32XfMATWVzaEcqPBaql8ULXd/view
+
 # Diagramme de cas d'utlisation
 ![](Reserver-livre-bibliotheque/DCU.svg)
-
 # Cas d’utilisation - Réserver un livre de la bibliothèque
 **Parties prenantes et intérêts :** 
  - Le **Membre**. Il veut un moyen de recherche exact et rapide et ne veut pas que la Bibliothèque mémorise des informations sur ses recherches (confidentialité). Il veut pouvoir réaliser des réservations aisément, obtenir un service rapide en fournissant un minimum d’efforts. Il veut également une preuve de réservation.
@@ -26,58 +25,52 @@ https://drive.google.com/file/d/1wclLv1Zt32XfMATWVzaEcqPBaql8ULXd/view
 - Le système affiche toutes les informations du livre et des exemplaires, mais un message indique qu’il n’est pas possible de réserver, faute d’exemplaires disponibles.
 - Le membre lance une nouvelle recherche.
 
-
+## Trouver les classes à partir des catégories
+https://drive.google.com/file/d/1wclLv1Zt32XfMATWVzaEcqPBaql8ULXd/view
 # MDD
+<!-- ```plantuml
+@startuml
 
-![](MDD)
+@enduml
+``` -->
 
 # DSS
+<!-- ```plantuml
+@startuml
 
+@enduml
+``` -->
 
 # Contrats
 
-## operation: demarrerRechercheLivre()
+<!-- ## operation: 
 **- Prédondition**
-**- Postcondition**
-  - Aucune
+**- Postcondition** -->
 
-## operation: rechercherLivre(livre:string)
+<!-- ## operation: 
 **- Prédondition**
-**- Postcondition**
- - Aucune
+**- Postcondition** -->
 
-
-## operation: selectionnerLivre(livre:string)
+<!-- ## operation: 
 **- Prédondition**
-**- Postcondition**
- - Aucune
+**- Postcondition** -->
 
 
-## operation: reserverExemplaire(livre:string, code:string)
-**- Prédondition**
-  - m:Membre est authentifier
+# RDCU's
 
+## RDCU 
+<!-- ```plantuml
+@startuml
+skinparam style strictuml
+participant xx
 
-**- Postcondition**
-  - Une instance de r:Reservation a été créée
-  - Une association a été créée entre m:Membre et r:Reservation
-  - Une association a été créée entre r:Reservation et Exemplaire sur la base de correspondance avec Exemplaire.code
-  - r.noConfirmation est devenu un no unique (spécifier le format dans le glossaire)
-
-
-
-## RDCU demarrerRechercheLivre
-
-
-## RDCU rechercherLivre
-
-
-
-# RDCU selectionnerLivre
-
-
-
-# RDCU
+@enduml
+``` -->
 
 
 # DCC - DCL
+<!-- ```plantuml
+@startuml
+
+@enduml
+``` -->
