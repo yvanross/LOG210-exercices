@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="242px" preserveAspectRatio="none" style="width:625px;height:242px;" version="1.1" viewBox="0 0 625 242" width="625px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="79.3984" style="stroke:#A80036;stroke-width:1.0;" width="10" x="291" y="137.6953"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="296" x2="296" y1="36.2969" y2="235.0938"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="422" x2="422" y1="36.2969" y2="235.0938"/><rect fill="#FEFECE" height="30.2969" style="stroke:#A80036;stroke-width:1.5;" width="72" x="260" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58" x="267" y="24.9951">ctrl:Bdd</text><rect fill="#FEFECE" height="30.2969" style="stroke:#A80036;stroke-width:1.5;" width="70" x="387" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56" x="394" y="24.9951">c:Client</text><rect fill="#FFFFFF" height="79.3984" style="stroke:#A80036;stroke-width:1.0;" width="10" x="291" y="137.6953"/><path d="M5,51.2969 L5,76.2969 L291,76.2969 L291,61.2969 L281,51.2969 L5,51.2969 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><path d="M281,51.2969 L281,61.2969 L291,61.2969 L281,51.2969 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="265" x="11" y="68.3638">controleur de façade de type objet racine</text><path d="M24,86.4297 L24,111.4297 L417,111.4297 L417,96.4297 L407,86.4297 L24,86.4297 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><path d="M407,86.4297 L407,96.4297 L417,96.4297 L407,86.4297 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="372" x="30" y="103.4966">est visible par le controleur puisque c'est une précondition</text><polygon fill="#A80036" points="279,133.6953,289,137.6953,279,141.6953" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="0" x2="285" y1="137.6953" y2="137.6953"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="129" x="7" y="132.6294">terminerAjoutLivre()</text><path d="M306,150.6953 L306,190.6953 L618,190.6953 L618,160.6953 L608,150.6953 L306,150.6953 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><path d="M608,150.6953 L608,160.6953 L618,160.6953 L608,150.6953 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="291" x="312" y="167.7622">Expert en informationDD a une visibilité sur e</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="76" x="312" y="182.895">e possède ll</text><polygon fill="#A80036" points="410,213.0938,420,217.0938,410,221.0938" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="296" x2="416" y1="217.0938" y2="217.0938"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="97" x="303" y="212.0278">ll =  getLivres()</text><!--MD5=[a29ac7d5e1ece9b7001080e16e9eba53]
+@startuml
+skinparam style strictuml
+
+participant "ctrl:Bdd" as S
+note left of S: controleur de façade de type objet racine
+
+participant "c:Client" as C
+note left of C: est visible par le controleur puisque c'est une précondition
+
+
+ -> S: terminerAjoutLivre()
+ activate S
+ note right of S: Expert en information\BDD a une visibilité sur e\ne possède ll
+S->C: ll =  getLivres()
+ deactivate S
+@enduml
+
+PlantUML version 1.2021.01beta3(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
