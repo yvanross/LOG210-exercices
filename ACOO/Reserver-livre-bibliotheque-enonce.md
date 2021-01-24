@@ -1,5 +1,5 @@
 # Réserver un livre à la bibliotheque
-https://drive.google.com/file/d/1wclLv1Zt32XfMATWVzaEcqPBaql8ULXd/view
+
 # Diagramme de cas d'utlisation
 ```plantuml
 @startuml
@@ -33,51 +33,52 @@ Membre->(CU01)
 - Le système affiche toutes les informations du livre et des exemplaires, mais un message indique qu’il n’est pas possible de réserver, faute d’exemplaires disponibles.
 - Le membre lance une nouvelle recherche.
 
-
+## Trouver les classes à partir des catégories
+https://drive.google.com/file/d/1wclLv1Zt32XfMATWVzaEcqPBaql8ULXd/view
 # MDD
-```plantuml
+<!-- ```plantuml
 @startuml
 
 @enduml
-```
+``` -->
 
 # DSS
-```plantuml
+<!-- ```plantuml
 @startuml
 
 @enduml
-```
+``` -->
 
 # Contrats
 
-## operation: 
+<!-- ## operation: 
 **- Prédondition**
-**- Postcondition**
+**- Postcondition** -->
 
-## operation: 
+<!-- ## operation: 
 **- Prédondition**
-**- Postcondition**
+**- Postcondition** -->
 
-## operation: 
+<!-- ## operation: 
 **- Prédondition**
-**- Postcondition**
+**- Postcondition** -->
 
 
 # RDCU's
 
 ## RDCU 
-```plantuml
+<!-- ```plantuml
 @startuml
 skinparam style strictuml
 participant xx
 
 @enduml
-```
+``` -->
 
 
 # DCC - DCL
-```plantuml
+<!-- ```plantuml
 @startuml
 
 @enduml
-```
+``` -->
