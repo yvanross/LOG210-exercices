@@ -1,7 +1,7 @@
 # Réserver un livre à la bibliotheque
 
 # Diagramme de cas d'utlisation
-![](Reserver-livre-bibliotheque/DCU.svg)
+![](03-Reserver-livre-bibliotheque/DCU.svg)
 # Cas d’utilisation - Réserver un livre de la bibliothèque
 **Parties prenantes et intérêts :** 
  - Le **Membre**. Il veut un moyen de recherche exact et rapide et ne veut pas que la Bibliothèque mémorise des informations sur ses recherches (confidentialité). Il veut pouvoir réaliser des réservations aisément, obtenir un service rapide en fournissant un minimum d’efforts. Il veut également une preuve de réservation.
