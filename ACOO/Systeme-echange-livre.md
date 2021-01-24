@@ -23,9 +23,9 @@ Le Client répète les étapes 2 à 3 jusqu'à ce qu'il ait saisi tous les livre
 
 3a. Le système affiche un message d'erreur puisque le livre n'existe pas.
 
-![](MDD-DSS-CON-RDCU-DCL-systeme-echange-livre/mdd-cu01.svg)
+![](Systeme-echange-livre/mdd-cu01.svg)
 
-![](MDD-DSS-CON-RDCU-DCL-systeme-echange-livre/DSS-cu01.svg)
+![](Systeme-echange-livre/DSS-cu01.svg)
 
 
 #### Contrats CU01-demarrerAjoutLivre
@@ -58,14 +58,14 @@ Le Client répète les étapes 2 à 3 jusqu'à ce qu'il ait saisi tous les livre
 # RDCU's
 ## RDCU - demarrerAjoutLivre
 
-![](MDD-DSS-CON-RDCU-DCL-systeme-echange-livre/RDCU-demarrerAjoutLivre.svg)
+![](Systeme-echange-livre/RDCU-demarrerAjoutLivre.svg)
 
 
 ## RDCU CU01 -  ajouterLivre()
-![](MDD-DSS-CON-RDCU-DCL-systeme-echange-livre/CU01-ajouterLivre.svg)
+![](Systeme-echange-livre/CU01-ajouterLivre.svg)
 
 ## RDCU CU01 -  terminerAjoutLivre()
-![](MDD-DSS-CON-RDCU-DCL-systeme-echange-livre/RDCU-CU01-terminerAjoutLivre.svg)
+![](Systeme-echange-livre/RDCU-CU01-terminerAjoutLivre.svg)
 
 # CU02 - Proposer un échange de livres 
 Acteur principal : Client (étudiant)
@@ -85,9 +85,9 @@ Scénario principal (succès)
 8.	Le Système envoie un courriel au Client Proposé pour l'informer de la proposition d'échange. 
 
 
-![](MDD-DSS-CON-RDCU-DCL-systeme-echange-livre/MDD%20CU01%20et%20CU02.svg)
+![](Systeme-echange-livre/MDD%20CU01%20et%20CU02.svg)
 
-![](MDD-DSS-CON-RDCU-DCL-systeme-echange-livre/CU02%20-%20Proposer%20un%20échange%20de%20livres.svg)
+![](Systeme-echange-livre/CU02%20-%20Proposer%20un%20échange%20de%20livres.svg)
 
 
 
@@ -160,25 +160,25 @@ Une instance p de PropositionEchange existe
 Aucune
 
 ## RDCU-CU02-démarrerPropositionÉchange()
-![](MDD-DSS-CON-RDCU-DCL-systeme-echange-livre/RDCU-CU02-démarrerPropositionÉchange.svg)
+![](Systeme-echange-livre/RDCU-CU02-démarrerPropositionÉchange.svg)
 
 ## RDCU-CU02-choisirClient()
-![](MDD-DSS-CON-RDCU-DCL-systeme-echange-livre/RDCU-CU02-choisirClient.svg)
+![](Systeme-echange-livre/RDCU-CU02-choisirClient.svg)
 
 ## RDCU-CU02-proposerLivreRecevoir
-![](MDD-DSS-CON-RDCU-DCL-systeme-echange-livre/RDCU-CU02-proposerLivreRecevoir.svg)
+![](Systeme-echange-livre/RDCU-CU02-proposerLivreRecevoir.svg)
 
 ## RDCU-CU02-proposerLivreOffrir
-![](MDD-DSS-CON-RDCU-DCL-systeme-echange-livre/RDCU-CU02-proposerLivreOffrir.svg)
+![](Systeme-echange-livre/RDCU-CU02-proposerLivreOffrir.svg)
 
 ## RDCU-CU02-terminerProposition()
-![](MDD-DSS-CON-RDCU-DCL-systeme-echange-livre/RDCU-CU02-terminerProposition.svg)
+![](Systeme-echange-livre/RDCU-CU02-terminerProposition.svg)
 
 ## RDCU-CU02-ConfirmerEchange()
-![](MDD-DSS-CON-RDCU-DCL-systeme-echange-livre/RDCU-CU02-confirmerEchange.svg)
+![](Systeme-echange-livre/RDCU-CU02-confirmerEchange.svg)
 
 
 # Diagramme de classe logiciel CU01 et CU02
-![](MDD-DSS-CON-RDCU-DCL-systeme-echange-livre/DCL%20CU01%20et%20CU02.svg)
+![](Systeme-echange-livre/DCL%20CU01%20et%20CU02.svg)
 
 

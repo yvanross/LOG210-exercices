@@ -1,3 +1,4 @@
+
 # Étude de cas jeBouquine
 
 La société (fictive!) jeBouquine a décidé récemment de rejoindre les

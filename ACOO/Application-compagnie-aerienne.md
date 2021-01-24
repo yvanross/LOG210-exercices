@@ -1,3 +1,4 @@
+
 # Compagnie aérienne
 Référence: Roques, Pascal (2009). UML par la pratique. Eyrolles. Pascal Roques a travaillé avec Craig Larman à l’entreprise Valtech. Ils ont utilisé des méthodologies OOA/D très similaires et ce livre est une source d’autres exemples intéressants. 
 

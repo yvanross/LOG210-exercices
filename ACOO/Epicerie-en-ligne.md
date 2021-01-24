@@ -1,3 +1,4 @@
+
 # Épicerie en ligne
 Le texte suivant vient d’un courriel de promotion (pourriel?) que j’ai reçu de IGA. Il y a des idées intéressantes pour un exercice d’analyse et de conception en LOG210.
 
