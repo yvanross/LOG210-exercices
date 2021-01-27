@@ -1,7 +1,7 @@
 # Réserver un livre à la bibliotheque
 https://drive.google.com/file/d/1wclLv1Zt32XfMATWVzaEcqPBaql8ULXd/view
 # Diagramme de cas d'utlisation
-![](Reserver-livre-bibliotheque/DCU.svg)
+![](03-Reserver-livre-bibliotheque/DCU.svg)
 
 # Cas d’utilisation - Réserver un livre de la bibliothèque
 **Parties prenantes et intérêts :** 
@@ -29,10 +29,10 @@ https://drive.google.com/file/d/1wclLv1Zt32XfMATWVzaEcqPBaql8ULXd/view
 
 # MDD
 
-![](Reserver-livre-bibliotheque/MDD.svg)
+![](03-Reserver-livre-bibliotheque/MDD.svg)
 
 # DSS
-![](Reserver-livre-bibliotheque/DSS.svg)
+![](03-Reserver-livre-bibliotheque/DSS.svg)
 
 # Contrats
 
