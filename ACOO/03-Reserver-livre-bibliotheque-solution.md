@@ -88,6 +88,6 @@ https://drive.google.com/file/d/1wclLv1Zt32XfMATWVzaEcqPBaql8ULXd/view
 
 # Démonstration du processus de réalisation de l'analyse et conception
 
-![Lien vers LOG210 oneNote, voir séance 04](https://1drv.ms/u/s!An6-F73ulxAOhVyZItGPjJKF-sam)
+[Le vers LOG210 oneNote, voir séance 04](https://1drv.ms/u/s!An6-F73ulxAOhVyZItGPjJKF-sam)
 
 Le vidéo de cet exercice est dans Youtube sous S20211-LOG210.
