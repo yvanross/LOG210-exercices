@@ -1,0 +1,340 @@
+@startuml CU26-MDD-V1
+title Ébauche initiale du MDD
+class "Coordonnateur" as C {
+
+}
+class "<<Service>>\nVisiteSupervise " as VS 
+class "<<Lieu>>\nPointService " as PS 
+class "<<Abstract>>\n<<Planification>>\nHoraire" as H 
+class "PlageHoraire" as PH {
+    dateDebut:DateTime 
+    dateFin:DateTime
+    visiteSupervise:Boolean
+}
+class "<<Sercice a offrir>>\nVisiteARealiser" as VR 
+class "<<Role>>\nIntervenant" as E 
+class "<<Lieu>>\nLocal" as L 
+class "<<Role>>\nParent" as P 
+class "<<Role>>\nVisiteur" as V 
+class "<<Role>>\nEnfant" as CH
+
+PS "1" -- "*" VR: doit offrir des services aux 
+PS "1" -- "*" E: emploie >
+PS  "1" -- "*" L: possède >
+
+C "*" -- "1" PS: travaille >
+
+
+VR "1" -- "*" V: est pour
+VR "1" -- "*" CH: est pour
+VS "*" -- "1" PH: sont fait durant >
+
+
+VS "*" -- "1" VR: a lien durant <
+VS "*" -- "1" E: est supervisé par >
+VS "*" -- "1" L: se déroule dans >
+CH "1" -- "*" P : est l'enfant de >
+
+VS "*" -d- "1..*" V: offre un service aux
+VS "*" -d- "1..*" CH: est pour
+C "1" -- "*" VS: organise >
+
+
+H "1" -u- "*" PH: Permet d'obtenir ou de demander\nun service selon >
+
+E  -u-  H: possède>
+L "1" -u- "1" H : possède un horaire\nde disponnibilité et réservation >
+PS "1" -- "1" H: contient toutes\nles plage horaire\ndes visites supervisées >
+P "1" -- "*" VS: participe à >
+P "1" -- "*" VR: demande >
+P "1" -- "1" H: est disponible selon >
+CH "1" -- "1" H: est disponible selon >
+V "1" -- "1" H: est disponible selon >
+@enduml
+
+<!------------------------------------------------------------->
+
+@startuml CU26-MDD-V2
+title Ébauche initiale du MDD
+class "Coordonnateur" as C {
+
+}
+class "<<Service>>\nVisiteSupervise " as VS 
+class "<<Lieu>>\nPointService " as PS 
+class "<<Abstract>>\n<<Planification>>\nHoraire" as H 
+class "PlageHoraire" as PH {
+    dateDebut:DateTime 
+    dateFin:DateTime
+    visiteSupervise:Boolean
+}
+class "<<Sercice a offrir>>\nVisiteARealiser" as VR 
+class "<<Role>>\nIntervenant" as E 
+class "<<Lieu>>\nLocal" as L 
+class "<<Role>>\nParent" as P 
+class "<<Role>>\nVisiteur" as V 
+class "<<Role>>\nEnfant" as CH
+
+PS "1" -- "*" VR: doit offrir des services aux 
+PS "1" -- "*" E: emploie >
+PS  "1" -- "*" L: possède >
+
+C "*" -- "1" PS: travaille >
+
+
+VR "1" -- "*" V: est pour
+VR "1" -- "*" CH: est pour
+VS "*" -- "1" PH: sont fait durant >
+
+
+VS "*" -- "1" VR: a lien durant <
+VS "*" -- "1" E: est supervisé par >
+VS "*" -- "1" L: se déroule dans >
+CH "1" -- "*" P : est l'enfant de >
+
+VS "*" -d- "1..*" V: offre un service aux
+VS "*" -d- "1..*" CH: est pour
+C "1" -- "*" VS: organise >
+
+
+H "1" -u- "*" PH: Permet d'obtenir ou de demander\nun service selon >
+
+E  -u-|>  H: possède >
+L "1" -u-|>  H : possède un horaire\nde disponnibilité et réservation >
+PS "1" --|> "1" H: contient toutes\nles plage horaire\ndes visites supervisées >
+P "1" -- "*" VS: participe à >
+P "1" -- "*" VR: demande >
+P "1" --|> H: est disponible selon >
+CH "1" --|> H: est disponible selon >
+V "1" --|> H: est disponible selon >
+@enduml
+
+<!------------------------------------------------------------->
+
+
+@startuml CU26-MDD-V3
+title Simplification horaire et PlageHoraire
+class "Coordonnateur" as C {
+}
+class "<<Service offert>>\nVisiteSupervise " as VS 
+class "<<Lieu>>\nPointService " as PS 
+class "<<Abstract>>\n<<Planification>>\nHoraire" as H {
+    dateDebut:DateTime 
+    dateFin:DateTime
+}
+
+class "<<Service demandé>>\nVisiteARealiser" as VR 
+class "<<Role>>\nIntervenant" as E 
+class "<<Lieu>>\nLocal" as L 
+class "<<Role>>\nParent" as P 
+class "<<Role>>\nVisiteur" as V 
+class "<<Role>>\nEnfant" as CH
+class "<<Role>>\n<<Abstract>>\nClient" as CL
+class "<<Role>>\nEmploye" as EMP{
+    courriel: string
+}
+
+PS "1" -- "*" VR: recoit plusieurs
+PS "1" -- "*" EMP: emploie >
+PS  "1" -- "*" L: possède >
+
+
+VR "1" -- "2..*" CL: est pour >
+
+'VR "1" -- "*" V: est pour
+'VR "1" -- "*" CH: est pour
+VS "1" -- "1" H: est fait durant >
+
+'VS "*" -- "2..*" CL: offre un service a >
+
+VS "*" -- "1" VR: sont offertes\nselon la >
+VS "*" -r- "1" E: est supervisé par >
+VS "1" -u- "1" L: se déroule dans >
+CH "1" -- "*" P : est l'enfant de >
+
+'VS "*" -d- "1..*" V: offre un service aux
+'VS "*" -d- "1..*" CH: est pour
+'C "1" -- "*" VS: organise >
+
+CL "1" -u- "*" H : est disponible\nselon <
+EMP "1" -u- "*" H: est disponible selon >
+L "1" -u- "*" H : est disponible selon >
+CH -u-|> CL : est un
+P -u-|> CL : est un
+V -u-|> CL: est un
+V "*" -- "1" CH : peut etre visité par <
+EMP <|-- E: est un <
+EMP <|-d- C: est un <
+VS "*" -r- "1" C: organise <
+
+@enduml
+
+<!------------------------------------------------------------->
+
+@startuml CU26-DSS
+title Proposer les horaires
+skinparam style strictuml
+participant ":Coordonnateur" as C 
+participant ":Systeme" as S 
+
+C -> S: demarrerPropositionHoraire()
+C <<-- S: [intervenant[nom:string,prenom:string],\nlocal[nom:string, capacite:int], \ndateDebut:string, dateFin string,  \nparents[nom,prenom], \nvisiteurs[nom,prenom], \nvisiteARealiser:integer]
+
+loop coordonnateur n'a pas termine
+C -> S: ajouterVisiteSupervise(intervenant,local, dateDebut:string, dateFin:string, visiteARealiser )
+C <<-- S: [Intervenant[nom:string,prenom:string],\nlocal[nom:string, capacite:int], \ndateDebut:string, dateFin string,  \nparents[nom,prenom], \nvisiteurs[nom,prenom], \nvisiteARealiser:integer]
+end
+
+C -> S: confirmerHoraires()
+C <<-- S: courriel envoyé aux employés, est-ce qu'on envoie aussi au parents et visiteur?
+
+@enduml
+
+<!------------------------------------------------------------->
+
+@startuml RDCU-demarrerPropositionHoraire
+ skinparam style strictuml
+ participant ":ControleurPropositionHoraire" as C
+ participant ":ps:PointService" as PS
+ participant "intervenant[i]:Intervenant" as I
+ participant "local[i]:Local" as L
+ participant "visiteARealiser[i]:VisiteARealiser" as VR
+ participant "client[i]:Client" as CL
+
+ note left of C: Controleur de session
+ -> C: demarrerPropositionHoraire()
+ note right of C: expert en information\nctrl -> ps
+ C -> PS: getPropositionHoraires()
+
+loop
+    note right of PS: Expert en information\nps emploie intervenant\nIntevenant posssède des horaire de disponibilité
+    PS -> I: horaireIntervenants = getHorairesDisponible()
+end
+loop
+    note right of PS: Expert en information\nps possède local\nLocal posssède des horaire de disponibilité
+    PS -> L: horaireLocaux = getHorairesDisponible()
+end
+loop
+    note right of PS: Expert en information\nps gère les visitesAResliser\nvisiteARealiser est pour de clients qui ont des horaires de disponibilité
+    PS -> VR: horaireVisiteARealiser = getHorairesDisponible()
+    loop
+    
+    note right of PS: Expert en information\nvisiteARealiser connait les clients\nclient possède des horaires de disponibilité
+    VR -> CL: horaireclient &= getHorairesDisponible()
+    end
+ end
+
+note right of PS: Expert en information\nps a toute l'information pour s'acquitter de la tâche de faire le calcul des horaires
+ PS -> PS: proposerHoraire(horaireIntervenants,horaireLocaux,horaireVisiteARealiser)
+ activate PS
+ deactivate PS
+PS --> C: [intervenant[nom:string,prenom:string],\nlocal[nom:string, capacite:int], \ndateDebut:string, dateFin string,  \nparents[nom,prenom]?, \nvisiteurs[nom,prenom]?, \nvisiteARealiser:integer]
+
+@enduml
+
+<!------------------------------------------------------------->
+
+@startuml RDCU-getHorairesDisponible-intervenant 
+skinparam style strictuml
+participant "intervenant:Intervenant" as I
+participant "horairesDisponible:List<Horaire>" as HD
+participant "vs[i]:VisiteSupervise" as VS
+
+note left of I: On utilise exactement\nle même concept pour le local\nIntervenant possède horairesDisponibilite
+-> I: horairesDisponible =  getHorairesDisponible()
+loop
+note right of I: Expert en information\nIntervenant supervise plusieurs visite supervisé\nVisiteSupervise possède un horaire qui rend \nl'intervenant non disponible
+I -> VS: horairesNonDisponible &= getHoraire()
+end
+<-- I: horairesDisponible & horairesNonDisponible 
+    
+@enduml
+
+
+<!------------------------------------------------------------->
+
+@startuml RDCU-getHorairesDisponible-client 
+skinparam style strictuml
+participant "client[i]:Client" as CL
+participant "horairesDisponible:List<Horaire>" as LH
+participant "lvr[i]:List<VisiteARealiser>" as LVR
+participant "vs:VisiteSupervise" as VS
+note left of CL: client possède une liste d'horaire de disponibilité
+loop
+     -> CL: horairesDisponible &=  getHorairesDisponible()
+    loop
+        note right of CL: Expert en information\nclient à fait plusieurs demande de visiteARealise\nChaque demande de VisteARealise peut s'être réalisé par une VisiteSupervisé 
+        CL -> LVR: horairesNonDisponible &= getHoraireNonDisponible()
+        loop
+            note right of LVR: Expert en information\nlvr est associé à plusieurs vs\nvs possède un horaire qui rend le client non disponible
+            LVR -> VS: horairesNonDisponible &= getHoraire()
+        end
+    end
+    CL->CL: horairedDisponible = calculHoraireDisponible(\nhorairesDisponible,horairesNonDisponible)
+    activate CL
+    deactivate CL
+
+end
+@enduml
+
+
+<!------------------------------------------------------------->
+
+@startuml RDCU-ajouterVisiteSupervise
+ skinparam style strictuml
+ participant ":ControleurPropositionHoraire" as C
+ participant ":ps:PointService" as PS
+ participant ":Map<Local>" as LL
+ participant "local:Local" as L
+participant "vs:VisiteSupervise" as VS
+participant "horaire:Horaire" as H
+
+note left of C: controleur \nMême DSS que l'opération précédente
+ -> C: createVisiteSupervise(\nintervenant,\nlocal, \ndateDebut:string, \ndateFin:string, \nvisiteARealiser )
+
+note right of C: Expert en information\nps est un objet racide\n ps connais les locaux, \nles employés et les visitesARealiser
+C -> PS: createVisiteSupervise(\nintervenant,\nlocal, \ndateDebut:string, \ndateFin:string, \nvisiteARealiser )
+
+note right of PS: Expert en information\nps possède un la liste des locaux\nLe local connait sont horaire\nde disponibilité et d'occupation par des visites supervisé
+PS -> LL: local = get(local)
+
+PS -> L: createVisiteSupervisé(\nintervenant,\nlocal, \ndateDebut:string, \ndateFin:string, \nvisiteARealiser )
+
+note right of L: Createur (PUCE)\nUn local exite principalement dans \nle but d'offrir des visites supervisées. \nUtilise des visites supervisées
+L -> VS**: create(intervenant,local, dateDebut:string, dateFin:string, visiteARealiser )
+note right of VS: Createur(PUCE)\n vs enregistre l'horaire de la visite supervisé\n cohésion pour 
+VS -> H**: create(vs:VisiteSupervise, dateDebut:string, dateFin:string )
+
+note left of C: voir le retour de demarrrerPropositionHoraire
+<- C: 
+@enduml
+
+<!------------------------------------------------------------->
+
+
+@startuml RDCU-confirmerHoraire
+skinparam style strictuml
+participant ":ControleurPropositionHoraire" as C
+participant ":ps:PointService" as PS
+participant "employe[i]:Employe" as E
+participant ":List<VisiteSupervise>" as LVS
+
+note left of C: Controleur\n voir opération précédente
+-> C: confirmerHoraire()
+note right of C: Expert en information\nctrl a une visibilité sur l'objet racide ps:PointService\nPointService employe des Employe\nEmployé connait son horaire et courriel
+C -> PS: confirmerHoraire()
+loop 
+note right of PS: Expert en information\nps connait ses employés\nEmploye connait son horaire
+    PS -> E: confirmerHoraire()
+    loop
+        note right of E: Expert en information\nEmploye supervise plusieurs visite supervisé\nVisite supervisé connait son horaire
+        E -> LVS: horaireDeTravail &= findNewVisiteSupervise(now)
+        note right of LVS: Expert en information\nVisiteSupervisé connait son horaire
+        
+        LVS -> LVS: horaire = getHoraire()
+    end
+    note right of E: Expert en information et faire soi-même\nEmploye connait son horaire et son courriel
+    E -> E: envoyerCourrielHoraire(horaireDeTravail)
+end
+
+
+@enduml

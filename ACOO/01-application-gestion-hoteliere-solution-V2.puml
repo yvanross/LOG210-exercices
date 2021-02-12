@@ -80,6 +80,7 @@ salt
 " as showReservation
 
 @enduml
+<!-- -------------------------------------------------------->
 
 @startuml CU01-Modèle du domaine
 class Hotel <<Conteneur, Object physique>>

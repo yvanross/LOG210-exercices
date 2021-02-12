@@ -2,7 +2,8 @@
 #CU01 - Noter une réservation
 Le propriétaire d’un petit hôtel désire se doter d’une application pour gérer les réservations et les séjours de ses clients. Il ne veut pas que l’application s’occupe de la facturation. La figure 1 illustre les tâches accomplies par un commis à la réception. Vous devez analyser et concevoir une application permettant de noter les réservations, démarrer les séjours et transférer les séjours de chambre.
 ## Diagramme de cas d'utilisation
-![DCU](https://www.plantuml.com/plantuml/svg/TL0x3i8m3DrpYYSMfafyTWGgCmlb024rRI1jAZjXGTm7pj6BaLP2AWERt_FxMDvAq1nYux3FJyhH9I1uiAtgWD8ocM1zgpfjRheYp7PTvwpH0ucIK96CO-q3ETk_c6PuA4GXeoN9yzDYcHtIaX5R0fCGtrFVQ9yFb51q15FhvZoOjU3mwr_zzHCw5yLIP87qxwkFF0OSVmFMMS6wbKl_vZ7cgnq2fhs5Wdggt3UD5MJP9Xqo0SSfA9JQKbkchtq0 "DCU")
+
+![DCU](01-application-gestion-hoteliere-solution-V2/DCU.svg)
 
 ## CU01-Cas d'utilisation «Noter une réservation»
 **Pré(s) condition(s) :**
@@ -47,7 +48,6 @@ Le commis terminera ensuite la réservation en entrant le nom du client et commu
 
 ## Interfaces usagé
 ![IU1](https://www.plantuml.com/plantuml/svg/TPBDQiCm3CVlUWgHoxumf1tiCEXQo2uxh8p2Jg45asgT8R6BukIIfS-oQrvZUR7PwPekj0KZBFs5h9_aMMubso9ByULz1DUtDoZ44mPGLP3Br485hwGBV6Eb4xMLAUns4C-D9SP24tBRvCIbjChe9THGrn2Wp36JIWDuYuBLvjCEYzu1ulaYJX32cMTf2TTNabcLRODV68p3SIZ2UtU2NdUdRROEO93mu1CYQTjcOrYHqrREeyvPeTCmZgHEA5qwALxiNoV-tp_JFWPmk5tWE9rEPFI7ugoZyHsMnZBX53gikS6arxLvT0rCJsbz68-yPt1znf5tWEkad-_am3k2oUJomlomXqjRK2__WH30ZFJQVP5V "IU1")
-
 
 ## CU01-Modèle du domaine
 

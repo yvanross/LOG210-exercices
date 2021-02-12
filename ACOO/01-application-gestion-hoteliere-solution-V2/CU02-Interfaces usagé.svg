@@ -1,0 +1,214 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="729px" preserveAspectRatio="none" style="width:823px;height:729px;" version="1.1" viewBox="0 0 823 729" width="823px" zoomAndPan="magnify"><defs><filter height="300%" id="f4x32dlhyz9xw" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><ellipse cx="238.5" cy="16" fill="#000000" filter="url(#f4x32dlhyz9xw)" rx="10" ry="10" style="stroke:none;stroke-width:1.0;"/><rect fill="#FEFECE" filter="url(#f4x32dlhyz9xw)" height="100" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="266" x="105.5" y="176.5"/><svg x="115.5" y="186.5"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="106" x="6" y="17.1387">Menu Principal</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="6" x2="240" y1="25.4688" y2="25.4688"/><rect fill="#EEEEEE" height="17.9688" rx="5" ry="5" style="stroke:#000000;stroke-width:2.5;" width="164" x="8.5" y="32.4688"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="138" x="21.5" y="45.6074">Réserver une chambre</text><rect fill="#EEEEEE" height="17.9688" rx="5" ry="5" style="stroke:#000000;stroke-width:2.5;" width="228" x="8.5" y="57.4375"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="185" x="30" y="70.5762">Réserver plusieurs chambres*</text><!--MD5=[9472b6f5d494c67c72c2b0018fdc40eb]
+@startuml
+salt
+{
+**Menu Principal**
+~~
+[Réserver une chambre]
+[Réserver plusieurs chambres*]
+}
+@enduml
+
+PlantUML version 1.2021.2beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg><rect fill="#FEFECE" filter="url(#f4x32dlhyz9xw)" height="321" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="418" x="391.5" y="66"/><svg x="401.5" y="76"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="163" x="6" y="17.1387">Noter une réservation</text><line style="stroke:#AAAAAA;stroke-width:1.0;" x1="6" x2="170" y1="25.4688" y2="25.4688"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="127" x="6" y="41.1074">Quantité de chambre</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="16" x="174" y="41.1074">99</text><line style="stroke:#000000;stroke-width:1.0;" x1="172" x2="191" y1="43.9375" y2="43.9375"/><line style="stroke:#000000;stroke-width:1.0;" x1="172" x2="172" y1="40.9375" y2="42.9375"/><line style="stroke:#000000;stroke-width:1.0;" x1="191" x2="191" y1="40.9375" y2="42.9375"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="78" x="6" y="59.0762">Date d'arrivé</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="174" y="59.0762">2020-03-03</text><line style="stroke:#000000;stroke-width:1.0;" x1="172" x2="255" y1="61.9063" y2="61.9063"/><line style="stroke:#000000;stroke-width:1.0;" x1="172" x2="172" y1="58.9063" y2="60.9063"/><line style="stroke:#000000;stroke-width:1.0;" x1="255" x2="255" y1="58.9063" y2="60.9063"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="92" x="6" y="77.0449">Date de départ</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="174" y="77.0449">2020-03-06</text><line style="stroke:#000000;stroke-width:1.0;" x1="172" x2="255" y1="79.875" y2="79.875"/><line style="stroke:#000000;stroke-width:1.0;" x1="172" x2="172" y1="76.875" y2="78.875"/><line style="stroke:#000000;stroke-width:1.0;" x1="255" x2="255" y1="76.875" y2="78.875"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="59" x="6" y="95.0137">Catégorie</text><rect fill="#EEEEEE" height="16.9688" style="stroke:#000000;stroke-width:1.0;" width="87" x="171" y="83.875"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="59" x="173" y="97.0137">Categorie</text><line style="stroke:#000000;stroke-width:1.0;" x1="247" x2="247" y1="83.875" y2="100.8438"/><polygon fill="#000000" points="250,89.875,256,89.875,253,95.8438" style="stroke:#000000;stroke-width:1.0;"/><rect fill="#EEEEEE" height="17.9688" rx="5" ry="5" style="stroke:#000000;stroke-width:2.5;" width="52" x="8.5" y="106.3438"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="40" x="14.5" y="119.4824">Cancel</text><rect fill="#EEEEEE" height="17.9688" rx="5" ry="5" style="stroke:#000000;stroke-width:2.5;" width="132" x="173.5" y="106.3438"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="107" x="186" y="119.4824">Ajouter chambres</text><rect fill="#EEEEEE" height="17.9688" rx="5" ry="5" style="stroke:#000000;stroke-width:2.5;" width="76" x="312.5" y="106.3438"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="59" x="321" y="119.4824">Confirmer</text><line style="stroke:#AAAAAA;stroke-width:1.0;" x1="6" x2="170" y1="131.3125" y2="131.3125"/><line style="stroke:#AAAAAA;stroke-width:1.0;" x1="6" x2="170" y1="133.3125" y2="133.3125"/><line style="stroke:#AAAAAA;stroke-width:1.0;" x1="171" x2="309" y1="131.3125" y2="131.3125"/><line style="stroke:#AAAAAA;stroke-width:1.0;" x1="171" x2="309" y1="133.3125" y2="133.3125"/><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="96" x="6" y="147.9512">Réservations</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="6" x2="170" y1="156.2813" y2="156.2813"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="171" x2="309" y1="156.2813" y2="156.2813"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="118" x="6" y="171.9199">Quantité chambres:</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="8" x="171" y="171.9199">2</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="86" x="6" y="187.8887">Date d'arrivé :</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="171" y="187.8887">2020-03-03</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="100" x="6" y="203.8574">Date de départ :</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="171" y="203.8574">2020-03-04</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="63" x="6" y="219.8262">Catégorie:</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="28" x="171" y="219.8262">Luxe</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="6" x2="170" y1="228.1563" y2="228.1563"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="171" x2="309" y1="228.1563" y2="228.1563"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="118" x="6" y="243.7949">Quantité chambres:</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="8" x="171" y="243.7949">2</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="86" x="6" y="259.7637">Date d'arrivé :</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="171" y="259.7637">2020-04-03</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="100" x="6" y="275.7324">Date de départ :</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="171" y="275.7324">2020-04-04</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="63" x="6" y="291.7012">Catégorie:</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="54" x="171" y="291.7012">Standard</text><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="170" y1="5" y2="5"/><line style="stroke:#000000;stroke-width:1.0;" x1="170" x2="309" y1="5" y2="5"/><line style="stroke:#000000;stroke-width:1.0;" x1="309" x2="392" y1="5" y2="5"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="170" y1="295.5313" y2="295.5313"/><line style="stroke:#000000;stroke-width:1.0;" x1="170" x2="309" y1="295.5313" y2="295.5313"/><line style="stroke:#000000;stroke-width:1.0;" x1="309" x2="392" y1="295.5313" y2="295.5313"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="5" y2="20.9688"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="231.6563" y2="247.625"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="5" y2="20.9688"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="231.6563" y2="247.625"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="175.75" y2="191.7188"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="175.75" y2="191.7188"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="127.8125" y2="135.8125"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="127.8125" y2="135.8125"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="46.9375" y2="64.9063"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="279.5625" y2="295.5313"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="46.9375" y2="64.9063"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="279.5625" y2="295.5313"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="223.6563" y2="231.6563"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="223.6563" y2="231.6563"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="159.7813" y2="175.75"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="159.7813" y2="175.75"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="102.8438" y2="127.8125"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="102.8438" y2="127.8125"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="28.9688" y2="46.9375"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="263.5938" y2="279.5625"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="28.9688" y2="46.9375"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="263.5938" y2="279.5625"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="207.6875" y2="223.6563"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="207.6875" y2="223.6563"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="151.7813" y2="159.7813"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="151.7813" y2="159.7813"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="82.875" y2="102.8438"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="82.875" y2="102.8438"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="20.9688" y2="28.9688"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="247.625" y2="263.5938"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="20.9688" y2="28.9688"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="247.625" y2="263.5938"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="191.7188" y2="207.6875"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="191.7188" y2="207.6875"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="135.8125" y2="151.7813"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="135.8125" y2="151.7813"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="64.9063" y2="82.875"/><line style="stroke:#000000;stroke-width:1.0;" x1="392" x2="392" y1="64.9063" y2="82.875"/><!--MD5=[fdac8587da76338097513ade5bc0c8bd]
+@startuml
+salt
+{+
+**Noter une réservation**
+- -
+Quantité de chambre | "99"
+Date d'arrivé | "2020-03-03"
+Date de départ | "2020-03-06"
+Catégorie | ^Categorie^
+[Cancel]| [Ajouter chambres] |
+[Confirmer]
+== | ==
+**Réservations**
+~~ | ~~
+Quantité chambres: | 2
+Date d'arrivé : |  2020-03-03
+Date de départ : | 2020-03-04
+Catégorie: | Luxe
+~~ | ~~
+Quantité chambres: | 2
+Date d'arrivé : |  2020-04-03
+Date de départ : | 2020-04-04
+Catégorie: | Standard
+}
+@enduml
+
+PlantUML version 1.2021.2beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg><rect fill="#FEFECE" filter="url(#f4x32dlhyz9xw)" height="259" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="305" x="448" y="441.5"/><svg x="458" y="451.5"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="168" x="6" y="17.1387">Confirmer votre réservation</text><line style="stroke:#AAAAAA;stroke-width:1.0;" x1="6" x2="175" y1="25.4688" y2="25.4688"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="31" x="6" y="41.1074">Nom:</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="61" x="179" y="41.1074">Yvan Ross</text><line style="stroke:#000000;stroke-width:1.0;" x1="177" x2="252" y1="43.9375" y2="43.9375"/><line style="stroke:#000000;stroke-width:1.0;" x1="177" x2="177" y1="40.9375" y2="42.9375"/><line style="stroke:#000000;stroke-width:1.0;" x1="252" x2="252" y1="40.9375" y2="42.9375"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="68" x="6" y="59.0762">Téléphone:</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="89" x="179" y="59.0762">123-456-7890</text><line style="stroke:#000000;stroke-width:1.0;" x1="177" x2="276" y1="61.9063" y2="61.9063"/><line style="stroke:#000000;stroke-width:1.0;" x1="177" x2="177" y1="58.9063" y2="60.9063"/><line style="stroke:#000000;stroke-width:1.0;" x1="276" x2="276" y1="58.9063" y2="60.9063"/><line style="stroke:#AAAAAA;stroke-width:1.0;" x1="6" x2="175" y1="69.4063" y2="69.4063"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="118" x="6" y="85.0449">Quantité chambres:</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="8" x="176" y="85.0449">2</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="86" x="6" y="101.0137">Date d'arrivé :</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="176" y="101.0137">2020-03-03</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="100" x="6" y="116.9824">Date de départ :</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="176" y="116.9824">2020-03-04</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="63" x="6" y="132.9512">Catégorie:</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="28" x="176" y="132.9512">Luxe</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="6" x2="175" y1="141.2813" y2="141.2813"/><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="176" x2="279" y1="141.2813" y2="141.2813"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="118" x="6" y="156.9199">Quantité chambres:</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="8" x="176" y="156.9199">2</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="86" x="6" y="172.8887">Date d'arrivé :</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="176" y="172.8887">2020-04-03</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="100" x="6" y="188.8574">Date de départ :</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="176" y="188.8574">2020-04-04</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="63" x="6" y="204.8262">Catégorie:</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="54" x="176" y="204.8262">Standard</text><rect fill="#EEEEEE" height="17.9688" rx="5" ry="5" style="stroke:#000000;stroke-width:2.5;" width="52" x="8.5" y="212.1563"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="40" x="14.5" y="225.2949">Cancel</text><rect fill="#EEEEEE" height="17.9688" rx="5" ry="5" style="stroke:#000000;stroke-width:2.5;" width="76" x="178.5" y="212.1563"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="59" x="187" y="225.2949">Confirmer</text><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="175" y1="5" y2="5"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="175" y1="233.625" y2="233.625"/><line style="stroke:#000000;stroke-width:1.0;" x1="175" x2="279" y1="5" y2="5"/><line style="stroke:#000000;stroke-width:1.0;" x1="175" x2="279" y1="233.625" y2="233.625"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="5" y2="20.9688"/><line style="stroke:#000000;stroke-width:1.0;" x1="279" x2="279" y1="5" y2="20.9688"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="160.75" y2="176.7188"/><line style="stroke:#000000;stroke-width:1.0;" x1="279" x2="279" y1="160.75" y2="176.7188"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="104.8438" y2="120.8125"/><line style="stroke:#000000;stroke-width:1.0;" x1="279" x2="279" y1="104.8438" y2="120.8125"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="46.9375" y2="64.9063"/><line style="stroke:#000000;stroke-width:1.0;" x1="279" x2="279" y1="46.9375" y2="64.9063"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="208.6563" y2="233.625"/><line style="stroke:#000000;stroke-width:1.0;" x1="279" x2="279" y1="208.6563" y2="233.625"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="144.7813" y2="160.75"/><line style="stroke:#000000;stroke-width:1.0;" x1="279" x2="279" y1="144.7813" y2="160.75"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="88.875" y2="104.8438"/><line style="stroke:#000000;stroke-width:1.0;" x1="279" x2="279" y1="88.875" y2="104.8438"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="28.9688" y2="46.9375"/><line style="stroke:#000000;stroke-width:1.0;" x1="279" x2="279" y1="28.9688" y2="46.9375"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="192.6875" y2="208.6563"/><line style="stroke:#000000;stroke-width:1.0;" x1="279" x2="279" y1="192.6875" y2="208.6563"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="136.7813" y2="144.7813"/><line style="stroke:#000000;stroke-width:1.0;" x1="279" x2="279" y1="136.7813" y2="144.7813"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="72.9063" y2="88.875"/><line style="stroke:#000000;stroke-width:1.0;" x1="279" x2="279" y1="72.9063" y2="88.875"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="20.9688" y2="28.9688"/><line style="stroke:#000000;stroke-width:1.0;" x1="279" x2="279" y1="20.9688" y2="28.9688"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="176.7188" y2="192.6875"/><line style="stroke:#000000;stroke-width:1.0;" x1="279" x2="279" y1="176.7188" y2="192.6875"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="120.8125" y2="136.7813"/><line style="stroke:#000000;stroke-width:1.0;" x1="279" x2="279" y1="120.8125" y2="136.7813"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="64.9063" y2="72.9063"/><line style="stroke:#000000;stroke-width:1.0;" x1="279" x2="279" y1="64.9063" y2="72.9063"/><!--MD5=[b4b1aa7e2d169aae83f6f849be1cc9cf]
+@startuml
+salt
+{+
+Confirmer votre réservation
+- -
+Nom:|"Yvan Ross"
+Téléphone:|"123-456-7890"
+- -
+Quantité chambres: | 2
+Date d'arrivé : |  2020-03-03
+Date de départ : | 2020-03-04
+Catégorie: | Luxe
+~~ | ~~
+Quantité chambres: | 2
+Date d'arrivé : |  2020-04-03
+Date de départ : | 2020-04-04
+Catégorie: | Standard
+[Cancel] | [Confirmer]
+}
+@enduml
+
+PlantUML version 1.2021.2beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg><rect fill="#FEFECE" filter="url(#f4x32dlhyz9xw)" height="288" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="421" x="7" y="427"/><svg x="17" y="437"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="128" x="6" y="17.1387">Réservation confirmé</text><line style="stroke:#AAAAAA;stroke-width:1.5;" x1="6" x2="168" y1="25.4688" y2="25.4688"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="94" x="6" y="41.1074">No confirmation</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="47" x="169" y="41.1074">123456</text><line style="stroke:#AAAAAA;stroke-width:1.0;" x1="6" x2="168" y1="49.4375" y2="49.4375"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="96" x="6" y="65.0762">Nom: Yvan Ross</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="161" x="6" y="81.0449">Telephone: 123-456-7890</text><line style="stroke:#AAAAAA;stroke-width:1.0;" x1="6" x2="168" y1="89.375" y2="89.375"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="86" x="6" y="105.0137">Date d'arrivé :</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="169" y="105.0137">2020-03-03</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="100" x="6" y="120.9824">Date de départ :</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="169" y="120.9824">2020-03-04</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="63" x="6" y="136.9512">Catégorie:</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="29" x="169" y="136.9512"> luxe</text><line style="stroke:#AAAAAA;stroke-width:1.0;" x1="6" x2="168" y1="145.2813" y2="145.2813"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="86" x="6" y="160.9199">Date d'arrivé :</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="169" y="160.9199">2020-03-03</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="100" x="6" y="176.8887">Date de départ :</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="169" y="176.8887">2020-03-04</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="63" x="6" y="192.8574">Catégorie:</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="57" x="169" y="192.8574"> standard</text><line style="stroke:#AAAAAA;stroke-width:1.0;" x1="6" x2="168" y1="200.1875" y2="200.1875"/><line style="stroke:#AAAAAA;stroke-width:1.0;" x1="6" x2="168" y1="202.1875" y2="202.1875"/><rect fill="#EEEEEE" height="17.9688" rx="5" ry="5" style="stroke:#000000;stroke-width:2.5;" width="124" x="8.5" y="208.1875"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="95" x="23" y="221.3262">Menu principale</text><rect fill="#EEEEEE" height="17.9688" rx="5" ry="5" style="stroke:#000000;stroke-width:2.5;" width="164" x="171.5" y="208.1875"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="138" x="184.5" y="221.3262">Réserver une chambre</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="6" x="6" y="241.7949">_</text><rect fill="#EEEEEE" height="17.9688" rx="5" ry="5" style="stroke:#000000;stroke-width:2.5;" width="220" x="171.5" y="233.1563"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="178" x="192.5" y="246.2949">Reserver plusieurs chambres</text><line style="stroke:#AAAAAA;stroke-width:1.0;" x1="6" x2="168" y1="259.125" y2="259.125"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="168" y1="5" y2="5"/><line style="stroke:#000000;stroke-width:1.0;" x1="168" x2="395" y1="5" y2="5"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="168" y1="262.625" y2="262.625"/><line style="stroke:#000000;stroke-width:1.0;" x1="168" x2="395" y1="262.625" y2="262.625"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="5" y2="20.9688"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="204.6875" y2="229.6563"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="5" y2="20.9688"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="204.6875" y2="229.6563"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="148.7813" y2="164.75"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="148.7813" y2="164.75"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="92.875" y2="108.8438"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="92.875" y2="108.8438"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="44.9375" y2="52.9375"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="44.9375" y2="52.9375"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="196.6875" y2="204.6875"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="196.6875" y2="204.6875"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="140.7813" y2="148.7813"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="140.7813" y2="148.7813"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="84.875" y2="92.875"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="84.875" y2="92.875"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="28.9688" y2="44.9375"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="254.625" y2="262.625"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="28.9688" y2="44.9375"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="254.625" y2="262.625"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="180.7188" y2="196.6875"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="180.7188" y2="196.6875"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="124.8125" y2="140.7813"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="124.8125" y2="140.7813"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="68.9063" y2="84.875"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="68.9063" y2="84.875"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="20.9688" y2="28.9688"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="229.6563" y2="254.625"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="20.9688" y2="28.9688"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="229.6563" y2="254.625"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="164.75" y2="180.7188"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="164.75" y2="180.7188"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="108.8438" y2="124.8125"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="108.8438" y2="124.8125"/><line style="stroke:#000000;stroke-width:1.0;" x1="5" x2="5" y1="52.9375" y2="68.9063"/><line style="stroke:#000000;stroke-width:1.0;" x1="395" x2="395" y1="52.9375" y2="68.9063"/><!--MD5=[b497f3c87b95f5837077903cbe47f13f]
+@startuml
+salt
+{+
+Réservation confirmé
+~~
+No confirmation | 123456
+- -
+Nom: Yvan Ross
+Telephone: 123-456-7890
+- -
+Date d'arrivé : |  2020-03-03
+Date de départ : | 2020-03-04
+Catégorie: | luxe
+- -
+Date d'arrivé : |  2020-03-03
+Date de départ : | 2020-03-04
+Catégorie: | standard
+==
+[Menu principale] | [Réserver une chambre]
+_    | [Reserver plusieurs chambres]
+- -}
+@enduml
+
+PlantUML version 1.2021.2beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg><!--MD5=[8ffdac3f69e736d8f40f3943b4c175eb]
+link start to main--><path d="M238.5,26.228 C238.5,51.143 238.5,121.265 238.5,171.267 " fill="none" id="start-to-main" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="238.5,176.345,242.5,167.345,238.5,171.345,234.5,167.345,238.5,176.345" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d2ece98837e07cf26bef59c61c9140b3]
+link main to formulaireReservation--><path d="M371.775,226.5 C376.587,226.5 381.399,226.5 386.21,226.5 " fill="none" id="main-to-formulaireReservation" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="391.431,226.5,382.431,222.5,386.431,226.5,382.431,230.5,391.431,226.5" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5e4cf09ef407191a2685822190cd26bb]
+link formulaireReservation to formulaireConfirmation--><path d="M600.5,387.218 C600.5,403.514 600.5,419.949 600.5,435.93 " fill="none" id="formulaireReservation-to-formulaireConfirmation" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="600.5,441.331,604.5,432.331,600.5,436.331,596.5,432.331,600.5,441.331" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[58c60ada319c0282ebf15b547f8105ac]
+reverse link showReservation to formulaireConfirmation--><path d="M433.353,571 C438.217,571 443.081,571 447.944,571 " fill="none" id="showReservation-backto-formulaireConfirmation" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="428.075,571,437.075,575,433.075,571,437.075,567,428.075,571" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[4db3b6525b43a4ff38608a6fc62a03c9]
+@startuml
+(*) - -> "
+{{
+salt
+{
+**Menu Principal**
+~~
+[Réserver une chambre]
+[Réserver plusieurs chambres*]
+}
+}}
+" as main
+
+main -right-> "
+{{
+salt
+{+
+  **Noter une réservation**
+  - -
+  Quantité de chambre | "99"
+  Date d'arrivé | "2020-03-03"
+  Date de départ | "2020-03-06"
+  Catégorie | ^Categorie^ 
+[Cancel]| [Ajouter chambres] |
+[Confirmer]
+== | ==
+**Réservations**
+~~ | ~~
+  Quantité chambres: | 2
+  Date d'arrivé : |  2020-03-03
+  Date de départ : | 2020-03-04
+  Catégorie: | Luxe
+~~ | ~~
+  Quantité chambres: | 2
+  Date d'arrivé : |  2020-04-03
+  Date de départ : | 2020-04-04
+  Catégorie: | Standard
+  }
+}}
+" as formulaireReservation
+formulaireReservation -down-> "
+{{
+salt
+{+
+Confirmer votre réservation
+- -
+Nom:|"Yvan Ross"
+Téléphone:|"123-456-7890"
+- -
+ Quantité chambres: | 2
+  Date d'arrivé : |  2020-03-03
+  Date de départ : | 2020-03-04
+  Catégorie: | Luxe
+~~ | ~~
+  Quantité chambres: | 2
+  Date d'arrivé : |  2020-04-03
+  Date de départ : | 2020-04-04
+  Catégorie: | Standard
+[Cancel] | [Confirmer]
+}
+}}
+" as formulaireConfirmation
+
+formulaireConfirmation -left-> "
+{{
+salt
+{+
+  Réservation confirmé
+~~
+ No confirmation | 123456
+- -
+  Nom: Yvan Ross
+  Telephone: 123-456-7890
+  - -
+  Date d'arrivé : |  2020-03-03
+  Date de départ : | 2020-03-04
+  Catégorie: | luxe
+   - -
+  Date d'arrivé : |  2020-03-03
+  Date de départ : | 2020-03-04
+  Catégorie: | standard
+==
+[Menu principale] | [Réserver une chambre] 
+_    | [Reserver plusieurs chambres]
+  - -}
+}}
+" as showReservation
+@enduml
+
+PlantUML version 1.2021.2beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
