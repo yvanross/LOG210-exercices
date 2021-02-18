@@ -134,6 +134,8 @@ note left of S:Controleur de session
 
 @enduml
 
+<!-- -------------------------------------------------------->
+
 @startuml CU01-RDCU-reserverChambre
 skinparam style strictuml
 Participant ":ControleurReservation" as S
@@ -153,6 +155,7 @@ S -> R**: r=Create(\nch:Chambre, \nc:Commis, \ndateArrive:String, dateDepart: St
 
 @enduml
 
+<!-- -------------------------------------------------------->
 
 
 @startuml CU01-RDCU-confirmerReservation
@@ -172,15 +175,16 @@ activate R
 deactivate R
 @enduml
 
+<!-- -------------------------------------------------------->
+
 
 @startuml CU01-DCL
 class ControleurReservation<controleur de session> {
+  Map<<nom:String,categorie:Categorie>>
   +demarrerReservation()
   +reserverChambre(dateArrive:string, dateDepart:string, categorie: String)
   +confirmerReservation(nom:string, telephone:string)
-}
-class "Map<<nom:String,categorie:Categorie>> <Catalogue de catégories>" as MC {
-  +get(nom:String): Categorie
+
 }
 
 class Hotel <Conteneur, Object physique>
@@ -214,10 +218,11 @@ Client  <--  Reservation: demande
 Commis  <--  Reservation: cree
 Hotel  *-- "*" Commis : Emploie
 Reservation "1" --> "1" Chambre : est reservé par <
-ControleurReservation --> MC
 ControleurReservation --> Commis
-MC --> "*" Categorie
+ControleurReservation --> "*" Categorie
 @enduml
+
+<!-- -------------------------------------------------------->
 
 
 @startuml CU02-Interfaces usagé
@@ -310,6 +315,8 @@ _    | [Reserver plusieurs chambres]
 
 @enduml
 
+<!-- -------------------------------------------------------->
+
 @startuml CU01+CU02-Modèle du domaine
 class Hotel <Conteneur, Object physique>
 class Categorie <Description d'entité, Catalogue> {
@@ -344,6 +351,8 @@ Hotel "1" -- "*" Commis : Emploie
 LigneReservation "1" -- "*" Chambre : sont reservées par <
 @enduml
 
+<!-- -------------------------------------------------------->
+
 
 @startuml CU02-DSS
 skinparam style strictuml
@@ -363,6 +372,8 @@ end
  Commis <<-- Systeme: Menu principale, noConfirmation, information client et reservation
 @enduml
 
+<!-- -------------------------------------------------------->
+
 
 @startuml CU02-RDCU-demarrerReservation
 skinparam style strictuml
@@ -379,6 +390,9 @@ S -> R**: r=Create( \nc:Commis)
 note right of R: Createur, \nr:Reservation possède les lr:LigneReservation
 R --> LLR**: llr=Create()
 @enduml
+
+<!-- -------------------------------------------------------->
+
 
 @startuml CU02-RDCU-reserverChambres
 skinparam style strictuml
@@ -412,6 +426,8 @@ R -> LLR: ajouterLigneReservarion(lr)
 
 @enduml
 
+<!-- -------------------------------------------------------->
+
 @startuml CU02-RDCU-confirmerReservation
 skinparam style strictuml
 Participant ":ControleurReservation" as S
@@ -428,16 +444,16 @@ S -> R: [noConfirmation,llr] = confirmerReservation(cl:Client)
 
 @enduml
 
+<!-- -------------------------------------------------------->
+
 
 @startuml  CU02-DCL-Diagramme de classe
 class ControleurReservation<Controleur>{
+  Map<nom:String,categorie:Categorie>
   +demarrerReservation()
   +reserverChambre(dateArrive:string, dateDepart:string, categorie: String)
   +reserverChambres(quantity:Integer,dateArrive:String, dateDepart:String, categorie: String)
   +confirmerReservation(nom:string, telephone: string)
-}
-class "Map<nom:String,categorie:Categorie>" as MC {
-  +get(nom:String): Categorie
 }
 
 class Hotel <Conteneur, Object physique>
@@ -476,11 +492,11 @@ Commis  <--  Reservation: cree
 Hotel  *-- "*" Commis : Emploie
 Reservation "1" --> "*" LigneReservation: contient
 LigneReservation "1" --> "*" Chambre : sont reservées par <
-ControleurReservation --> MC
 ControleurReservation --> Commis
-MC --> "*" Categorie
+ControleurReservation --> "*" Categorie
 @enduml
 
+<!-- -------------------------------------------------------->
 
 @startuml CU01+CU02+CU03-MDD
 
@@ -518,6 +534,8 @@ Hotel "1" -- "*" Commis : Emploie
 Sejour "*" -- "*" Chambre : sont reservées par <
 @enduml
 
+<!-- -------------------------------------------------------->
+
 
 @startuml CU03-DSS
 skinparam style strictuml
@@ -531,6 +549,8 @@ C->S: transfererChambre(string noChambreActuel, string noNouvelleChambre)
 C<<--S: confirmation
 
 @enduml
+
+<!-- -------------------------------------------------------->
 
 
 @startuml CU01+CU02+CU03-MDD-avant
@@ -554,6 +574,7 @@ Reservation "1" -- "*" Sejour: contient
 Sejour "*" -- "*" Chambre : sont reservées par <
 @enduml
 
+<!-- -------------------------------------------------------->
 
 @startuml CU01+CU02+CU03-MDD-après
 title: Solution avec une classe d'association
@@ -574,6 +595,7 @@ class Chambre <Objet physique, Contenu dans l'hotel, Produit d'une transaction>{
 (Reservation,Chambre) . Sejour: contient
 @enduml
 
+<!-- -------------------------------------------------------->
 
 
 @startuml CU03-DSS
@@ -588,6 +610,8 @@ C->S: transfererChambre(string noChambreActuel, string noNouvelleChambre)
 C<<--S: confirmation
 
 @enduml
+
+<!-- -------------------------------------------------------->
 
 
 @startuml CU03-RDCU-demarrerTransfert
@@ -616,6 +640,7 @@ S ->CAT: getChambreDisponible(\nmaintenant:string, \ndateFin:string)
 
 @enduml
 
+<!-- -------------------------------------------------------->
 
 @startuml CU03-RDCU-transfererChambre
 skinparam style strictuml
@@ -653,23 +678,20 @@ R -> NS**: Create(r:Reservation,\ndateArrive:string, \ndateDepart:string, \nnoNo
 
 @enduml
 
+<!-- -------------------------------------------------------->
 
 @startuml  CU01+CU02+CU03-DCL-Diagramme de classe
 class ControleurReservation<Controleur>{
+  Map<nom:String,categorie:Categorie>
   +demarrerReservation()
   +reserverChambre(dateArrive:string, dateDepart:string, categorie: String)
   +reserverChambres(quantity:Integer,dateArrive:String, dateDepart:String, categorie: String)
   +confirmerReservation(nom:string, telephone: string)
   transfererChambre(noChambreActuel:string, noNouvelleChambre:string)
 }
-class "Map<nom:String,categorie:Categorie>" as MC {
-  +get(nom:String): Categorie
-}
-class "Map<numero:string,chambre:Chambre>" as MCH {
-  get(numero:string): Chambre
-}
 
 class Hotel <Conteneur, Object physique>{
+  Map<numero:string,chambre:Chambre>
   [sejour.reservation,category,sejour.dateFin] = TransferChambre(numero:string)
 }
 class Categorie <Description d'entité,**Catalogue**> {
@@ -707,15 +729,13 @@ class Client <Role> {
   +Client(nom:string, telephone:string)
 }
 
-Hotel  -->  MCH
-MCH --> "*" Chambre: possède
+Hotel --> "*" Chambre: possède
 Chambre "*" <-- Categorie: appartient
 Client  <--  Reservation: demande
 Commis  <--  Reservation: cree
 Hotel  *-- "*" Commis : Emploie
 Reservation "1" --> "*" Sejour: contient
 Sejour"*" <-- "1" Chambre: est résservé par >
-ControleurReservation --> MC
 ControleurReservation --> Commis
-MC --> "*" Categorie
+ControleurReservation --> "*" Categorie
 @enduml

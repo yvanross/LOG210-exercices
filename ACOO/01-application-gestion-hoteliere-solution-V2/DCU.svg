@@ -3,7 +3,7 @@ cluster Application de gestion hotelière--><polygon fill="#FFFFFF" filter="url(
 entity Commis--><ellipse cx="35" cy="166" fill="#FEFECE" filter="url(#f1e8tcjiwzza2f)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><path d="M35,174 L35,201 M22,182 L48,182 M35,201 L22,216 M35,201 L48,216 " fill="none" filter="url(#f1e8tcjiwzza2f)" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58" x="6" y="234.4951">Commis</text><!--MD5=[1c3838d8433549adf0a1d82ac91d8423]
 link Commis to N--><path d="M64.0653,166.879 C74.5321,157.111 87.0397,147.001 100,140 C121.572,128.348 145.647,118.912 169.67,111.309 " fill="none" id="Commis-to-N" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="174.473,109.813,164.6903,108.6732,169.6996,111.3013,167.0716,116.3106,174.473,109.813" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5144c31c87b5d3ce934ba82124d1dc1a]
 link Commis to S--><path d="M64.0792,197 C80.428,197 102.6117,197 127.069,197 " fill="none" id="Commis-to-S" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="132.321,197,123.321,193,127.321,197,123.321,201,132.321,197" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[27be9da0d479ec84dc31dc7f3a6d46d7]
-link Commis to T--><path d="M64.027,226.801 C74.4905,236.416 87.0058,246.307 100,253 C126.414,266.604 156.518,276.6423 185.678,284.0278 " fill="none" id="Commis-to-T" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="190.729,285.2831,182.9592,279.2308,185.8766,284.0774,181.03,286.9948,190.729,285.2831" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[a6d4999b9cc729d57c0888c72056b05a]
+link Commis to T--><path d="M64.027,226.801 C74.4905,236.416 87.0058,246.307 100,253 C126.414,266.604 156.518,276.6423 185.678,284.0278 " fill="none" id="Commis-to-T" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="190.729,285.2831,182.9592,279.2308,185.8766,284.0774,181.03,286.9948,190.729,285.2831" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[ba202bccdd1bb083643fd461710a6d35]
 @startuml
 left to right direction
 package "Application de gestion hotelière" {
@@ -17,7 +17,7 @@ Commis - -> S
 Commis - -> T
 @enduml
 
-PlantUML version 1.2021.2beta2(Unknown compile time)
+PlantUML version 1.2021.2beta7(Unknown compile time)
 (GPL source distribution)
 Java Runtime: Java(TM) SE Runtime Environment
 JVM: Java HotSpot(TM) 64-Bit Server VM

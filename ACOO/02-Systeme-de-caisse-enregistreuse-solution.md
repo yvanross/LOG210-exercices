@@ -246,6 +246,8 @@ C->C: fermetureDuTiroirCaisse()
 @startuml
 title Mise en plateau
 class Caisse <<Equipement>> {
+  plateaux: Map<identifiant:string, :Plateau>
+  caissiers: Map<identifiant:string, :Caissier>
   demarrerMiseEnPlateau()
   authetifier(identifiant: string, mdp:string)
   poserPlateau(identifiant:string)
@@ -273,20 +275,12 @@ class MiseEnPlateau<<Transaction>> {
     MiseEnPlateau(c:Caisse, ca:Caissier,p:Plateau): MiseEnPlateau
 }
 
-class "Map<identifiant:string, :Plateau>" as MPL {
-  get(identifiant:string): Plateau
-}
-class "Map<identifiant:string, :Caissier>" as MC{
-  get(identifiant: string): Caissir
-}
 
 MiseEnPlateau "*" -- "1" Plateau: utilise
 MiseEnPlateau "*" -- "1" Caissier: est réalisé par
 MiseEnPlateau "*" -- "1" Caisse: s'effectue sur 
-Caisse --> MPL
-Caisse --> MC
-MPL -- "*" Plateau
-MC -- "*" Caissier
+Caisse --> "*" Plateau
+Caisse --> "*" Caissier
 
 @enduml
 ```

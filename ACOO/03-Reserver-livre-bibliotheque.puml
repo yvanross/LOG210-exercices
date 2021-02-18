@@ -84,6 +84,7 @@ B -> LL: [livre] = find(texte:string)
 
 @enduml
 
+
 @startuml RDCU-selectionnerLivre
 skinparam style strictuml
 participant ":ControleurReservation" as S
@@ -131,10 +132,12 @@ Reservation ->Reservation: initNoConfirmation()
 
 @startuml DCL
 class C as "ControleurReservation"{
+  listLivres: List<:Livre>" {
+  mapLivres: Map<nom, :Livre>" {
   demarrerRechercheLivre() 
- rechercherLivre(texte:string): list<Livre:json>
- selectionnerLivre(livre:string): string
- reserverExemplaire(code:string)
+  rechercherLivre(texte:string): list<Livre:json>
+  selectionnerLivre(livre:string): string
+  reserverExemplaire(code:string)
 }
 class M as "Membre" <<Role>>{
   nom: string
@@ -147,6 +150,7 @@ class B as "Bibliotheque" <<Conteneur>>{
 }
 
 class L as "Livre" << Description d'entité>>   {
+  mapExemplaires: Map<code:string, :Exemplaire>
   titre: String
   <s>auteur: String</s>
   isbn: String
@@ -166,27 +170,12 @@ class R  as "Reservation" <<Transaction>> {
   create(m:Membre, exemplaire:Exemplaire)
 }
 
-class LL as  "List<:Livre>" {
-  find(texte:string): List<Livre>
-}
-class ML as "Map<nom, :Livre>" {
-  get(nom:String): Livre
-}
-class MX as  "Map<code:string, :Exemplaire>" {
-  get(code:string): Exemplaire
-}
-
-
-C --> LL
-LL -->"*" L
-C-->ML
-ML --> "*" L
-L --> MX
-MX --> "*" EL
+C -->"*\nlistLivres" L
+C --> "*\nmapLivres" L
+L --> "*" EL
 C --> B
 
-
-B -->"*" L: permet la recherche
+B --->"*" L: permet la\nrecherche
 M <--"*" R: est fait pour <
 R --> EL:  reserve 
 L "*"<-- A: sont écrit par <
