@@ -8,9 +8,7 @@ doit être rendu avant un délai, sinon le client est facturé (par la
 carte de crédit qu'il a utilisée pour son abonnement) des frais de
 retard.
 
-Il y a plusieurs stations dans la ville où les clients abonnés peuvent
-emprunter les vélos. À chaque station, il y a une borne transactionnelle
-et plusieurs points d'ancrage. Chacun de ces points peut héberger un
+ Chacun de ces points peut héberger un
 vélo avec un mécanisme de verrouillage. On donne une clé d'accès (qui
 n'est qu'un code à 4 chiffres) au client dès qu'il s'abonne. Cependant,
 ce code n'est que temporaire et doit être renouvelé après chaque emprunt

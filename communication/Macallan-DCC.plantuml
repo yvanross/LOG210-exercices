@@ -28,6 +28,6 @@ ReorderItem()
 OEW --> O
 O "1" --> "*" OL
 OL --> SI
-SI .-> ReorderItem: create
-OL .-> DeliveryItem: create
+SI --> ReorderItem: 
+OL --> DeliveryItem: 
 @enduml
