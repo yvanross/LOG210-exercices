@@ -1,0 +1,31 @@
+@startuml Diagramme activite
+skinparam style strictuml
+skinparam handwritten true
+title <u>Retour de voiture louée</u>
+|Client|
+start
+:Rendre voiture;
+|Réceptionniste|
+:Voiture et clés]
+:Noter kilomètrage et
+niveau d'essence;
+fork
+:Générer facture;
+:Facture]
+|Client|
+:Payer facture;
+:Partir;
+|Agent|
+fork again
+:Inspecter voiture;
+if (propre?) then (oui)
+else (non)
+ :Laver voiture;
+ :Rincer voiture;
+ :Sécher voiture;
+ :Nettoyer intérieur;
+endif
+end fork
+|Réceptionniste|
+stop
+@enduml

@@ -16,6 +16,16 @@ fournisseur et lors de la réception du colis, le fournisseur lui expédie
 un accusé de réception. Si le client garde le produit, il doit en
 autoriser le paiement via le site Web (voir solution Sylvie).
 
-Ébauche de solution
+## Solution 1
+![](activite-processus-achat-web1/web1.svg)
 
-![](http://www.plantuml.com/plantuml/png/RL5BSiCW3Drp2YtZAzYB9isqwruW2s94hGw8Z80qcV65V0vVh7AJoQVJ7GYzB-jSh9GQWnctWP3BQ7udfjqEYJ8972IvIWMSvGozBJQapugTQJVzW94O1VeKesM7W0KuwP8K1BtsCa-EIcVC-9wgCEMCLKRblW9soi8sdFC3IUuCULW5Eegbd1ZSFAcFUG9RlvJ53PLU6YW3CgpEc1lJlfqEYz0pIVkwO16yxKiLMoZnpc3822jEZJ78ZlmzTNlDUL6\_XPudZuh7UdgMt1nfCUtliU0VZBeGBCiEtjwxlsLyNEQFvhGWzYHnGLd2g0xr810GCccttxZlp5eJwCVz0000]{.underline}](http://www.plantuml.com/plantuml/png/RL5BSiCW3Drp2YtZAzYB9isqwruW2s94hGw8Z80qcV65V0vVh7AJoQVJ7GYzB-jSh9GQWnctWP3BQ7udfjqEYJ8972IvIWMSvGozBJQapugTQJVzW94O1VeKesM7W0KuwP8K1BtsCa-EIcVC-9wgCEMCLKRblW9soi8sdFC3IUuCULW5Eegbd1ZSFAcFUG9RlvJ53PLU6YW3CgpEc1lJlfqEYz0pIVkwO16yxKiLMoZnpc3822jEZJ78ZlmzTNlDUL6_XPudZuh7UdgMt1nfCUtliU0VZBeGBCiEtjwxlsLyNEQFvhGWzYHnGLd2g0xr810GCccttxZlp5eJwCVz0000)
+## solution 2
+![](activite-processus-achat-web2/web2.svg)
+
+## Solution 3
+![](activite-processus-achat-web4/web4.svg)
+
+## Solution 4
+![](activite-processus-achat-web3/web-achat.svg)
+
+
