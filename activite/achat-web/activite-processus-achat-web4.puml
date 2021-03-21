@@ -1,4 +1,4 @@
-@startuml
+@startuml web4
 |Client|
 start
 :Choisir produit dans catalogue;
@@ -7,22 +7,19 @@ start
 |Fournisseur|
 :Commande]
 :Analyser commandes;
-:Expédier commandes du jour;
-|Client|
+if (livraison désiré aujourdhui?) then (yes)
+:Expédier commandes;
 :Bon de facturation]
-:produit]
+else (no)
+
+endif
+|Client|
+:produit;
 if (produit défectueux) then (yes)
 :Aviser fournisseur produit défectueux;
 :retourner produit;
 |Fournisseur|
-:produit\n!défectueux!]
-:Génére accusé de réception;
-|Client|
-:accusé reception]
+:Produit]
 else (no)
-|Fournisseur|
 :Confirmer paiement par le site web;
-endif
-
-stop
 @enduml

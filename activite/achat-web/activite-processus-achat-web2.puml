@@ -1,4 +1,4 @@
-@startuml
+@startuml web2
 title processus d’achat
 |Client|
 start
