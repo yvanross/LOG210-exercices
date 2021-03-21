@@ -1,4 +1,4 @@
-@startuml
+@startumlm  etat-paiement
 skinparam Style strictuml
 
 title Etats - Types de paiements
