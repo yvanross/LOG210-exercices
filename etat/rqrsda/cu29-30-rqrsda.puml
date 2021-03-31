@@ -1,0 +1,67 @@
+@startuml Diagramme d'état
+
+[*] --> VisiteValide
+VisiteValide --> VisiteAnnulé: annulerVisite()
+VisiteAnnulé -->[*]
+VisiteValide --> GardienIn: checkInParentGardien()
+GardienIn --> VisiteurIn: checkInParentVisiteur()
+VisiteurIn --> VisiteurOut: checkOutParentVisiteur()
+VisiteurOut --> GardientOut: checkOutParentGardien()
+GardientOut --> [*]
+@enduml
+
+
+@startuml
+
+note top of Visite: https://docs.google.com/document/d/18s-eN0QoqREblJUihUaEC2L7f1hZF82_Jm9PjfL6BuY/edit?pli=1#
+class Visite{
+    checkInParentGardien(){\n   getState().checkInParentGardien(this);\n}
+    annulerVisite{}
+    checkInParentVisiteur()
+    checkOutParentVisiteur()
+    checkOutParentGardien()
+    getState(): IEtatVisite
+    setState(IEtatVisite)
+}
+
+class IEtatVisite{
+    checkInParentGardien(visit:Visite)
+    annulerVisite(visit:Visite)
+    checkInParentVisiteur(visit:Visite)
+    checkOutParentVisiteur(visit:Visite)
+    checkOutParentGardien(visit:Visite)
+}
+note left of AEtatVisite: toutes les méthode throw une exception
+class AEtatVisite implements IEtatVisite {
+    checkInParentGardien(visit:Visite){\n   throw new Execption("L'état de la visite doit être valide");\n}
+    annulerVisite(visit:Visite) 
+    checkInParentVisiteur(visit:Visite)
+    checkOutParentVisiteur(visit:Visite)
+    checkOutParentGardien(visit:Visite)
+}
+
+class VisiteValide extends AEtatVisite{
+    checkInParentGardien(visit:Visite){\n   visite.setState(new GardienIn());\n}
+    annulerVisite(visit:Visite){\n   visit.setState(new visiteAnnule());\n}
+}
+class VisiteAnnulé extends AEtatVisite{}
+
+class GardienIn extends AEtatVisite{
+    checkInParentVisiteur(visit:Visite){\n   visite.setState(new VisiteurIn());\n}
+}
+class VisiteurIn extends AEtatVisite{
+    checkOutParentVisiteur(visit:Visite){\n   visite.setState(new VisteurOut());\n}
+}
+class VisiteurOut extends AEtatVisite{
+    checkOutParentGardien(visit:Visite){\n   visit.setState(new GardientOut());\n}
+}
+class GardientOut extends AEtatVisite{
+}
+
+Visite -r->IEtatVisite
+
+
+
+
+
+@enduml

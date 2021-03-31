@@ -1,0 +1,57 @@
+@startuml Diagramme d'état
+[*] --> ARediger
+ARediger --> EnRedaction: redigerNote()
+EnRedaction --> ACorriger: corrigerNote()
+ACorriger --> Approuve: approuverNote()
+Approuve -->[*]
+
+@enduml
+
+
+@startuml Diagramme de classe
+
+note top of Note: https://docs.google.com/document/d/18s-eN0QoqREblJUihUaEC2L7f1hZF82_Jm9PjfL6BuY/edit?pli=1#
+class Note{
+    redigerNote(){\n   getState().redigerNote(this);\n}
+    corrigerNote()
+    approuverNote()
+    getState():IEtatNote
+    setState(IEtatNote)
+}
+
+
+class IEtatNote{
+    redigerNote(note:Note)
+    corrigerNote(note:Note)
+    approuverNote(note:Note)
+}
+
+note left of AbstractEtatNote: Toute les méthodes throw Exception
+class AbstractEtatNote implements IEtatNote {
+    redigerNote(note:Note){\n  throw new Exception("xxxx");\n}
+    corrigerNote(note:Note)
+    approuverNote(note:Note)
+}
+
+
+class ARediger extends AbstractEtatNote{
+    redigerNote(note:Note){\n   note.setState(new EnRedaction());\n}
+}
+class EnRedaction extends AbstractEtatNote{
+    corrigerNote(note:Note){\n   note.setState(new ACorriger());\n}
+} 
+class ACorriger extends AbstractEtatNote{
+    approuverNote(note:Note){\n   note.setState(new Approuve());\n}
+}
+class Approuve  extends AbstractEtatNote
+Note -r-> IEtatNote
+
+class TempTravaille {
+    debut:DateTime 
+    fin:DateTime 
+    nomEtat: String
+}
+
+Note --> "*" TempTravaille
+
+@enduml
