@@ -19,7 +19,7 @@ Voici un exemple  d’un modèle du domaine pour un système de gestion de vols 
 Diagramme de séquence système (DSS)
 CU01-DSS-Ajouter nouveau vol
 ```plantuml
-@startuml
+@startuml DSS
 skinparam style strictuml
 title Ajouter nouveau vol
 actor ":Administrateur" as c
