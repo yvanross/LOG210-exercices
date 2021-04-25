@@ -1,7 +1,8 @@
 # Réserver un livre à la bibliotheque
-
+https://drive.google.com/file/d/1wclLv1Zt32XfMATWVzaEcqPBaql8ULXd/view
 # Diagramme de cas d'utlisation
-![](03-Reserver-livre-bibliotheque/DCU.svg)
+![](Reserver-livre-bibliotheque/DCU.svg)
+
 # Cas d’utilisation - Réserver un livre de la bibliothèque
 **Parties prenantes et intérêts :** 
  - Le **Membre**. Il veut un moyen de recherche exact et rapide et ne veut pas que la Bibliothèque mémorise des informations sur ses recherches (confidentialité). Il veut pouvoir réaliser des réservations aisément, obtenir un service rapide en fournissant un minimum d’efforts. Il veut également une preuve de réservation.
@@ -24,3 +25,69 @@
 4. Tous les exemplaires ne sont pas disponibles. 
 - Le système affiche toutes les informations du livre et des exemplaires, mais un message indique qu’il n’est pas possible de réserver, faute d’exemplaires disponibles.
 - Le membre lance une nouvelle recherche.
+
+
+# MDD
+
+![](Reserver-livre-bibliotheque/MDD.svg)
+
+# DSS
+![](Reserver-livre-bibliotheque/DSS.svg)
+
+# Contrats
+
+## operation: demarrerRechercheLivre()
+**- Prédondition**
+**- Postcondition**
+  - Aucune
+
+## operation: rechercherLivre(livre:string)
+**- Prédondition**
+**- Postcondition**
+ - Aucune
+
+
+## operation: selectionnerLivre(livre:string)
+**- Prédondition**
+**- Postcondition**
+ - Aucune
+
+
+## operation: reserverExemplaire(livre:string, code:string)
+**- Prédondition**
+  - m:Membre est authentifier
+
+
+**- Postcondition**
+  - Une instance de r:Reservation a été créée
+  - Une association a été créée entre m:Membre et r:Reservation
+  - Une association a été créée entre r:Reservation et Exemplaire sur la base de correspondance avec Exemplaire.code
+  - r.noConfirmation est devenu un no unique (spécifier le format dans le glossaire)
+
+
+#m RDCU's
+
+## RDCU demarrerRechercheLivre
+![](Reserver-livre-bibliotheque/RDCU-demarrerRechercheLivre.svg)
+
+## RDCU rechercherLivre
+![](Reserver-livre-bibliotheque/RDCU-rechercherLivre.svg)
+
+
+## RDCU selectionnerLivre
+
+![](Reserver-livre-bibliotheque/RDCU-selectionnerLivre.svg)
+
+## RDCU reserverExemplaire
+
+![](Reserver-livre-bibliotheque/RDCU-reserverExemplaire.svg)
+
+# DCC - DCL
+![](Reserver-livre-bibliotheque/DCL.svg)
+
+
+# Démonstration du processus de réalisation de l'analyse et conception
+
+[Le vers LOG210 oneNote, voir séance 04](https://1drv.ms/u/s!An6-F73ulxAOhVyZItGPjJKF-sam)
+
+Le vidéo de cet exercice est dans Youtube sous S20211-LOG210.

@@ -3,7 +3,7 @@
 Le propriétaire d’un petit hôtel désire se doter d’une application pour gérer les réservations et les séjours de ses clients. Il ne veut pas que l’application s’occupe de la facturation. La figure 1 illustre les tâches accomplies par un commis à la réception. Vous devez analyser et concevoir une application permettant de noter les réservations, démarrer les séjours et transférer les séjours de chambre.
 ## Diagramme de cas d'utilisation
 
-![DCU](01-application-gestion-hoteliere-solution-V2/DCU.svg)
+![DCU](application-gestion-hoteliere-solution-V2/DCU.svg)
 
 ## CU01-Cas d'utilisation «Noter une réservation»
 **Pré(s) condition(s) :**
