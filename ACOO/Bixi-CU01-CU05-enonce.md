@@ -3,7 +3,7 @@
 Dans ce cas d'étude, nous nous inspirons du système de Bixi à Montréal.
 Il s'agit d'un service de prêt de vélo en ville géré par une entreprise.
 Un client doit d'abord s'abonner au système utilisant une carte de
-crédit, puis il peut emprunter un vélo pour un temps limité. Le vélo
+crédit, p uis il peut emprunter un vélo pour un temps limité. Le vélo
 doit être rendu avant un délai, sinon le client est facturé (par la
 carte de crédit qu'il a utilisée pour son abonnement) des frais de
 retard.
