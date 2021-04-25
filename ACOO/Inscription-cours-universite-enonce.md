@@ -2,23 +2,7 @@
 # Système d'inscriptions à des cours
 Une université désire un système permettant aux étudiants de gérer leurs inscriptions aux différents trimestres. Du côté administratif, l'université requiert l'admission des étudiants et l'organisation des trimestres. Le diagramme des cas d'utilisation ci-dessous (Figure 1) résume les fonctionnalités demandées par l’université.
 
-
-```plantuml
-@startuml
-skinparam style strictuml
-left to right direction
-rectangle "Système d'inscription"{
-(CU01 - S'inscrire au prochain trimestre) as CU01
-(CU02 - Modifier son inscription) as CU02
-(CU03 - Admettre un étudiant) as CU03
-(CU04 - Planifier un trimestre) as CU04
-}
-Étudiant -- CU01
-Étudiant -- CU02
-Registraire -- CU03
-AgentAdministratif -- CU04
-@enduml
-```
+![cu](Inscription-cours-universite/cas%20utilisation.svg)
 
 
 ##CU01- S'inscrire au prochain trimestre

@@ -4,74 +4,12 @@
 
 ## MDD Inscription a des cours avec catégorie de classe
 
-
-```plantuml
-
-@startuml
-top to bottom direction
-title MDD
-package System {
-class Universite <<Organisation>>
-class Etudiant <<Role>>
-class Inscription <<Transaction>>
-class Cours <<Description d'entité>>{
-  sigle: string
-}
-class Trimestre <<planification>>{
-  String session
-  Integer annee
-  Date debutInscription
-  Date finInscription
-}
-class GroupeCours <<Service>>
-class Horaire <<Planification></Planification>>
-Universite -- Cours: Offre des formations
-Etudiant "1" - "*" Inscription: effectue
-Inscription "1" -- "*" GroupeCours: est pour
-Cours "1" -- "*" GroupeCours: sont décrit par <
-GroupeCours "1" -- "1" Horaire: se donne selon
-GroupeCours "*" -- "1" Trimestre: s'appliquent >
-Cours "1" -- "*" Cours: est préalable >
-}
-@enduml
-```
+![](Inscription-cours-universite/MDD.svg)
 
 
 
 ### DSS
-```plantuml
-
-@startuml
-hide footbox
-title Scénario de S'inscrire à un trimestre
-'Dans un DSS, un actor est externe au système
-'Truc PlantUML - “as E” définit E comme un synonyme de :Étudiant. 
-'Truc PlantUML - il faut mettre les "" autour du nom :Étudiant, car cela commence avec deux points (:)
-actor ":Étudiant" as E
-'Système vu en tant que boîte noire. Le nom pourrait être “Système de vente NextGen” 
-'  mais on se contente de “Système”.
-'les deux points (:) indiquent une instance et sont expliqués dans 
-'  le chapitre sur la notation des diagrammes de sequence UML
-participant ":Système" as S
-E->S: démarrerInscription(adresseIP)
-'Cadre d’interaction pour représenter une boucle UML avec une expression booléenne servant de garde
-'Truc PlantUML – tout ce qui suit “loop” est considéré comme une condition de la boucle (sytaxe est souple)
-loop Inscription pas confirmée
-  E->S: saisirCours(cours)
-' Valeur(s) de retour au message précédent. Abstraction ne tenant pas compte de la présentation ni du medium. La ligne de retour est facultative si rien n’est retourné.
-  E<--S: infos et groupes
-  loop n'a pas ajouté groupe-cours
-    E->S : saisirGroupeCours(groupeCours)
-    E<--S : horaire du groupe
-  end
-  E->S: ajouterGroupeCours(groupeCours)
-'Truc PlantUML – end signifie la fin de la boucle (ça ferme le cadre d’interaction)
-end
-E->S: terminerInscription
-E<--S: demande d'authentification
-E->S: finaliserInscription(clé)
-@enduml
-```
+![](Inscription-cours-universite/DSS.svg)
 
 ### Contrat CU01-démarrerInscription
 **Opération :** démarrerInscription(adresseIP : String)
@@ -130,13 +68,7 @@ N.B. La solution pour démarrerInscription sera présentée en étapes, pour mie
 
 La première étape dans toute RDCU est de déterminer quel objet de la couche-domaine va recevoir l’opération système (dans ce cas, démarrerInscription) :
 
-```plantuml
-@startuml
-skinparam style strictuml
-title Réalisation de cas d'utilisation: démarrerInscription
--> ":?" : démarrerInscription(adresseIP)
-@enduml
-```
+![](Inscription-cours-universite/CU01-RDCU-demarrerInscription-1.svg)
 
 **GRASP Contrôleur :**
 Quel est le premier objet en dehors de la couche présentation qui reçoit et coordonne (« contrôle ») les opérations système ?
@@ -148,14 +80,7 @@ Affectez une responsabilité à la classe qui correspond à l'une de ces défini
   un sous-système (contrôleur de façade).
 - Elle représente un scénario de cas d'utilisation dans lequel l'opération système se produit (contrôleur de session ou de cas d'utilisation).
 
-```plantuml
-@startuml
-skinparam style strictuml
-title Réalisation de cas d'utilisation: démarrerInscription
--> ":GestionnaireInscription" : démarrerInscription(adresseIP)
-note left: GRASP Contrôleur de session
-@enduml
-```
+![](Inscription-cours-universite/CU01-RDCU-demarrerInscription-2.svg)
 
 En suivant le point 1 de Contrôleur, essayons de trouver un « objet racine » dans le modèle du domaine. Y a-t-il un objet représentant un équipement ou un sous-système? Dans l’exemple du livre, il y a une classe conceptuelle « Registre » qui est en effet un équipement. Cependant, dans notre modèle du domaine en annexe, il n’y a pas d’objet racine. Alors, nous devons suivre le point 2 pour déterminer l’objet contrôleur. C’est-à-dire utiliser un contrôleur de session. Appelons cet objet « GestionnaireInscriptions » puisque Gestionnaire est un nom fréquemment utilisé pour les contrôleurs de session et Inscriptions est l’objet du cas d’utilisation dans lequel on travaille en ce moment. 
 
@@ -174,14 +99,7 @@ Pour la suite de cette RDCU, il faut satisfaire toutes les postconditions du con
 
 Les deux postconditions peuvent être considérées comme l’initialisation d’une instance de Inscription. Là, il s’agit de créer une instance de l’objet Inscription en passant l’adresse IP comme argument. Cela veut dire que quelque part dans la RDCU, il y aura un élément comme la figure suivante :
 
-```plantuml
-@startuml
-skinparam style strictuml
-participant "?"
-create "ins:Inscription"
-"?"-> "ins:Inscription" : create(adresseIP)
-@enduml
-```
+![](Inscription-cours-universite/CU01-RDCU-demarrerInscription-3.svg)
 
 Cependant, la classe qui instancie « ins :Inscription » n’est pas encore déterminée, car on voudrait suivre les principes GRASP avant de prendre une décision erronée. Alors, quel GRASP s’applique lorsqu’il s’agit de créer une instance? On peut poser la question autrement : qui prend la responsabilité de créer l’instance « ins »? 
 
@@ -205,52 +123,18 @@ On voit dans le modèle du domaine que GrandLivre agrège/contient/enregistre de
 
 Conclusion : <s>GrandLivre</s> ControleurInscription est, selon le principe GRASP Créateur, la bonne classe pour instancier les nouvelles Inscription. On peut proposer cette partie de la RDCU, indiquée dans la figure suivante avec une annotation de notre décision :
 
-```plantuml
-@startuml
-skinparam style strictuml
-participant ":ControleurInscription" as gl
-participant "ins:Inscription" as ins
-create ins
-gl -> ins : create(adresseIP)
-note right: GRASP Créateur\n(Controleur agrège Inscription)
-@enduml
-```
+![](Inscription-cours-universite/CU01-RDCU-demarrerInscription-4.svg)
 
 Maintenant, il faut combiner les deux parties (le partie contrôleur et la partie créateur) pour compléter la RDCU :
 
-```plantuml
-@startuml
-skinparam style strictuml
-participant ":GestionnaireInscription" as Ctrlr
-title Réalisation de cas d'utilisation: démarrerInscription
--> Ctrlr : démarrerInscription(adresseIP)
-note left of Ctrlr : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
-Ctrlr -> ":GrandLivre" : ??????
-participant ":GrandLivre"
-note over "ins:Inscription": GRASP Créateur\n(GrandLivre agrège Inscription)
-create "ins:Inscription"
-":GrandLivre"-> "ins:Inscription" : create(adresseIP)
-@enduml
-```
+![](Inscription-cours-universite/CU01-RDCU-demarrerInscription-5.svg)
 
 Il y a juste un problème – le flot de contrôle doit passer du GestionnaireInscription au GrandLivre, indiqué par le message « ????? » au milieu de la figure. Nous devons proposer une méthode que GrandLivre va implémenter pour faire le travail d’instanciation d’Inscription. De plus, GestionnaireInscription devrait « voir » la référence ins, car cette information sera probablement utilisée plus tard dans une autre opération système. GestionnaireInscription gardera cette information pour la durée de la session.
 
 Pour compléter la RDCU, on propose une méthode addInscription(adresseIP) implémentée dans GrandLivre. Voici la RDCU finale pour l’opération système. Notez que nous avons ajouté le principe GRASP Expert à la deuxième annotation, car la méthode addInscription est naturellement justifiée par Expert  :
 
-```plantuml
-@startuml
-skinparam style strictuml
-participant ":GestionnaireInscription" as Ctrlr
-title Réalisation de cas d'utilisation: démarrerInscription
--> Ctrlr : démarrerInscription(adresseIP)
-note left of Ctrlr : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
-Ctrlr -> ":GrandLivre" : ins = addInscription(adresseIP)
-participant ":GrandLivre"
-note over "ins:Inscription": GRASP Créateur\n(GrandLivre agrège Inscription)
-create "ins:Inscription"
-":GrandLivre"-> "ins:Inscription" : create(adresseIP)
-@enduml
-```
+![](Inscription-cours-universite/CU01-RDCU-demarrerInscription-6.svg)
+
 Pour terminer cette RDCU, nous pouvons faire une vérification des éléments :
 - contrôleur GRASP a été annoté
 - toutes les postconditions du contrat ont été satisfaites
@@ -276,105 +160,29 @@ Pour comprendre l’utilisation de l’instance de Map<Cours>, voir la section �
 
 La méthode Cours.getGroupes() retourne un Map<GroupeCours>, car c’est l’ensemble des GroupeCours associé à l’objet c :Cours.
 
-```plantuml
-@startuml
-skinparam style strictuml
-participant ":GestionnaireInscription" as Ctrlr
-title Réalisation de cas d'utilisation: saisirCours
--> Ctrlr : saisirCours(cours)
-note left of Ctrlr : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
-Ctrlr -> ":CatalogueCours" : groupes = getGroupes(cours)
-note right: GRASP Expert (Catalogue et\nCours serait les experts de\ncours et des groupes)
-":CatalogueCours" -> ":Map<Cours>" : c = chercher(cours)
-":CatalogueCours" -> "c:Cours" : groupes = getGroupes
-@enduml
-```
+![](Inscription-cours-universite/CU01-RDCU-saisirCours-1.svg)
+
 
 L’explication qui suit est une parenthèse pour comprendre la conception avec un :Map. Elle ne fait pas partie d’une RDCU. Considérer la relation entre CatalogueCours, Cours et GroupeCours :
 
-```plantuml
-@startuml
-skinparam style strictuml
-hide empty methods
-hide empty members
-class CatalogueCours
-class GroupeCours {
-identificateur : String
-}
-class Cours {
-titre : String
-}
-CatalogueCours "1" - "*" Cours : répertorie >
-Cours "1" - "*" GroupeCours : est-dispensé-dans >
-@enduml
-```
+![](Inscription-cours-universite/CU01-RDCU-saisirCours-2.svg)
+
 
 Pour donner un exemple concret où il y a 3 cours dans le catalogue, on utilise un diagramme d’objet en UML :
 
-```plantuml
-@startuml
-skinparam style strictuml
-object ":CatalogueCours" as cat
-object "c1:Cours" as c1 {
-  titre = "LOG121"
-}
-object "c2:Cours" as c2 {
-  titre = "LOG210"
-}
-object "c3:Cours" as c3 {
-  titre = "LOG240"
-}
-cat -- c1
-cat -- c2
-cat -- c3
-@enduml
-```
+![](Inscription-cours-universite/CU01-RDCU-saisirCours-3.svg)
 
 Alors, lorsqu’on agrège des objets, dans la conception on considère l’utilisation d’une collection comme une List ou une Map. On pourrait même utiliser un simple tableau. Lorsqu’on doit repérer ces objets par une clé unique (p.ex. le titre du cours), il est pratique d’utiliser une Map. Si vous avez oublié ces notions, il est important de les revoir dans le tutoriel de Java ou dans le livre de LOG121 ou même INF111. 
 
 
-```plantuml
-@startuml
-skinparam style strictuml
-object ":CatalogueCours" as cat
-object "c1:Cours" as c1 {
-  titre = "LOG121"
-}
-object "c2:Cours" as c2 {
-  titre = "LOG210"
-}
-object "c3:Cours" as c3 {
-  titre = "LOG240"
-}
-object ":Map<Cours>" as map
-cat - map
-map -- c1
-map -- c2
-map -- c3
-@enduml
-```
+![](Inscription-cours-universite/CU01-RDCU-saisirCours-4.svg)
+
 
 ### CU01-RDCU-saisirGroupeCours
 
 Il n’y a toujours pas de postcondition dans le contrat de saisirGroupeCours, mais il doit y avoir l’affichage de l’horaire pour le groupe-cours en question. 
 
-```plantuml
-@startuml
-skinparam style strictuml
-participant ":Gestionnaire\nInscription" as Ctrlr
-title Réalisation de cas d'utilisation: saisirGroupeCours
--> Ctrlr : saisirGroupeCours(groupeCours)
-note left of Ctrlr : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
-Ctrlr -> ":CatalogueCours" : horaire =\ngetHoraire(groupeCours)
-note right: GRASP Expert (Catalogue et\nCours serait les experts de\ncours et des horaires)
-":CatalogueCours" -> ":Map<Cours>" : c =\nchercher(cours)
-note right: Notez que la valeur de cours\nsera décortiquée de groupeCours,\np.ex. "LOG210" de "LOG210-01"
-":CatalogueCours" -> "c:Cours" : horaire = getHoraire(groupeCours)
-note right: GRASP Expert (GroupeCours\nserait l'expert des horaires)
-"c:Cours" -> ":Map\n<GroupeCours>" : gc =\nchercher(groupe)
-"c:Cours" -> "gc:\nGroupeCours" : horaire =\ngetHoraire
-@enduml
-```
+![](Inscription-cours-universite/CU01-RDCU-saisirGroupeCours-1.svg)
 
 
 ### CU01-RDCU-ajouterGroupeCour
@@ -383,21 +191,7 @@ La postcondition contient la phrase « sur une base de correspondance avec group
 
 Notez que ins est toujours « visible » car elle a été stockée par le contrôleur GRASP.
 
-```plantuml
-@startuml
-skinparam style strictuml
-participant ":Gestionnaire\nInscription" as Ctrlr
-title Réalisation de cas d'utilisation: ajouterGroupeCours
--> Ctrlr : ajouterGroupeCours(groupeCours)
-note left of Ctrlr : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
-note left of Ctrlr : GRASP Expert justifie\ntoutes les autres méthodes\ndans ce diagramme
-Ctrlr -> ":CatalogueCours" : gc=\ngetGroupeCours\n(groupeCours)
-":CatalogueCours" -> ":Map<Cours>" : c=chercher(cours)
-":CatalogueCours" -> "c:Cours" : gc=\ngetGroupeCours(groupe)
-"c:Cours" -> ":Map\n<GroupeCours>" : gc=\nchercher\n(groupe)
-Ctrlr -> "ins:Inscription" : ajouterGroupeCours(gc)
-@enduml
-```
+![](Inscription-cours-universite/CU01-RDCU-ajouterGroupeCour.svg)
 
 ### CU01-RDCU-terminerInscription
 
@@ -411,25 +205,7 @@ Normalement on vérifie la clé pour une bonne fonctionnalité dans le cas d’u
 
 Notez que e et ins ont été stockés dans le contexte de la session par GestionnaireInscription (contrôleur GRASP). 
 
-```plantuml
-@startuml
-skinparam style strictuml
-participant ":Gestionnaire\nInscription" as Ctrlr
-title Réalisation de cas d'utilisation: finaliserInscription
--> Ctrlr : finaliserInscription(clé)
-note left of Ctrlr : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
-note left of Ctrlr : GRASP Expert justifie\ntoutes les autres méthodes\ndans ce diagramme
-Ctrlr -> "e:Étudiant" : estValide=\nestValid(clé)
-alt estValide
-Ctrlr -> "ins:Inscription" : setÉtudiant(e)
-Ctrlr -> "ins:Inscription" : setDateHeure(now)
-Ctrlr -> ":GrandLivre" : ajouterInscription(ins)
-else !estValide
-create CléNonValideException
-Ctrlr --> CléNonValideException : create
-end
-@enduml
-```
+![](Inscription-cours-universite/CU01-RDCU-finaliserInscription.svg)
 
 
 ### DCL a faire

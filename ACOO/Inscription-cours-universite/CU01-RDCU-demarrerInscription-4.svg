@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="113px" preserveAspectRatio="none" style="width:572px;height:113px;" version="1.1" viewBox="0 0 572 113" width="572px" zoomAndPan="magnify"><defs/><g><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="91" x2="91" y1="36.2969" y2="106.5625"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="286.5" x2="286.5" y1="81.4297" y2="106.5625"/><rect fill="#FEFECE" height="30.2969" style="stroke:#A80036;stroke-width:1.5;" width="173" x="5" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="159" x="12" y="24.9951">:ControleurInscription</text><polygon fill="#A80036" points="216.5,63.4297,226.5,67.4297,216.5,71.4297" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="91.5" x2="222.5" y1="67.4297" y2="67.4297"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="113" x="98.5" y="62.3638">create(adresseIP)</text><rect fill="#FEFECE" height="30.2969" style="stroke:#A80036;stroke-width:1.5;" width="116" x="228.5" y="50.7813"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="235.5" y="70.7764">ins:Inscription</text><path d="M349,51.2969 L349,91.2969 L565,91.2969 L565,61.2969 L555,51.2969 L349,51.2969 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><path d="M555,51.2969 L555,61.2969 L565,61.2969 L555,51.2969 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="104" x="355" y="68.3638">GRASP Créateur</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="195" x="355" y="83.4966">(Controleur agrège Inscription)</text><!--MD5=[bcdd213b9c3a580cd613959b19675571]
+@startuml
+skinparam style strictuml
+participant ":ControleurInscription" as gl
+participant "ins:Inscription" as ins
+create ins
+gl -> ins : create(adresseIP)
+note right: GRASP Créateur\n(Controleur agrège Inscription)
+@enduml
+
+PlantUML version 1.2021.5beta3(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

@@ -1,0 +1,285 @@
+
+@startuml cas utilisation
+skinparam style strictuml
+left to right direction
+rectangle "Système d'inscription"{
+(CU01 - S'inscrire au prochain trimestre) as CU01
+(CU02 - Modifier son inscription) as CU02
+(CU03 - Admettre un étudiant) as CU03
+(CU04 - Planifier un trimestre) as CU04
+}
+Étudiant -- CU01
+Étudiant -- CU02
+Registraire -- CU03
+AgentAdministratif -- CU04
+@enduml
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+@startuml MDD
+top to bottom direction
+title MDD
+package System {
+class Universite <<Organisation>>
+class Etudiant <<Role>>
+class Inscription <<Transaction>>
+class Cours <<Description d'entité>>{
+  sigle: string
+}
+class Trimestre <<planification>>{
+  String session
+  Integer annee
+  Date debutInscription
+  Date finInscription
+}
+class GroupeCours <<Service>>
+class Horaire <<Planification></Planification>>
+Universite -- Cours: Offre des formations
+Etudiant "1" - "*" Inscription: effectue
+Inscription "1" -- "*" GroupeCours: est pour
+Cours "1" -- "*" GroupeCours: sont décrit par <
+GroupeCours "1" -- "1" Horaire: se donne selon
+GroupeCours "*" -- "1" Trimestre: s'appliquent >
+Cours "1" -- "*" Cours: est préalable >
+}
+@enduml
+
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+@startuml DSS
+hide footbox
+title Scénario de S'inscrire à un trimestre
+'Dans un DSS, un actor est externe au système
+'Truc PlantUML - “as E” définit E comme un synonyme de :Étudiant. 
+'Truc PlantUML - il faut mettre les "" autour du nom :Étudiant, car cela commence avec deux points (:)
+actor ":Étudiant" as E
+'Système vu en tant que boîte noire. Le nom pourrait être “Système de vente NextGen” 
+'  mais on se contente de “Système”.
+'les deux points (:) indiquent une instance et sont expliqués dans 
+'  le chapitre sur la notation des diagrammes de sequence UML
+participant ":Système" as S
+E->S: démarrerInscription(adresseIP)
+'Cadre d’interaction pour représenter une boucle UML avec une expression booléenne servant de garde
+'Truc PlantUML – tout ce qui suit “loop” est considéré comme une condition de la boucle (sytaxe est souple)
+loop Inscription pas confirmée
+  E->S: saisirCours(cours)
+' Valeur(s) de retour au message précédent. Abstraction ne tenant pas compte de la présentation ni du medium. La ligne de retour est facultative si rien n’est retourné.
+  E<--S: infos et groupes
+  loop n'a pas ajouté groupe-cours
+    E->S : saisirGroupeCours(groupeCours)
+    E<--S : horaire du groupe
+  end
+  E->S: ajouterGroupeCours(groupeCours)
+'Truc PlantUML – end signifie la fin de la boucle (ça ferme le cadre d’interaction)
+end
+E->S: terminerInscription
+E<--S: demande d'authentification
+E->S: finaliserInscription(clé)
+@enduml
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+@startuml CU01-RDCU-demarrerInscription-1
+skinparam style strictuml
+title Réalisation de cas d'utilisation: démarrerInscription
+-> ":?" : démarrerInscription(adresseIP)
+@enduml
+
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+@startuml CU01-RDCU-demarrerInscription-2
+skinparam style strictuml
+title Réalisation de cas d'utilisation: démarrerInscription
+-> ":GestionnaireInscription" : démarrerInscription(adresseIP)
+note left: GRASP Contrôleur de session
+@enduml
+
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+@startuml CU01-RDCU-demarrerInscription-3
+skinparam style strictuml
+participant "?"
+create "ins:Inscription"
+"?"-> "ins:Inscription" : create(adresseIP)
+@enduml
+
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+@startuml CU01-RDCU-demarrerInscription-4
+skinparam style strictuml
+participant ":ControleurInscription" as gl
+participant "ins:Inscription" as ins
+create ins
+gl -> ins : create(adresseIP)
+note right: GRASP Créateur\n(Controleur agrège Inscription)
+@enduml
+
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+@startuml CU01-RDCU-demarrerInscription-5
+skinparam style strictuml
+participant ":GestionnaireInscription" as Ctrlr
+title Réalisation de cas d'utilisation: démarrerInscription
+-> Ctrlr : démarrerInscription(adresseIP)
+note left of Ctrlr : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
+Ctrlr -> ":GrandLivre" : ??????
+participant ":GrandLivre"
+note over "ins:Inscription": GRASP Créateur\n(GrandLivre agrège Inscription)
+create "ins:Inscription"
+":GrandLivre"-> "ins:Inscription" : create(adresseIP)
+@enduml
+
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+@startuml CU01-RDCU-demarrerInscription-6
+skinparam style strictuml
+participant ":GestionnaireInscription" as Ctrlr
+title Réalisation de cas d'utilisation: démarrerInscription
+-> Ctrlr : démarrerInscription(adresseIP)
+note left of Ctrlr : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
+Ctrlr -> ":GrandLivre" : ins = addInscription(adresseIP)
+participant ":GrandLivre"
+note over "ins:Inscription": GRASP Créateur\n(GrandLivre agrège Inscription)
+create "ins:Inscription"
+":GrandLivre"-> "ins:Inscription" : create(adresseIP)
+@enduml
+
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+@startuml CU01-RDCU-saisirCours-1
+skinparam style strictuml
+participant ":GestionnaireInscription" as Ctrlr
+title Réalisation de cas d'utilisation: saisirCours
+-> Ctrlr : saisirCours(cours)
+note left of Ctrlr : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
+Ctrlr -> ":CatalogueCours" : groupes = getGroupes(cours)
+note right: GRASP Expert (Catalogue et\nCours serait les experts de\ncours et des groupes)
+":CatalogueCours" -> ":Map<Cours>" : c = chercher(cours)
+":CatalogueCours" -> "c:Cours" : groupes = getGroupes
+@enduml
+
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+@startuml CU01-RDCU-saisirCours-2
+skinparam style strictuml
+hide empty methods
+hide empty members
+class CatalogueCours
+class GroupeCours {
+identificateur : String
+}
+class Cours {
+titre : String
+}
+CatalogueCours "1" - "*" Cours : répertorie >
+Cours "1" - "*" GroupeCours : est-dispensé-dans >
+@enduml
+
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+@startuml CU01-RDCU-saisirCours-3
+skinparam style strictuml
+object ":CatalogueCours" as cat
+object "c1:Cours" as c1 {
+  titre = "LOG121"
+}
+object "c2:Cours" as c2 {
+  titre = "LOG210"
+}
+object "c3:Cours" as c3 {
+  titre = "LOG240"
+}
+cat -- c1
+cat -- c2
+cat -- c3
+@enduml
+
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+@startuml CU01-RDCU-saisirCours-4
+skinparam style strictuml
+object ":CatalogueCours" as cat
+object "c1:Cours" as c1 {
+  titre = "LOG121"
+}
+object "c2:Cours" as c2 {
+  titre = "LOG210"
+}
+object "c3:Cours" as c3 {
+  titre = "LOG240"
+}
+object ":Map<Cours>" as map
+cat - map
+map -- c1
+map -- c2
+map -- c3
+@enduml
+
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+@startuml CU01-RDCU-saisirGroupeCours-1
+skinparam style strictuml
+participant ":Gestionnaire\nInscription" as Ctrlr
+title Réalisation de cas d'utilisation: saisirGroupeCours
+-> Ctrlr : saisirGroupeCours(groupeCours)
+note left of Ctrlr : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
+Ctrlr -> ":CatalogueCours" : horaire =\ngetHoraire(groupeCours)
+note right: GRASP Expert (Catalogue et\nCours serait les experts de\ncours et des horaires)
+":CatalogueCours" -> ":Map<Cours>" : c =\nchercher(cours)
+note right: Notez que la valeur de cours\nsera décortiquée de groupeCours,\np.ex. "LOG210" de "LOG210-01"
+":CatalogueCours" -> "c:Cours" : horaire = getHoraire(groupeCours)
+note right: GRASP Expert (GroupeCours\nserait l'expert des horaires)
+"c:Cours" -> ":Map\n<GroupeCours>" : gc =\nchercher(groupe)
+"c:Cours" -> "gc:\nGroupeCours" : horaire =\ngetHoraire
+@enduml
+
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+@startuml CU01-RDCU-ajouterGroupeCour
+skinparam style strictuml
+participant ":Gestionnaire\nInscription" as Ctrlr
+title Réalisation de cas d'utilisation: ajouterGroupeCours
+-> Ctrlr : ajouterGroupeCours(groupeCours)
+note left of Ctrlr : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
+note left of Ctrlr : GRASP Expert justifie\ntoutes les autres méthodes\ndans ce diagramme
+Ctrlr -> ":CatalogueCours" : gc=\ngetGroupeCours\n(groupeCours)
+":CatalogueCours" -> ":Map<Cours>" : c=chercher(cours)
+":CatalogueCours" -> "c:Cours" : gc=\ngetGroupeCours(groupe)
+"c:Cours" -> ":Map\n<GroupeCours>" : gc=\nchercher\n(groupe)
+Ctrlr -> "ins:Inscription" : ajouterGroupeCours(gc)
+@enduml
+
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+@startuml CU01-RDCU-finaliserInscription
+skinparam style strictuml
+participant ":Gestionnaire\nInscription" as Ctrlr
+title Réalisation de cas d'utilisation: finaliserInscription
+-> Ctrlr : finaliserInscription(clé)
+note left of Ctrlr : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
+note left of Ctrlr : GRASP Expert justifie\ntoutes les autres méthodes\ndans ce diagramme
+Ctrlr -> "e:Étudiant" : estValide=\nestValid(clé)
+alt estValide
+Ctrlr -> "ins:Inscription" : setÉtudiant(e)
+Ctrlr -> "ins:Inscription" : setDateHeure(now)
+Ctrlr -> ":GrandLivre" : ajouterInscription(ins)
+else !estValide
+create CléNonValideException
+Ctrlr --> CléNonValideException : create
+end
+@enduml
