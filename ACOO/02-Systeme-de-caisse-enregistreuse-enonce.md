@@ -32,11 +32,3 @@ Le caissier est authentifié. Le plateau du caissier est inséré dans le tiroir
 
 
 Pour voir comment un plateau-argent peut être enlevé d’un tiroir-caisse, regarder cette vidéo sur YouTube : https://goo.gl/9HdKNq
-
-## Interface usagé
-## MDD
-## DSS
-## Contrats
-## RDCU's
-## DCL
-
