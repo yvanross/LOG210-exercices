@@ -58,7 +58,7 @@ class VisiteurOut extends AEtatVisite{
 class GardientOut extends AEtatVisite{
 }
 
-Visite -r->IEtatVisite
+Visite -r-> "ev" IEtatVisite
 
 
 

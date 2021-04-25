@@ -4,7 +4,7 @@ ARediger --> EnRedaction: redigerNote()
 EnRedaction --> ACorriger: corrigerNote()
 ACorriger --> Approuve: approuverNote()
 Approuve -->[*]
-
+ACorriger --> EnRedaction: réviserCorrection()
 @enduml
 
 
