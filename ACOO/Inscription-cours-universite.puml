@@ -1,5 +1,6 @@
 
 @startuml cas utilisation
+skinparam backgroundColor white
 skinparam style strictuml
 left to right direction
 rectangle "Système d'inscription"{
@@ -19,6 +20,8 @@ AgentAdministratif -- CU04
 @startuml MDD
 top to bottom direction
 title MDD
+skinparam backgroundColor white
+
 package System {
 class Universite <<Organisation>>
 class Etudiant <<Role>>
@@ -48,6 +51,8 @@ Cours "1" -- "*" Cours: est préalable >
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 @startuml DSS
+skinparam backgroundColor white
+
 hide footbox
 title Scénario de S'inscrire à un trimestre
 'Dans un DSS, un actor est externe au système
@@ -83,6 +88,8 @@ E->S: finaliserInscription(clé)
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 @startuml CU01-RDCU-demarrerInscription-1
+skinparam backgroundColor white
+
 skinparam style strictuml
 title Réalisation de cas d'utilisation: démarrerInscription
 -> ":?" : démarrerInscription(adresseIP)
@@ -92,6 +99,8 @@ title Réalisation de cas d'utilisation: démarrerInscription
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 @startuml CU01-RDCU-demarrerInscription-2
+skinparam backgroundColor white
+
 skinparam style strictuml
 title Réalisation de cas d'utilisation: démarrerInscription
 -> ":GestionnaireInscription" : démarrerInscription(adresseIP)
@@ -102,6 +111,7 @@ note left: GRASP Contrôleur de session
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 @startuml CU01-RDCU-demarrerInscription-3
+skinparam backgroundColor white
 skinparam style strictuml
 participant "?"
 create "ins:Inscription"
@@ -112,6 +122,7 @@ create "ins:Inscription"
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 @startuml CU01-RDCU-demarrerInscription-4
+skinparam backgroundColor white
 skinparam style strictuml
 participant ":ControleurInscription" as gl
 participant "ins:Inscription" as ins
@@ -124,6 +135,7 @@ note right: GRASP Créateur\n(Controleur agrège Inscription)
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 @startuml CU01-RDCU-demarrerInscription-5
+skinparam backgroundColor white
 skinparam style strictuml
 participant ":GestionnaireInscription" as Ctrlr
 title Réalisation de cas d'utilisation: démarrerInscription
@@ -140,6 +152,7 @@ create "ins:Inscription"
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 @startuml CU01-RDCU-demarrerInscription-6
+skinparam backgroundColor white
 skinparam style strictuml
 participant ":GestionnaireInscription" as Ctrlr
 title Réalisation de cas d'utilisation: démarrerInscription
@@ -156,6 +169,7 @@ create "ins:Inscription"
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 @startuml CU01-RDCU-saisirCours-1
+skinparam backgroundColor white
 skinparam style strictuml
 participant ":GestionnaireInscription" as Ctrlr
 title Réalisation de cas d'utilisation: saisirCours
@@ -171,6 +185,7 @@ note right: GRASP Expert (Catalogue et\nCours serait les experts de\ncours et de
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 @startuml CU01-RDCU-saisirCours-2
+skinparam backgroundColor white
 skinparam style strictuml
 hide empty methods
 hide empty members
@@ -189,6 +204,7 @@ Cours "1" - "*" GroupeCours : est-dispensé-dans >
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 @startuml CU01-RDCU-saisirCours-3
+skinparam backgroundColor white
 skinparam style strictuml
 object ":CatalogueCours" as cat
 object "c1:Cours" as c1 {
@@ -209,6 +225,7 @@ cat -- c3
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 @startuml CU01-RDCU-saisirCours-4
+skinparam backgroundColor white
 skinparam style strictuml
 object ":CatalogueCours" as cat
 object "c1:Cours" as c1 {
@@ -231,6 +248,7 @@ map -- c3
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 @startuml CU01-RDCU-saisirGroupeCours-1
+skinparam backgroundColor white
 skinparam style strictuml
 participant ":Gestionnaire\nInscription" as Ctrlr
 title Réalisation de cas d'utilisation: saisirGroupeCours
@@ -250,6 +268,7 @@ note right: GRASP Expert (GroupeCours\nserait l'expert des horaires)
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 @startuml CU01-RDCU-ajouterGroupeCour
+skinparam backgroundColor white
 skinparam style strictuml
 participant ":Gestionnaire\nInscription" as Ctrlr
 title Réalisation de cas d'utilisation: ajouterGroupeCours
@@ -267,6 +286,7 @@ Ctrlr -> "ins:Inscription" : ajouterGroupeCours(gc)
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 @startuml CU01-RDCU-finaliserInscription
+skinparam backgroundColor white
 skinparam style strictuml
 participant ":Gestionnaire\nInscription" as Ctrlr
 title Réalisation de cas d'utilisation: finaliserInscription
