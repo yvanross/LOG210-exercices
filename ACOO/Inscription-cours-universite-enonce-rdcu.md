@@ -1,4 +1,4 @@
-
+<span style="backgroundColor:blue">
 # Système d'inscriptions à des cours
 
 
@@ -83,3 +83,5 @@
 
 
 ## DCL
+
+</span>

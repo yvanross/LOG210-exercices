@@ -62,7 +62,7 @@ M <<-- S: noReservation, nom du membre, code de l'exemplaire
 @startuml RDCU-demarrerRechercheLivre
 skinparam style strictuml
 participant ":ControleurReservation" as S
-note left of S: Controlleur de session
+note left of S: Controlleur de session, \nfavorise une forte cohesion
 
  -> S: demarrerRechercheLivre() 
 
@@ -76,7 +76,7 @@ note left of S: Controlleur de session
 participant ":Bibliotheque" as B
 participant "ll:List<:Livre>" as LL
 
- -> S: [livre] = rechercherLivre(texte:string)
+ -> S: livres:string = rechercherLivre(texte:string)
 note left of B: Expert en information,\ncontroleur possède la Bibliotheque,\nBibliotheque possède la liste de livre
 S -> B: [livre] =rechercherLivre(texte:string)
 note left of LL: List<:Livre> est l'expert pour trouver les livres en sachant un texte
@@ -93,7 +93,7 @@ participant ":Bibliotheque" as B
 participant "ml:Map<nom, :Livre>" as ML
 participant "l:Livre" as L
 
- -> S: selectionnerLivre(livre:string)
+ -> S: livreEtExemplaires:string = selectionnerLivre(livre:string)
  note left of B: Expert en information \nControleur -> Bibliotheque\nBibliotheque -> map de livre
  S->B: [l,[exemplaire]] = selectionnerLivre(livre:string)
  note left of ML: Expert en information
@@ -110,14 +110,14 @@ participant ":ControleurReservation" as S
 note left of S: Controlleur de session
 participant ":Reservation" as Reservation
 participant ":Bibliotheque" as B
-participant "ml:Map<nom, :Livre>" as ML
+participant "ml:Map<isbn, :Livre>" as ML
 participant "l:Livre" as L
 participant "me:Map<code:string, :Exemplaire>" as ME
 
- -> S**: reserverExemplaire(livre:string, code:string)
+ -> S**: noconfirmation:string = reserverExemplaire(isbn:string, code:string)
 note right of S: Createur par default, \nfaible couplage avec parametre m:Membre
-S->B: exemplaire =  getExemplaire(livre:string, code:string)
-B -> ML: l = get(livre:string)
+S->B: exemplaire =  getExemplaire(isbn:string, code:string)
+B -> ML: l = get(isbn:string)
 note left of L: expert en information\nl possède une map d'exemmplaires
 B -> L: exemplaire = getExemplaire(code:string) 
 note left of L: expert en information 
@@ -127,6 +127,9 @@ note left of Reservation: createur par default, PUCE n'est pas application
 note left of Reservation: r.noConfirmation est devenu no unique
 S -> Reservation**: create(m:Membre, exemplaire:Exemplaire)
 Reservation ->Reservation: initNoConfirmation()
+
+note left of Reservation: expert: Ctrl possède un référence à l'objet racine Bibliotheque et \nr est le mutateur d'attribut
+S -> Reservation: noConfirmation:string = getNoConfirmation()
 
 @enduml
 
