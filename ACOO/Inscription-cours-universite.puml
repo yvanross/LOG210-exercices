@@ -37,7 +37,8 @@ class Trimestre <<planification>>{
 }
 class GroupeCours <<Service>>
 class Horaire <<Planification></Planification>>
-Universite -- Cours: Offre des formations
+Universite "1" -- "*" Cours: Offre des formations
+Universite "1" -- "*" Etudiant: Offre des service a
 Etudiant "1" - "*" Inscription: effectue
 Inscription "1" -- "*" GroupeCours: est pour
 Cours "1" -- "*" GroupeCours: sont décrit par <
@@ -103,8 +104,10 @@ skinparam backgroundColor white
 
 skinparam style strictuml
 title Réalisation de cas d'utilisation: démarrerInscription
--> ":GestionnaireInscription" : démarrerInscription(adresseIP)
-note left: GRASP Contrôleur de session
+participant ":GestionnaireInscription" as C
+note left of C: GRASP Contrôleur de session
+-> C : démarrerInscription(adresseIP)
+
 @enduml
 
 
@@ -127,8 +130,8 @@ skinparam style strictuml
 participant ":ControleurInscription" as gl
 participant "ins:Inscription" as ins
 create ins
+note right of gl: GRASP Créateur\n(createur par default)
 gl -> ins : create(adresseIP)
-note right: GRASP Créateur\n(Controleur agrège Inscription)
 @enduml
 
 
@@ -137,15 +140,13 @@ note right: GRASP Créateur\n(Controleur agrège Inscription)
 @startuml CU01-RDCU-demarrerInscription-5
 skinparam backgroundColor white
 skinparam style strictuml
-participant ":GestionnaireInscription" as Ctrlr
+participant ":ControleurInscription" as C
+participant "ins:Inscription" as I
 title Réalisation de cas d'utilisation: démarrerInscription
--> Ctrlr : démarrerInscription(adresseIP)
-note left of Ctrlr : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
-Ctrlr -> ":GrandLivre" : ??????
-participant ":GrandLivre"
-note over "ins:Inscription": GRASP Créateur\n(GrandLivre agrège Inscription)
-create "ins:Inscription"
-":GrandLivre"-> "ins:Inscription" : create(adresseIP)
+note left of C : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
+-> C : démarrerInscription(adresseIP)
+note right: GRASP Créateur\n(Createur par default)
+C --> I**: create(adresseIp)
 @enduml
 
 
@@ -156,13 +157,11 @@ skinparam backgroundColor white
 skinparam style strictuml
 participant ":GestionnaireInscription" as Ctrlr
 title Réalisation de cas d'utilisation: démarrerInscription
--> Ctrlr : démarrerInscription(adresseIP)
 note left of Ctrlr : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
-Ctrlr -> ":GrandLivre" : ins = addInscription(adresseIP)
-participant ":GrandLivre"
-note over "ins:Inscription": GRASP Créateur\n(GrandLivre agrège Inscription)
+-> Ctrlr : démarrerInscription(adresseIP)
+note right of Ctrlr: GRASP Créateur\npar default
 create "ins:Inscription"
-":GrandLivre"-> "ins:Inscription" : create(adresseIP)
+Ctrlr -> "ins:Inscription" : create(adresseIP)
 @enduml
 
 
@@ -175,10 +174,10 @@ participant ":GestionnaireInscription" as Ctrlr
 title Réalisation de cas d'utilisation: saisirCours
 -> Ctrlr : saisirCours(cours)
 note left of Ctrlr : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
-Ctrlr -> ":CatalogueCours" : groupes = getGroupes(cours)
+Ctrlr -> ":Universite" : groupes = getGroupes(cours)
 note right: GRASP Expert (Catalogue et\nCours serait les experts de\ncours et des groupes)
-":CatalogueCours" -> ":Map<Cours>" : c = chercher(cours)
-":CatalogueCours" -> "c:Cours" : groupes = getGroupes
+":Universite" -> ":Map<Cours>" : c = chercher(cours)
+":Universite" -> "c:Cours" : groupes = getGroupes
 @enduml
 
 
@@ -189,14 +188,14 @@ skinparam backgroundColor white
 skinparam style strictuml
 hide empty methods
 hide empty members
-class CatalogueCours
+class Universite
 class GroupeCours {
 identificateur : String
 }
 class Cours {
 titre : String
 }
-CatalogueCours "1" - "*" Cours : répertorie >
+Universite "1" - "*" Cours : répertorie >
 Cours "1" - "*" GroupeCours : est-dispensé-dans >
 @enduml
 
@@ -206,7 +205,7 @@ Cours "1" - "*" GroupeCours : est-dispensé-dans >
 @startuml CU01-RDCU-saisirCours-3
 skinparam backgroundColor white
 skinparam style strictuml
-object ":CatalogueCours" as cat
+object ":Universite" as cat
 object "c1:Cours" as c1 {
   titre = "LOG121"
 }
@@ -227,7 +226,7 @@ cat -- c3
 @startuml CU01-RDCU-saisirCours-4
 skinparam backgroundColor white
 skinparam style strictuml
-object ":CatalogueCours" as cat
+object ":Universite" as cat
 object "c1:Cours" as c1 {
   titre = "LOG121"
 }
@@ -254,11 +253,11 @@ participant ":Gestionnaire\nInscription" as Ctrlr
 title Réalisation de cas d'utilisation: saisirGroupeCours
 -> Ctrlr : saisirGroupeCours(groupeCours)
 note left of Ctrlr : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
-Ctrlr -> ":CatalogueCours" : horaire =\ngetHoraire(groupeCours)
+Ctrlr -> ":Universite" : horaire =\ngetHoraire(groupeCours)
 note right: GRASP Expert (Catalogue et\nCours serait les experts de\ncours et des horaires)
-":CatalogueCours" -> ":Map<Cours>" : c =\nchercher(cours)
+":Universite" -> ":Map<Cours>" : c =\nchercher(cours)
 note right: Notez que la valeur de cours\nsera décortiquée de groupeCours,\np.ex. "LOG210" de "LOG210-01"
-":CatalogueCours" -> "c:Cours" : horaire = getHoraire(groupeCours)
+":Universite" -> "c:Cours" : horaire = getHoraire(groupeCours)
 note right: GRASP Expert (GroupeCours\nserait l'expert des horaires)
 "c:Cours" -> ":Map\n<GroupeCours>" : gc =\nchercher(groupe)
 "c:Cours" -> "gc:\nGroupeCours" : horaire =\ngetHoraire
@@ -275,9 +274,9 @@ title Réalisation de cas d'utilisation: ajouterGroupeCours
 -> Ctrlr : ajouterGroupeCours(groupeCours)
 note left of Ctrlr : GRASP Contrôleur de session\n(aucun objet racine dans\nle modèle du domaine)
 note left of Ctrlr : GRASP Expert justifie\ntoutes les autres méthodes\ndans ce diagramme
-Ctrlr -> ":CatalogueCours" : gc=\ngetGroupeCours\n(groupeCours)
-":CatalogueCours" -> ":Map<Cours>" : c=chercher(cours)
-":CatalogueCours" -> "c:Cours" : gc=\ngetGroupeCours(groupe)
+Ctrlr -> ":Universite" : gc=\ngetGroupeCours\n(groupeCours)
+":Universite" -> ":Map<Cours>" : c=chercher(cours)
+":Universite" -> "c:Cours" : gc=\ngetGroupeCours(groupe)
 "c:Cours" -> ":Map\n<GroupeCours>" : gc=\nchercher\n(groupe)
 Ctrlr -> "ins:Inscription" : ajouterGroupeCours(gc)
 @enduml
@@ -297,7 +296,6 @@ Ctrlr -> "e:Étudiant" : estValide=\nestValid(clé)
 alt estValide
 Ctrlr -> "ins:Inscription" : setÉtudiant(e)
 Ctrlr -> "ins:Inscription" : setDateHeure(now)
-Ctrlr -> ":GrandLivre" : ajouterInscription(ins)
 else !estValide
 create CléNonValideException
 Ctrlr --> CléNonValideException : create

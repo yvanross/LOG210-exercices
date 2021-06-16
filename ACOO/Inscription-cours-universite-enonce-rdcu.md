@@ -57,7 +57,6 @@
 **Postconditions :**
 - une association entre ins et Étudiant a été formée
 - ins.dateHeure est devenu la date et heure actuelle.
-- une association entre ins et GrandLivre a été formée
 
 
 # RDCU's inscription cours université
