@@ -11,7 +11,7 @@ GardientOut --> [*]
 @enduml
 
 
-@startuml
+@startuml diagramme de classe
 
 note top of Visite: https://docs.google.com/document/d/18s-eN0QoqREblJUihUaEC2L7f1hZF82_Jm9PjfL6BuY/edit?pli=1#
 class Visite{
