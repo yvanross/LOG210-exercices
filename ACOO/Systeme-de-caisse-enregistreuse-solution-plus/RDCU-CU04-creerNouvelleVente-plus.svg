@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="319px" preserveAspectRatio="none" style="width:1013px;height:319px;background:#FFFFFF;" version="1.1" viewBox="0 0 1013 319" width="1013px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="85.4297" style="stroke:#A80036;stroke-width:1.0;" width="10" x="155" y="104.5625"/><rect fill="#FFFFFF" height="58.4297" style="stroke:#000000;stroke-width:2.0;" width="527" x="118" y="124.5625"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="160" x2="160" y1="36.2969" y2="312.5547"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="524" x2="524" y1="172.3438" y2="312.5547"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="892.5" x2="892.5" y1="249.7734" y2="312.5547"/><rect fill="#FEFECE" height="30.2969" style="stroke:#A80036;stroke-width:1.5;" width="64" x="128" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="135" y="24.9951">:Caisse</text><rect fill="#FFFFFF" height="85.4297" style="stroke:#A80036;stroke-width:1.0;" width="10" x="155" y="104.5625"/><polygon fill="#A80036" points="148,63.4297,158,67.4297,148,71.4297" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="0" x2="154" y1="67.4297" y2="67.4297"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="136" x="7" y="62.3638">creerNouvelleVente()</text><line style="stroke:#A80036;stroke-width:1.0;" x1="160" x2="207" y1="91.5625" y2="91.5625"/><line style="stroke:#A80036;stroke-width:1.0;" x1="207" x2="207" y1="91.5625" y2="104.5625"/><line style="stroke:#A80036;stroke-width:1.0;" x1="166" x2="207" y1="104.5625" y2="104.5625"/><polygon fill="#A80036" points="176,100.5625,166,104.5625,176,108.5625" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="239" x="172" y="86.4966">IEtatVente attenteVente = getState()</text><path d="M118,124.5625 L190,124.5625 L190,131.5625 L180,141.5625 L118,141.5625 L118,124.5625 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.0;"/><rect fill="none" height="58.4297" style="stroke:#000000;stroke-width:2.0;" width="527" x="118" y="124.5625"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="27" x="133" y="137.6294">opt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="90" x="205" y="136.7729">[etat == null]</text><polygon fill="#A80036" points="402,158.8281,412,162.8281,402,166.8281" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="165" x2="408" y1="162.8281" y2="162.8281"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="225" x="172" y="157.7622">IEtatVente attenteVente = create()</text><rect fill="#FEFECE" height="30.2969" style="stroke:#A80036;stroke-width:1.5;" width="221" x="414" y="141.6953"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="207" x="421" y="161.6904">attenteVente:AttenteVente</text><polygon fill="#A80036" points="512.5,207.125,522.5,211.125,512.5,215.125" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="160" x2="518.5" y1="211.125" y2="211.125"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="251" x="167" y="206.0591">IEtatVente etat = creerNouvelleVente()</text><polygon fill="#A80036" points="766.5,236.2578,776.5,240.2578,766.5,244.2578" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="524.5" x2="772.5" y1="240.2578" y2="240.2578"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="230" x="531.5" y="235.1919">IEtatVente creationVente = create()</text><rect fill="#FEFECE" height="30.2969" style="stroke:#A80036;stroke-width:1.5;" width="229" x="778.5" y="219.125"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="215" x="785.5" y="239.1201">creationVente:CreationVente</text><line style="stroke:#A80036;stroke-width:1.0;" x1="160" x2="202" y1="281.5547" y2="281.5547"/><line style="stroke:#A80036;stroke-width:1.0;" x1="202" x2="202" y1="281.5547" y2="294.5547"/><line style="stroke:#A80036;stroke-width:1.0;" x1="161" x2="202" y1="294.5547" y2="294.5547"/><polygon fill="#A80036" points="171,290.5547,161,294.5547,171,298.5547" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="154" x="167" y="276.4888">setState(creationVente)</text><!--MD5=[19294578e2a489ec8bbf6746d505a952]
+@startuml
+skinparam Style strictuml
+
+participant ":Caisse" as Caisse
+participant "attenteVente:AttenteVente" as AttenteVente
+participant "creationVente:CreationVente" as CreationVente
+
+-> Caisse: creerNouvelleVente()
+Caisse -> Caisse : IEtatVente attenteVente = getState()
+activate Caisse
+opt etat == null 
+Caisse -> AttenteVente**: IEtatVente attenteVente = create()
+end 
+deactivate Caisse
+
+Caisse -> AttenteVente: IEtatVente etat = creerNouvelleVente()
+AttenteVente -> CreationVente**: IEtatVente creationVente = create()
+Caisse -> Caisse: setState(creationVente)
+@enduml
+
+PlantUML version 1.2021.9beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

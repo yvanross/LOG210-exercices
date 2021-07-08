@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="270px" preserveAspectRatio="none" style="width:1126px;height:270px;background:#FFFFFF;" version="1.1" viewBox="0 0 1126 270" width="1126px" zoomAndPan="magnify"><defs/><g><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="227" x2="227" y1="36.2969" y2="263.3906"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="612" x2="612" y1="200.6094" y2="263.3906"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="839" x2="839" y1="36.2969" y2="263.3906"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="1057" x2="1057" y1="36.2969" y2="263.3906"/><rect fill="#FEFECE" height="30.2969" style="stroke:#A80036;stroke-width:1.5;" width="72" x="191" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58" x="198" y="24.9951">c:Caisse</text><rect fill="#FEFECE" height="30.2969" style="stroke:#A80036;stroke-width:1.5;" width="289" x="695" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="275" x="702" y="24.9951">MPL:Map&lt;identifiant:string, :Plateau&gt;</text><rect fill="#FEFECE" height="30.2969" style="stroke:#A80036;stroke-width:1.5;" width="126" x="994" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="112" x="1001" y="24.9951">plateau:Plateau</text><polygon fill="#A80036" points="215,63.4297,225,67.4297,215,71.4297" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="0" x2="221" y1="67.4297" y2="67.4297"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="203" x="7" y="62.3638">PoserPlateau(identifiant: string)</text><path d="M232,80.4297 L232,135.4297 L573,135.4297 L573,90.4297 L563,80.4297 L232,80.4297 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><path d="M563,80.4297 L563,90.4297 L573,90.4297 L563,80.4297 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="248" x="238" y="97.4966">Createur (PUCE), Caisse enregistre mp</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="320" x="238" y="112.6294">faible couplage en passant les paramètres c et ca</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="301" x="238" y="127.7622">Forte cohesion puisque mp est une transaction</text><polygon fill="#A80036" points="827.5,157.9609,837.5,161.9609,827.5,165.9609" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="227" x2="833.5" y1="161.9609" y2="161.9609"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="202" x="234" y="156.895">plateau = get(identifiant:string)</text><polygon fill="#A80036" points="527,187.0938,537,191.0938,527,195.0938" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="227" x2="533" y1="191.0938" y2="191.0938"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="288" x="234" y="186.0278">create(c:Caisse, ca:Caissier,plateau:Plateau)</text><rect fill="#FEFECE" height="30.2969" style="stroke:#A80036;stroke-width:1.5;" width="146" x="539" y="169.9609"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132" x="546" y="189.9561">mp:MiseEnPlateau</text><line style="stroke:#A80036;stroke-width:1.0;" x1="612" x2="654" y1="232.3906" y2="232.3906"/><line style="stroke:#A80036;stroke-width:1.0;" x1="654" x2="654" y1="232.3906" y2="245.3906"/><line style="stroke:#A80036;stroke-width:1.0;" x1="613" x2="654" y1="245.3906" y2="245.3906"/><polygon fill="#A80036" points="623,241.3906,613,245.3906,623,249.3906" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="99" x="619" y="227.3247">setDateArrive()</text><!--MD5=[beed03960e28530136ef58f1fc9b6e1d]
+@startuml
+skinparam style strictuml
+Participant "c:Caisse" as C
+Participant "mp:MiseEnPlateau" as MP
+Participant "MPL:Map<identifiant:string, :Plateau>" as MPL
+Participant "plateau:Plateau" as P
+
+
+-> C: PoserPlateau(identifiant: string)
+note right of C: Createur (PUCE), Caisse enregistre mp\nfaible couplage en passant les paramètres c et ca\nForte cohesion puisque mp est une transaction
+
+ C-> MPL: plateau = get(identifiant:string)
+
+ C - -> MP**: create(c:Caisse, ca:Caissier,plateau:Plateau)
+ MP -> MP: setDateArrive()
+@enduml
+
+PlantUML version 1.2021.9beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

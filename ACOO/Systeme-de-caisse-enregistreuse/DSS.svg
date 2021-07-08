@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="437px" preserveAspectRatio="none" style="width:404px;height:437px;background:#FFFFFF;" version="1.1" viewBox="0 0 404 437" width="404px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="156" x="123.5" y="28.708">Miser en plateau</text><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="38" x2="38" y1="119.25" y2="430.5781"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="357" x2="357" y1="119.25" y2="430.5781"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="5" y="115.9482">:Caissier</text><ellipse cx="38" cy="49.9531" fill="#FEFECE" rx="8" ry="8" style="stroke:#A80036;stroke-width:2.0;"/><path d="M38,57.9531 L38,84.9531 M25,65.9531 L51,65.9531 M38,84.9531 L25,99.9531 M38,84.9531 L51,99.9531 " fill="none" style="stroke:#A80036;stroke-width:2.0;"/><rect fill="#FEFECE" height="30.2969" style="stroke:#A80036;stroke-width:1.5;" width="82" x="316" y="87.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="68" x="323" y="107.9482">:Systeme</text><polygon fill="#A80036" points="345,146.3828,355,150.3828,345,154.3828" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="38" x2="351" y1="150.3828" y2="150.3828"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="162" x="45" y="145.3169">demarrerMiseEnPlateau()</text><polygon fill="#A80036" points="49,175.5156,39,179.5156,49,183.5156" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="43" x2="356" y1="179.5156" y2="179.5156"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="259" x="55" y="174.4497">formulaire [demande identifiant et mdp]</text><polygon fill="#A80036" points="345,204.6484,355,208.6484,345,212.6484" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="38" x2="351" y1="208.6484" y2="208.6484"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="267" x="45" y="203.5825">authentifier(identifiant:string, mdp:string)</text><polygon fill="#A80036" points="49,233.7813,39,237.7813,49,241.7813" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="43" x2="356" y1="237.7813" y2="237.7813"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="295" x="55" y="232.7153">ouvrir tiroir caisse, demande de poser plateau</text><polygon fill="#A80036" points="345,262.9141,355,266.9141,345,270.9141" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="38" x2="351" y1="266.9141" y2="266.9141"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="203" x="45" y="261.8481">poserPlateau(identifiant: string)</text><polygon fill="#A80036" points="49,292.0469,39,296.0469,49,300.0469" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="43" x2="356" y1="296.0469" y2="296.0469"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="192" x="55" y="290.981">Formulaire demande montant</text><polygon fill="#A80036" points="345,321.1797,355,325.1797,345,329.1797" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="38" x2="351" y1="325.1797" y2="325.1797"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="196" x="45" y="320.1138">crediterPlateau(montant:float)</text><polygon fill="#A80036" points="49,350.3125,39,354.3125,49,358.3125" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="43" x2="356" y1="354.3125" y2="354.3125"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="226" x="55" y="349.2466">demander de fermer le tiroir caisse</text><polygon fill="#A80036" points="345,379.4453,355,383.4453,345,387.4453" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="38" x2="351" y1="383.4453" y2="383.4453"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="128" x="45" y="378.3794">fermerTiroirCaisse()</text><polygon fill="#A80036" points="49,408.5781,39,412.5781,49,416.5781" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="43" x2="356" y1="412.5781" y2="412.5781"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="149" x="55" y="407.5122">option menu principal ?</text><!--MD5=[53a5831c45440f7aded6f57544fc52d0]
+@startuml
+title: Miser en plateau
+skinparam style strictuml
+Actor ":Caissier" as C
+Participant ":Systeme" as S
+
+C -> S: demarrerMiseEnPlateau()
+C <- - S: formulaire [demande identifiant et mdp]
+
+C -> S: authentifier(identifiant:string, mdp:string)
+C <- - S: ouvrir tiroir caisse, demande de poser plateau
+
+C -> S: poserPlateau(identifiant: string)
+C <- - S: Formulaire demande montant
+
+C -> S: crediterPlateau(montant:float)
+C <- - S: demander de fermer le tiroir caisse
+
+C -> S: fermerTiroirCaisse()
+C <- - S: option menu principal ?
+@enduml
+
+PlantUML version 1.2021.9beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

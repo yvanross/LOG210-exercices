@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="276px" preserveAspectRatio="none" style="width:1325px;height:276px;background:#FFFFFF;" version="1.1" viewBox="0 0 1325 276" width="1325px" zoomAndPan="magnify"><defs/><g><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="221" x2="221" y1="36.2969" y2="269.2578"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="441.5" x2="441.5" y1="36.2969" y2="269.2578"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="832.5" x2="832.5" y1="36.2969" y2="269.2578"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="1204" x2="1204" y1="206.4766" y2="269.2578"/><rect fill="#FEFECE" height="30.2969" style="stroke:#A80036;stroke-width:1.5;" width="64" x="189" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="196" y="24.9951">:Caisse</text><rect fill="#FEFECE" height="30.2969" style="stroke:#A80036;stroke-width:1.5;" width="63" x="410.5" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="417.5" y="24.9951">:Vente</text><rect fill="#FEFECE" height="30.2969" style="stroke:#A80036;stroke-width:1.5;" width="271" x="697.5" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="257" x="704.5" y="24.9951">attentePaiement:AttentePaiement</text><polygon fill="#A80036" points="209,63.4297,219,67.4297,209,71.4297" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="0" x2="215" y1="67.4297" y2="67.4297"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="197" x="7" y="62.3638">creerPaiement(montant: float)</text><polygon fill="#A80036" points="430,92.5625,440,96.5625,430,100.5625" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="221" x2="436" y1="96.5625" y2="96.5625"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="197" x="228" y="91.4966">creerPaiement(montant: float)</text><line style="stroke:#A80036;stroke-width:1.0;" x1="442" x2="484" y1="125.6953" y2="125.6953"/><line style="stroke:#A80036;stroke-width:1.0;" x1="484" x2="484" y1="125.6953" y2="138.6953"/><line style="stroke:#A80036;stroke-width:1.0;" x1="443" x2="484" y1="138.6953" y2="138.6953"/><polygon fill="#A80036" points="453,134.6953,443,138.6953,453,142.6953" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="65" x="449" y="120.6294">getState()</text><polygon fill="#A80036" points="821,163.8281,831,167.8281,821,171.8281" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="442" x2="827" y1="167.8281" y2="167.8281"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="367" x="449" y="162.7622">IEtatVente attenteVente = creerPaiement(montant:float)</text><polygon fill="#A80036" points="1078,192.9609,1088,196.9609,1078,200.9609" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="833" x2="1084" y1="196.9609" y2="196.9609"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="233" x="840" y="191.895">IEtatVente attenteVente2 = create()</text><rect fill="#FEFECE" height="30.2969" style="stroke:#A80036;stroke-width:1.5;" width="229" x="1090" y="175.8281"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="215" x="1097" y="195.8232">attenteVente2:AttenteVente</text><line style="stroke:#A80036;stroke-width:1.0;" x1="442" x2="484" y1="238.2578" y2="238.2578"/><line style="stroke:#A80036;stroke-width:1.0;" x1="484" x2="484" y1="238.2578" y2="251.2578"/><line style="stroke:#A80036;stroke-width:1.0;" x1="443" x2="484" y1="251.2578" y2="251.2578"/><polygon fill="#A80036" points="453,247.2578,443,251.2578,453,255.2578" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="157" x="449" y="233.1919">setState(attenteVente2)</text><!--MD5=[f66f221a38adccbf4c1550823320955d]
+@startuml
+skinparam Style strictuml
+
+participant ":Caisse" as Caisse
+participant ":Vente" as Vente
+participant "attentePaiement:AttentePaiement" as AttentePaiement
+participant "attenteVente2:AttenteVente" as AttenteVente2
+
+
+-> Caisse: creerPaiement(montant: float)
+Caisse -> Vente: creerPaiement(montant: float)
+Vente -> Vente: getState()
+Vente -> AttentePaiement: IEtatVente attenteVente = creerPaiement(montant:float)
+AttentePaiement -> AttenteVente2**: IEtatVente attenteVente2 = create()
+Vente -> Vente: setState(attenteVente2)
+@enduml
+
+PlantUML version 1.2021.9beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

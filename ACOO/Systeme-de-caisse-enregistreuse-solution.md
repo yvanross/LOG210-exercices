@@ -1,35 +1,8 @@
 # Système de caisse enregistreuse
 
 ### Diagramme des cas d'utilisation
+![dcu](Systeme-de-caisse-enregistreuse/DCU.svg)
 
-```plantuml
-@startuml
-left to right direction
-package system {
- usecase "Traiter une vente" as V
- usecase "Traiter les retours" as R
- usecase "Mise en plateau" as MP
- usecase "Analyse activité" as A
- usecase "Gérer la sécurité" as S
- usecase "Gérer les usager" as U
-}
-Client --> V
-Client --> R
-Caissier --> V
-Caissier --> R
-Caissier --> MP
-Gérant --> V
-Gérant --> R
-SystemVente --> A
-AdministrateurSystem --> S
-AdministrateurSystem --> U
-
-V --> ServiceAutorisationPaiement
-V --> CalculateurTaxe
-V --> SystemeCompatabilité
-MP --> SystemeRessourcesHumaines
-@enduml
-```
 
 # UC03 : Mise en plateau
 Acteur principal : Caissier
@@ -55,68 +28,11 @@ Pose hypothèse qu'une caisse à seulement un tirroir caisse.
 ## Interface usagé
 
 ## MDD
-```plantuml
+![mdd](Systeme-de-caisse-enregistreuse/MDD.svg)
 
-@startuml
-title MDD avec catégorie de classe
-top to bottom direction
-
-class Caissier <<Role>> {
-  identifiant: integer
-  motDePasse:string
-}
-
-class Caisse <<Equipement, objet physique>> {
-  tirroirCaisseFermer:Bool
-}
-class Plateau <<Objet physique>> {
-  identifiant: int
-}
-
-class MiseEnPlateau <<Transaction>> {
-  dateArrive: Datetime
-  dateDepart: Datetime
-  montant: float
-} 
-
-Caissier -- "*" MiseEnPlateau : effectue
-MiseEnPlateau -- Plateau: est fait dans un
-MiseEnPlateau -- Caisse: est réalisé sur un 
-
-
-@enduml
-```
-
-<!-- LOG210-04 seance-02-->
-<!-- LOG210-03 seance-02 -->
 
 ## DSS
-```plantuml
-@startuml
-title: Miser en plateau
-skinparam style strictuml
-Actor ":Caissier" as C
-Participant ":Systeme" as S
-
-C -> S: demarrerMiseEnPlateau()
-C <-- S: formulaire [demande identifiant et mdp]
-
-C -> S: authentifier(identifiant:string, mdp:string)
-C <-- S: ouvrir tiroir caisse, demande de poser plateau
-
-C -> S: poserPlateau(identifiant: string)
-C <-- S: Formulaire demande montant
-
-C -> S: crediterPlateau(montant:float)
-C <-- S: demander de fermer le tiroir caisse
-
-C -> S: fermerTiroirCaisse()
-C <-- S: option menu principal ?
-
-
-@enduml
-```
-
+![dss](Systeme-de-caisse-enregistreuse/DSS.svg)
 ## Contrat
 
  ## Operation: demarrerMiseEnPlateau()
@@ -159,130 +75,19 @@ C <-- S: option menu principal ?
 ### RDCU - demarrerMiseEnPlateau
 Question pour trouver le controleur de facade:
   - objet racine, équipement, systeme globale, sous-système
-  - 
-```plantuml
-@startuml
-skinparam style strictuml
-Participant "c:Caisse" as C
-
-note right of C: Controleur de facade de type équipement
- -> C: demarrerMiseEnPlateau()
- 
- 
-@enduml
-```
+  
+![demarrerMiseEnPlateau](Systeme-de-caisse-enregistreuse/RDCU-demarrerMiseEnPlateau.svg)
 ### RDCU authentifier
-```plantuml
-@startuml
-skinparam style strictuml
-Participant "c:Caisse" as C
-Participant "MC:Map<identifiant:string, :Caissier>" as MC
-Participant "ca:Caissier" as CA
- 
--> C: authentifier(identifiant:string, mdp:string)
-
-C -> MC: ca = get(identifiant:string)
-C -> CA: caissier = authentifier(mpd:string)
-opt "caissier != null"
-
-note right of C: expert en information, mutateur d'attribut
-C->C: OuvrirTirroirCaisse()
-end
-
-
-@enduml
-```
+![authentifier](Systeme-de-caisse-enregistreuse/RDCU-authentifier.svg)
 
 ### RDCU PoserPlateau
-```plantuml
-@startuml
-skinparam style strictuml
-Participant "c:Caisse" as C
-Participant "mp:MiseEnPlateau" as MP
-Participant "MPL:Map<identifiant:string, :Plateau>" as MPL
-Participant "plateau:Plateau" as P
-
-
--> C: PoserPlateau(identifiant: string)
-note right of C: Createur (PUCE), Caisse enregistre mp\nfaible couplage en passant les paramètres c et ca\nForte cohesion puisque mp est une transaction
-
- C-> MPL: plateau = get(identifiant:string)
-
- C --> MP**: create(c:Caisse, ca:Caissier,plateau:Plateau)
- MP -> MP: setDateArrive()
-
-@enduml
-```
+![poserPlateau](Systeme-de-caisse-enregistreuse/RDCU-PoserPlateau.svg)
 ### RDCU crediterPlateau
-```plantuml
-@startuml 
-skinparam style strictuml
-Participant "c:Caisse" as C
-Participant "mp:MiseEnPlateau" as MP
+![crediterplateau](Systeme-de-caisse-enregistreuse/RDCU-crediterPlateau.svg)
 
--> C: crediterPlateau(montant:float)
-note right of C: exper en information, mutateur d'attribut
-C->MP: setMontant(montant:float)
-
-
-@enduml
-```
 ### RDCU fermerTirroirCaisse
-```plantuml
-@startuml
-skinparam style strictuml
-Participant "c:Caisse" as C
-
-
-->C: fermerTirroirCaisse()
-note right of C: expert en information, mutateur d'attribut
-C->C: fermetureDuTiroirCaisse()
-
-@enduml
-```
-
+![fermerTirroirCaisse](Systeme-de-caisse-enregistreuse/RDCU-fermerTirroirCaisse.svg)
 ## DCL/DCC
-```plantuml
-@startuml
-title Mise en plateau
-class Caisse <<Equipement>> {
-  plateaux: Map<identifiant:string, :Plateau>
-  caissiers: Map<identifiant:string, :Caissier>
-  demarrerMiseEnPlateau()
-  authetifier(identifiant: string, mdp:string)
-  poserPlateau(identifiant:string)
-  crediterPlateau(montant:float)
-  fermerTiroirCaisse() 
-  - fermetureDuTiroirCaisse() 
-  - OuvrirTiroirCaisse()
-}
-class Plateau <<ObjectPhysique,Contenue de TirroirCaisse>> {
-  identificateur: String
-}
-class Caissier <<Role>> {
-identifiant: String
-motDePasse:String
-authentifier(identifiant:string, motDePasse:string): Caissier
-}
-
-
-class MiseEnPlateau<<Transaction>> {
-    Montant: Double
-    heureDebut: Datetime
-    heureFin:DateTime
-    - setDateArrive()
-    setMontant(montant:float): void
-    MiseEnPlateau(c:Caisse, ca:Caissier,p:Plateau): MiseEnPlateau
-}
-
-
-MiseEnPlateau "*" -- "1" Plateau: utilise
-MiseEnPlateau "*" -- "1" Caissier: est réalisé par
-MiseEnPlateau "*" -- "1" Caisse: s'effectue sur 
-Caisse --> "*" Plateau
-Caisse --> "*" Caissier
-
-@enduml
-```
+![dcl](Systeme-de-caisse-enregistreuse/DCL.svg)
 
 <!--LOG210-03 fait en classe-->

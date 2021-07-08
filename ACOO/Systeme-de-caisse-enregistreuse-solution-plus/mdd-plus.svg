@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="964px" preserveAspectRatio="none" style="width:1340px;height:964px;background:#FFFFFF;" version="1.1" viewBox="0 0 1340 964" width="1340px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="217" x="555.25" y="16.708">Version initiale du MDD</text><!--MD5=[09c7fee59aeaa7f351d3f41315b9ec07]
+cluster P1--><rect fill="#FFFFFF" height="306" style="stroke:#FFFFFF;stroke-width:1.5;" width="725" x="7" y="27.9531"/><!--MD5=[c21fdba60f12d94b2fa6e6bbd805160f]
+cluster P2--><rect fill="#FFFFFF" height="545" style="stroke:#FFFFFF;stroke-width:1.5;" width="360" x="325" y="413.4531"/><!--MD5=[c6ffcf4d3b405419d09df7141ae36a57]
+cluster P3--><rect fill="#FFFFFF" height="278.5" style="stroke:#FFFFFF;stroke-width:1.5;" width="299" x="717" y="398.9531"/><!--MD5=[c91a11a14e8114ae2fb75792853613c1]
+class GL--><rect codeLine="7" fill="#FEFECE" height="23.9688" id="GL" style="stroke:#A80036;stroke-width:1.5;" width="71" x="549.5" y="255.9531"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="65" x="552.5" y="272.0918">GrandLivre</text><!--MD5=[207b08653767d711cd995cbc82c01495]
+class CP--><rect codeLine="8" fill="#FEFECE" height="37.9375" id="CP" style="stroke:#A80036;stroke-width:1.5;" width="66" x="31" y="248.9531"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="60" x="34" y="265.0918">Catalogue</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="48" x="40" y="279.0605">Produits</text><!--MD5=[d71d1ab749f02987107a92bcb0388bfb]
+class SP--><rect codeLine="9" fill="#FEFECE" height="84.3516" id="SP" style="stroke:#A80036;stroke-width:1.5;" width="83" x="216.5" y="225.9531"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="77" x="219.5" y="242.0918">Spécification</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="41" x="237.5" y="256.0605">Produit</text><line style="stroke:#A80036;stroke-width:1.5;" x1="217.5" x2="298.5" y1="263.8906" y2="263.8906"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="52" x="222.5" y="278.1011">descriptif</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="21" x="222.5" y="290.9058">prix</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="64" x="222.5" y="303.7104">codeArticle</text><!--MD5=[89e567431bbe55d1ccf3721764f6756f]
+class LA--><rect codeLine="15" fill="#FEFECE" height="58.7422" id="LA" style="stroke:#A80036;stroke-width:1.5;" width="59" x="361.5" y="89.9531"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="32" x="375" y="106.0918">Ligne</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="45" x="368.5" y="120.0605">Articles</text><line style="stroke:#A80036;stroke-width:1.5;" x1="362.5" x2="419.5" y1="127.8906" y2="127.8906"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="47" x="367.5" y="142.1011">quantité</text><!--MD5=[a46ee5ce0ceb0380cf446a08a056dce4]
+class A--><rect codeLine="18" fill="#FEFECE" height="23.9688" id="A" style="stroke:#A80036;stroke-width:1.5;" width="44" x="656" y="255.9531"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="38" x="659" y="272.0918">Article</text><!--MD5=[ca86e0a6a0e0c1496e70ac1078033fbc]
+class M--><rect codeLine="19" fill="#FEFECE" height="57.5781" id="M" style="stroke:#A80036;stroke-width:1.5;" width="66" x="335" y="238.9531"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="49" x="343.5" y="255.0918">Magasin</text><line style="stroke:#A80036;stroke-width:1.5;" x1="336" x2="400" y1="262.9219" y2="262.9219"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="25" x="341" y="277.1323">nom</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="54" x="341" y="289.937">adressee</text><!--MD5=[378b18254a1b2429f435e93f5e5cc50c]
+class C--><rect codeLine="29" fill="#FEFECE" height="44.7734" id="C" style="stroke:#A80036;stroke-width:1.5;" width="69" x="493.5" y="467.4531"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="40" x="508" y="483.5918">Caisse</text><line style="stroke:#A80036;stroke-width:1.5;" x1="494.5" x2="561.5" y1="491.4219" y2="491.4219"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="57" x="499.5" y="505.6323">identifiant</text><!--MD5=[700e55c49127fcf6779e649deee2df4c]
+class MP--><rect codeLine="32" fill="#FEFECE" height="70.3828" id="MP" style="stroke:#A80036;stroke-width:1.5;" width="76" x="494" y="595.9531"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="70" x="497" y="612.0918">MisePlateau</text><line style="stroke:#A80036;stroke-width:1.5;" x1="495" x2="569" y1="619.9219" y2="619.9219"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="47" x="500" y="634.1323">montant</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="26" x="500" y="646.937">date</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="34" x="500" y="659.7417">heure</text><!--MD5=[8cba63748e8d9052b00e5866eea451b7]
+class PA--><rect codeLine="37" fill="#FEFECE" height="58.7422" id="PA" style="stroke:#A80036;stroke-width:1.5;" width="69" x="528.5" y="883.4531"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="42" x="542" y="899.5918">Plateau</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="40" x="543" y="913.5605">Argent</text><line style="stroke:#A80036;stroke-width:1.5;" x1="529.5" x2="596.5" y1="921.3906" y2="921.3906"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="57" x="534.5" y="935.6011">identifiant</text><!--MD5=[17b5d259207ef48b9fe2a4345589d67c]
+class Ca--><rect codeLine="40" fill="#FEFECE" height="57.5781" id="Ca" style="stroke:#A80036;stroke-width:1.5;" width="84" x="341" y="748.4531"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="48" x="359" y="764.5918">Caissier</text><line style="stroke:#A80036;stroke-width:1.5;" x1="342" x2="424" y1="772.4219" y2="772.4219"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="57" x="347" y="786.6323">identifiant</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="72" x="347" y="799.437">motDePasse</text><!--MD5=[218f71f443b9e0720bb96dd9df1d4749]
+class PC--><rect codeLine="55" fill="#FEFECE" height="44.7734" id="PC" style="stroke:#A80036;stroke-width:1.5;" width="89" x="741.5" y="608.4531"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="83" x="744.5" y="624.5918">PaiementCash</text><line style="stroke:#A80036;stroke-width:1.5;" x1="742.5" x2="829.5" y1="632.4219" y2="632.4219"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="47" x="747.5" y="646.6323">montant</text><!--MD5=[d025b2034a9b9c454e9089fda2b377c2]
+class Cl--><rect codeLine="59" fill="#FEFECE" height="23.9688" id="Cl" style="stroke:#A80036;stroke-width:1.5;" width="39" x="869.5" y="618.9531"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="33" x="872.5" y="635.0918">Client</text><!--MD5=[1ae2715697942bd221ebc3232bf48911]
+class V--><rect codeLine="61" fill="#FEFECE" height="57.5781" id="V" style="stroke:#A80036;stroke-width:1.5;" width="46" x="747" y="460.9531"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="35" x="752.5" y="477.0918">Vente</text><line style="stroke:#A80036;stroke-width:1.5;" x1="748" x2="792" y1="484.9219" y2="484.9219"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="26" x="753" y="499.1323">date</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="34" x="753" y="511.937">heure</text><path d="M1084.5,885.4531 L1084.5,940.8516 L1333.5,940.8516 L1333.5,895.4531 L1323.5,885.4531 L1084.5,885.4531 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><path d="M1323.5,885.4531 L1323.5,895.4531 L1333.5,895.4531 L1323.5,885.4531 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="123" x="1090.5" y="902.52">Il y a un double lien</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="224" x="1094.5" y="917.6528">entre la caisse et le plateauArgent.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="158" x="1098.5" y="932.7856">Pouvez vous l'expliquer?</text><path d="M704.5,757.4531 L704.5,797.7188 L1007.5,797.7188 L1007.5,767.4531 L997.5,757.4531 L704.5,757.4531 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><path d="M997.5,757.4531 L997.5,767.4531 L1007.5,767.4531 L997.5,757.4531 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="282" x="710.5" y="774.52">Il y a un double lien entre Caisse et Caissier.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="158" x="710.5" y="789.6528">Pouvez vous l'expliquer?</text><path d="M701,900.4531 L701,925.5859 L1049,925.5859 L1049,910.4531 L1039,900.4531 L701,900.4531 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><path d="M1039,900.4531 L1039,910.4531 L1049,910.4531 L1039,900.4531 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="327" x="707" y="917.52">Il y a un double lien entre Caissier et PlateauArgent</text><!--MD5=[5aa66c336a7190c8d0e67e66d380f3ef]
+link GL to M--><path codeLine="23" d="M549.365,267.9531 C508.347,267.9531 441.496,267.9531 401.431,267.9531 " fill="none" id="GL-M" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="418.25,256.5195,427.2951,259.4585,427.2951,253.5806,418.25,256.5195" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="99" x="432.25" y="261.02">Enregistre-pour</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="533.5619" y="263.5596">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="409.1511" y="263.5303">1</text><!--MD5=[1e6b098305cb22ede4d6f0d632977d7d]
+link C to MP--><path codeLine="45" d="M505.13,512.5791 C492.689,527.0411 480.957,546.8531 487,565.9531 C490.319,576.4431 496.042,586.7011 502.317,595.8251 " fill="none" id="C-MP" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="492.1689,552.5224,488.9261,561.4631,494.8006,561.6616,492.1689,552.5224" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="95" x="501" y="562.02">Catpurée-dans</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="490.2446" y="532.4119">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="24" x="470.6317" y="585.0094">0..1</text><!--MD5=[73443f250716099cf52723953509bb46]
+link C to PA--><path codeLine="46" d="M562.707,511.9621 C576.319,521.7191 591.032,534.3951 601,548.9531 C653.455,625.5661 649.064,656.6551 663,748.4531 C666.869,773.9391 672.545,782.5081 663,806.4531 C649.917,839.2731 621.237,867.7481 597.931,886.8152 " fill="none" id="C-PA" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="663.5322,705.0415,661.4524,714.3218,667.3045,713.7719,663.5322,705.0415" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="56" x="673" y="714.52">Est-dans</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="24" x="545.0933" y="532.379">0..1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="605.5955" y="877.298">1</text><!--MD5=[d85d3312e84cc895ed6f87ce80714198]
+link C to Ca--><path codeLine="47" d="M494.511,512.4931 C458.681,536.3051 405.438,574.1691 394,595.9531 C368.459,644.5961 372.697,711.0831 377.936,748.2861 " fill="none" id="C-Ca" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="401.2159,626.5374,394.5727,633.3432,399.8418,635.9482,401.2159,626.5374" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="67" x="408" y="635.52">Travaille-à</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="477.3731" y="531.9261">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="377.7032" y="737.3928">1</text><!--MD5=[d9f723395b4dc9f8750d8f70ebe72589]
+link MP to Ca--><path codeLine="48" d="M503.241,666.2631 C492.86,676.5581 480.376,686.8561 467,693.4531 C446.816,703.4081 434.89,687.7991 417,701.4531 C402.113,712.8161 393.558,732.1881 388.754,748.3981 " fill="none" id="MP-Ca" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="426.0626,707.1049,417.0001,709.9895,420.4264,714.7655,426.0626,707.1049" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54" x="431" y="714.52">Effectue</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="488.9963" y="686.4668">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="390.8877" y="737.5293">1</text><!--MD5=[e91e0b2a5ec93d11c0d93dd5e6186a9e]
+link MP to PA--><path codeLine="49" d="M525.226,666.0421 C519.313,701.4441 512.969,758.2851 522,806.4531 C527.069,833.4931 538.856,862.5101 548.497,883.2548 " fill="none" id="MP-PA" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="526.4674,772.548,524.5087,781.8547,530.3531,781.2285,526.4674,772.548" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="122" x="536" y="782.02">Enregistre-mise-de</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="515.1049" y="686.4691">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="536.4495" y="872.2277">1</text><!--MD5=[7411d67d19619d34cd8ca6bec61ebe48]
+link Ca to PA--><path codeLine="50" d="M377.339,806.7261 C375.912,822.0171 377.036,840.3901 387,853.4531 C420.294,897.105 487.309,908.5604 528.359,911.3431 " fill="none" id="Ca-PA" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="387.8899,842.1723,393.6516,849.7389,396.9987,844.9071,387.8899,842.1723" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="84" x="401" y="849.52">Maintenu-par</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="24" x="349.862" y="826.0873">0..1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="512.3893" y="924.6651">1</text><!--MD5=[aa649659d0857aff0c5366cf47f6802f]
+link LA to SP--><path codeLine="67" d="M361.121,123.8571 C306.143,130.8001 192.417,148.5661 169,178.9531 C148.773,205.2001 184.227,231.4041 216.202,248.3021 " fill="none" id="LA-SP" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="170.2067,190.7769,178.9835,187.1139,175.1542,182.6546,170.2067,190.7769" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="64" x="183" y="192.02">Décrit-par</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="346.4021" y="120.2532">*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="200.6167" y="240.854">1</text><!--MD5=[945fff1f9a7c6cbbefae16f3952e6d71]
+link LA to A--><path codeLine="68" d="M381.06,149.1521 C377.596,164.8121 376.944,183.4911 388,195.9531 C425.134,237.8091 587.827,201.1831 638,225.9531 C651.732,232.7321 663.418,246.1921 670.55,255.8421 " fill="none" id="LA-A" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="397.6915,189.2486,390.2208,183.3631,388.1882,188.8783,397.6915,189.2486" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="128" x="402" y="192.02">Enregistre-vente-de</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="24" x="352.5349" y="168.9316">0..1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="23" x="639.7331" y="244.8533">1..*</text><!--MD5=[28acfc9d5f2d1e7a6177b3b62884a9cf]
+link LA to V--><path codeLine="69" d="M420.711,147.3361 C421.796,147.9191 422.893,148.4611 424,148.9531 C547.032,203.6531 648.006,110.3291 717,225.9531 C762.348,301.9491 769.577,410.0101 770.291,460.6781 " fill="none" id="LA-V" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="768.7232,271.3568,763.9494,263.1311,760.0262,267.5081,768.7232,271.3568" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="90" x="774" y="272.52">Contenu-dans</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="23" x="428.5668" y="148.3258">1..*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="761.4797" y="449.7612">1</text><!--MD5=[b36389ff5353c2a75d55c41f005f20d9]
+link GL to V--><path codeLine="70" d="M591.135,279.9741 C600.334,296.0811 618.694,326.6661 638,349.9531 C648.231,362.2941 650.46,366.3711 664,374.9531 C672.436,380.3001 676.926,377.0731 685,382.9531 C713.793,403.9221 738.192,437.0331 753.363,460.6671 " fill="none" id="GL-V" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="673.3403,370.2401,669.4845,361.5462,665.1108,365.473,673.3403,370.2401" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="65" x="679" y="371.02">Enregistre</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="584.0157" y="300.1273">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="741.958" y="449.7478">*</text><!--MD5=[16f23f5fa2993a5242b8fcc9deaf0ad6]
+link GL to MP--><path codeLine="71" d="M549.339,278.6791 C504.315,293.0941 428.783,324.8941 396,382.9531 C366.28,435.5861 370.083,464.3471 396,518.9531 C416.059,561.2171 460.959,592.7051 493.699,611.1451 " fill="none" id="GL-MP" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="400.1747,494.9509,404.5663,486.515,398.7691,485.5448,400.1747,494.9509" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="65" x="410" y="494.52">Enregistre</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="533.5307" y="294.3504">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="478.9919" y="603.1541">*</text><!--MD5=[b5e41a83cf20387886e1cf6c8ec2cfe7]
+link CP to M--><path codeLine="72" d="M96.709,248.9191 C133.957,228.4391 197.333,197.1651 256.5,184.9531 C273.693,181.4041 320.999,175.0581 335.5,184.9531 C353.012,196.9031 361.089,219.8331 364.813,238.5691 " fill="none" id="CP-M" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="266.4963,187.3267,257.3446,184.7388,257.5713,190.6123,266.4963,187.3267" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="64" x="270.5" y="192.02">Utilisé-par</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="97.5011" y="237.8899">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="356.4338" y="228.0859">*</text><!--MD5=[08c508dd208a343324b3c1cca4167151]
+link CP to SP--><path codeLine="73" d="M97.35,267.9531 C130.284,267.9531 180.744,267.9531 216.308,267.9531 " fill="none" id="CP-SP" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="124.25,256.5195,115.2049,253.5806,115.2049,259.4585,124.25,256.5195" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="70" x="128.25" y="261.02">Répertoirie</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="105.0534" y="263.4933">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="23" x="185.4954" y="281.1055">1..*</text><!--MD5=[fe3bb2d92b7929f78a691aee401c15d9]
+link SP to A--><path codeLine="74" d="M299.548,235.0981 C305.201,231.6231 311.095,228.4531 317,225.9531 C409.599,186.7551 439.363,194.1021 539.5,184.9531 C562.958,182.8101 570.511,176.5071 592.5,184.9531 C628.421,198.7501 657.279,236.3131 670.375,255.8241 " fill="none" id="SP-A" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="549.4922,187.7986,540.6252,184.3595,540.2972,190.2281,549.4922,187.7986" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="38" x="553.5" y="192.02">Décrit</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="307.3766" y="225.2102">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="668.6734" y="244.8279">*</text><!--MD5=[f85f33aa15d961e5e0bb394cde81228a]
+link M to A--><path codeLine="75" d="M401.281,251.7781 C445.134,231.4501 525.24,197.6801 598,184.9531 C610.696,182.7321 645.785,177.0931 656,184.9531 C677.739,201.6801 679.593,237.2401 678.917,255.9191 " fill="none" id="M-A" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="607.9994,187.5941,598.9992,184.5206,598.9115,190.3978,607.9994,187.5941" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="43" x="612" y="192.02">Stocke</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="408.9702" y="244.0193">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="670.8515" y="244.9621">*</text><!--MD5=[b12d6852ac6f17b3bcfb31cb87c86530]
+link M to PA--><path codeLine="76" d="M352.688,297.1771 C343.334,313.3341 330.584,333.5841 317,349.9531 C258.958,419.8961 167,398.0631 167,488.9531 C167,488.9531 167,488.9531 167,778.4531 C167,854.3601 431.573,895.3703 528.205,907.8172 " fill="none" id="M-PA" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="173.3812,635.825,173.7071,626.32,168.058,627.9437,173.3812,635.825" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54" x="181" y="635.52">Possède</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="340.886" y="316.5287">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="513.3067" y="902.3182">*</text><!--MD5=[74321f50c1811ebd28b56be3c40226ff]
+link M to Ca--><path codeLine="77" d="M362.348,297.1991 C352.495,349.9771 333.956,467.1601 342,565.9531 C347.574,634.4091 352.291,651.3641 367,718.4531 C369.148,728.2481 371.934,738.8531 374.579,748.2831 " fill="none" id="M-Ca" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="347.1355,562.5177,349.8282,553.3963,343.9525,553.5556,347.1355,562.5177" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="51" x="356" y="562.02">Emploie</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="352.4478" y="316.555">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="364.9713" y="737.3891">*</text><!--MD5=[e7954946adc3aacd24eec3ec03467a7f]
+link M to C--><path codeLine="78" d="M394.9,297.2881 C415.501,319.6641 444.022,352.1451 466,382.9531 C485.81,410.7221 505.077,445.1861 516.74,467.1291 " fill="none" id="M-C" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="466.9145,370.5823,464.0301,361.5196,459.2541,364.9458,466.9145,370.5823" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54" x="473" y="371.02">Contient</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="391.4084" y="316.6615">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="505.9578" y="456.4715">*</text><!--MD5=[3df6c7e76c0b93f0a59137274997f059]
+link V to PC--><path codeLine="79" d="M770.06,519.1741 C770.362,533.2691 771.141,550.5581 773,565.9531 C774.713,580.1361 777.889,595.8611 780.673,608.1751 " fill="none" id="V-PC" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="778.592,562.4844,780.4393,553.1549,774.6028,553.8509,778.592,562.4844" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="58" x="787" y="562.02">Payé-par</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="761.2843" y="538.5251">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="770.283" y="597.5293">1</text><!--MD5=[423a0b5fac7421c01bbc9f2567fdc76b]
+link V to Cl--><path codeLine="80" d="M793.176,515.8151 C794.441,516.9071 795.719,517.9601 797,518.9531 C818.394,535.5341 831.506,529.1891 850,548.9531 C869.409,569.6941 880.933,601.8841 885.973,618.7611 " fill="none" id="V-Cl" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="870.3477,561.2334,866.4746,552.5472,862.1087,556.4827,870.3477,561.2334" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="80" x="876" y="562.02">Effectué-par</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="801.159" y="518.3573">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="875.0744" y="607.7389">1</text><!--MD5=[92aae6a4c8a21bc07a96d21c87aa526b]
+link V to C--><path codeLine="81" d="M746.681,489.9531 C703.911,489.9531 612.728,489.9531 562.673,489.9531 " fill="none" id="V-C" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#000000" points="599.75,478.5195,608.7951,481.4585,608.7951,475.5806,599.75,478.5195" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="95" x="613.75" y="483.02">Capturée-dans</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="24" x="714.955" y="485.4401">0..1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="570.6493" y="485.5102">1</text><!--MD5=[27c89618aa77f5f18aa190e3142b164a]
+link P1 to P3--><!--MD5=[171112e4757e05107a3c325ab28d49cb]
+link PA to GMN733764--><path d="M597.764,890.1384 C624.589,873.9651 663.287,853.6521 700.5,844.9531 C851.539,809.6461 897.527,813.9091 1049.5,844.9531 C1087.84,852.7851 1128.37,870.1981 1158.98,885.4418 " fill="none" id="PA-GMN733764" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[6a09c59bae3aef1183ee2c9f7005d048]
+link Ca to GMN733767--><path d="M417.687,748.1771 C432.637,737.3991 450.933,726.4801 469.5,720.9531 C588.117,685.6461 734.037,729.3931 808.048,757.4241 " fill="none" id="Ca-GMN733767" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[bbb3646acd633ba0527523388fb7533f]
+link PA to GMN733770--><path d="M597.734,912.9531 C632.122,912.9531 666.509,912.9531 700.897,912.9531 " fill="none" id="PA-GMN733770" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[f45e30c747a22223fea71deeea9af765]
+@startuml
+title: Version initiale du MDD
+skinparam style strictuml
+hide empty members
+hide methods
+
+package P1 {
+    class "GrandLivre" as GL
+    class "Catalogue\nProduits" as CP
+    class "Spécification\nProduit" as SP {
+      descriptif
+      prix
+      codeArticle
+    }
+
+    class "Ligne\nArticles" as LA {
+    quantité
+    }
+    class "Article" as A
+    class "Magasin" as M {
+      nom
+      adressee
+    }
+  GL "1" - "1" M : Enregistre-pour >
+}
+
+
+package P2 {
+
+class "Caisse" as C {
+  identifiant
+}
+class "MisePlateau" as MP {
+  montant
+  date
+  heure
+}
+class "Plateau\nArgent" as PA {
+  identifiant
+}
+class "Caissier" as Ca {
+  identifiant
+  motDePasse
+}
+
+C "1" - - "0..1" MP : Catpurée-dans <
+C "0..1" - - "1" PA : Est-dans <
+C "1" - - "1" Ca : Travaille-à <
+MP "1" - - "1" Ca : Effectue <
+MP "1" - - "1" PA : Enregistre-mise-de <
+Ca "0..1" - - "1" PA : Maintenu-par <
+
+}
+
+package P3 {
+    class "PaiementCash" as PC {
+      montant
+    }
+    
+    class "Client" as Cl
+    
+    class "Vente" as V {
+      date
+      heure
+    }
+}
+
+LA "*" - - "1" SP : Décrit-par >
+LA "0..1" - "1..*" A : Enregistre-vente-de >
+LA "1..*"- "1" V : Contenu-dans >
+GL "1" - - "*" V : Enregistre >
+GL "1" - - "*" MP : Enregistre >
+CP "1" - "*" M : Utilisé-par >
+CP "1" - "1..*" SP : Répertoirie >
+SP "1" - "*" A : Décrit >
+M "1" - "*" A : Stocke >
+M "1" - "*" PA : Possède >
+M "1" - "*" Ca : Emploie >
+M "1" - "*" C : Contient >
+V "1" - - "1" PC : Payé-par >
+V "1" - - "1" Cl : Effectué-par >
+V "0..1" - "1" C : Capturée-dans >
+
+' layout tricks
+P1 -[hidden]down- P3
+'P2 -[hidden]left- P3
+skinparam packageStyle rect
+skinparam package {
+  borderColor Transparent
+  fontColor Transparent
+}
+note right of PA : Il y a un double lien\n entre la caisse et le plateauArgent.\n  Pouvez vous l'expliquer?
+note right of Ca : Il y a un double lien entre Caisse et Caissier.\nPouvez vous l'expliquer?
+note right of PA : Il y a un double lien entre Caissier et PlateauArgent
+@enduml
+
+@startuml
+title: Version initiale du MDD
+skinparam style strictuml
+hide empty members
+hide methods
+
+package P1 {
+    class "GrandLivre" as GL
+    class "Catalogue\nProduits" as CP
+    class "Spécification\nProduit" as SP {
+      descriptif
+      prix
+      codeArticle
+    }
+
+    class "Ligne\nArticles" as LA {
+    quantité
+    }
+    class "Article" as A
+    class "Magasin" as M {
+      nom
+      adressee
+    }
+  GL "1" - "1" M : Enregistre-pour >
+}
+
+
+package P2 {
+
+class "Caisse" as C {
+  identifiant
+}
+class "MisePlateau" as MP {
+  montant
+  date
+  heure
+}
+class "Plateau\nArgent" as PA {
+  identifiant
+}
+class "Caissier" as Ca {
+  identifiant
+  motDePasse
+}
+
+C "1" - - "0..1" MP : Catpurée-dans <
+C "0..1" - - "1" PA : Est-dans <
+C "1" - - "1" Ca : Travaille-à <
+MP "1" - - "1" Ca : Effectue <
+MP "1" - - "1" PA : Enregistre-mise-de <
+Ca "0..1" - - "1" PA : Maintenu-par <
+
+}
+
+package P3 {
+    class "PaiementCash" as PC {
+      montant
+    }
+    
+    class "Client" as Cl
+    
+    class "Vente" as V {
+      date
+      heure
+    }
+}
+
+LA "*" - - "1" SP : Décrit-par >
+LA "0..1" - "1..*" A : Enregistre-vente-de >
+LA "1..*"- "1" V : Contenu-dans >
+GL "1" - - "*" V : Enregistre >
+GL "1" - - "*" MP : Enregistre >
+CP "1" - "*" M : Utilisé-par >
+CP "1" - "1..*" SP : Répertoirie >
+SP "1" - "*" A : Décrit >
+M "1" - "*" A : Stocke >
+M "1" - "*" PA : Possède >
+M "1" - "*" Ca : Emploie >
+M "1" - "*" C : Contient >
+V "1" - - "1" PC : Payé-par >
+V "1" - - "1" Cl : Effectué-par >
+V "0..1" - "1" C : Capturée-dans >
+
+P1 -[hidden]down- P3
+skinparam packageStyle rect
+skinparam package {
+  borderColor Transparent
+  fontColor Transparent
+}
+note right of PA : Il y a un double lien\n entre la caisse et le plateauArgent.\n  Pouvez vous l'expliquer?
+note right of Ca : Il y a un double lien entre Caisse et Caissier.\nPouvez vous l'expliquer?
+note right of PA : Il y a un double lien entre Caissier et PlateauArgent
+@enduml
+
+PlantUML version 1.2021.9beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
