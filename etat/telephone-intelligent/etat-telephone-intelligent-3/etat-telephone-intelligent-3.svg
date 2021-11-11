@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="398px" preserveAspectRatio="none" style="width:493px;height:398px;background:#FFFFFF;" version="1.1" viewBox="0 0 493 398" width="493px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="255" x="112.5" y="16.708">Etats - Types de paiements</text><!--MD5=[8b971325c2b0ca16a87ac02a1cc28a4e]
+cluster EtatEcran--><rect fill="#FEFECE" height="244" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="429" x="7" y="148.9531"/><rect fill="#FFFFFF" height="211.7031" rx="12.5" ry="12.5" style="stroke:#FFFFFF;stroke-width:1.0;" width="423" x="10" y="178.25"/><line style="stroke:#A80036;stroke-width:1.5;" x1="7" x2="436" y1="175.25" y2="175.25"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="186" y="165.9482">EtatEcran</text><g id="EtatEcran.Eteint"><rect fill="#FEFECE" height="50" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="65" x="217.5" y="191.9531"/><line style="stroke:#A80036;stroke-width:1.5;" x1="217.5" x2="282.5" y1="218.25" y2="218.25"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="45" x="227.5" y="209.9482">Eteint</text></g><g id="EtatEcran.Allume"><rect fill="#FEFECE" height="50" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="69" x="125.5" y="318.9531"/><line style="stroke:#A80036;stroke-width:1.5;" x1="125.5" x2="194.5" y1="345.25" y2="345.25"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="135.5" y="336.9482">Allume</text></g><ellipse cx="245" cy="52.9531" fill="#000000" rx="10" ry="10" style="stroke:none;stroke-width:1.0;"/><g id="EnCharge"><rect fill="#FEFECE" height="50" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="89" x="336.5" y="27.9531"/><line style="stroke:#A80036;stroke-width:1.5;" x1="336.5" x2="425.5" y1="54.25" y2="54.25"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="346.5" y="45.9482">EnCharge</text></g><!--MD5=[58123b80a0a4ad2aee117de4498f8d1d]
+link Eteint to Allume--><path d="M217.191,222.6571 C168.678,230.3591 81.5339,247.3101 63,271.9531 C43.0335,298.5011 85.395,319.4839 120.297,331.5587 " fill="none" id="Eteint-to-Allume" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="125.384,333.2752,118.1352,326.6077,120.6464,331.6767,115.5775,334.1879,125.384,333.2752" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="147" x="64" y="285.02">appuyerBoutonDroite()</text><!--MD5=[73f3473dd956fe4b97962cc1e7a44173]
+link Allume to Eteint--><path d="M188.813,318.9001 C198.233,310.1151 208.255,299.6861 216,288.9531 C225.26,276.1211 233.098,260.3741 238.907,246.9721 " fill="none" id="Allume-to-Eteint" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="240.954,242.1511,233.7548,248.8721,238.9999,246.7535,241.1186,251.9986,240.954,242.1511" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="147" x="228" y="285.02">appuyerBoutonDroite()</text><!--MD5=[d4daf67ce50d56255542e506395a75e4]
+link *start to Eteint--><path d="M245.283,63.1271 C246.004,86.4761 247.932,148.9531 249.088,186.4001 " fill="none" id="*start-to-Eteint" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="249.253,191.7361,252.9734,182.617,249.0987,186.7385,244.9772,182.8639,249.253,191.7361" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[f4baded94982334ef69af8f8bf498475]
+link EtatEcran to EnCharge--><path d="M423.6574,148.8807 C423.6051,148.5947 423.5522,148.3089 423.4987,148.0232 C423.3918,147.452 423.2825,146.8816 423.1708,146.3122 C422.277,141.7574 421.2286,137.2694 420,132.9531 C415.028,115.4881 406.281,97.2321 398.328,82.6751 " fill="none" id="EtatEcran-to-EnCharge" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="395.891,78.2811,396.7603,88.0915,398.317,82.6531,403.7555,84.2099,395.891,78.2811" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="67" x="418" y="121.02">brancher()</text><!--MD5=[5fa95ee9b8c0e9895933468909078fc3]
+link EnCharge to Eteint--><path d="M344.943,78.1221 C325.82,92.3351 303.033,111.6691 287,132.9531 C274.784,149.1691 265.5,170.0561 259.287,186.8191 " fill="none" id="EnCharge-to-Eteint" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="257.458,191.8801,264.2774,184.7741,259.1565,187.1775,256.7532,182.0565,257.458,191.8801" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="83" x="310" y="121.02">débrancher()</text><!--MD5=[b1450587e80c928336ecb07ec346b539]
+@startuml
+skinparam Style strictuml
+
+title Etats - Types de paiements
+state EtatEcran{
+Eteint - -> Allume: appuyerBoutonDroite()
+Allume - -> Eteint: appuyerBoutonDroite()
+
+}
+[*] - -> Eteint
+EtatEcran - -> EnCharge: brancher()
+EnCharge - -> Eteint : débrancher()
+@enduml
+
+PlantUML version 1.2021.14beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

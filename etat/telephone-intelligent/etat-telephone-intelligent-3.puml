@@ -2,11 +2,13 @@
 skinparam Style strictuml
 
 title Etats - Types de paiements
-[*] -> Eteint
-Eteint --> Actif: appuyerBoutonDroite()
-Actif --> Eteint: appuyerBoutonDroite()
-Actif --> EnCharge: brancher()
-Eteint --> EnCharge: brancher()
+state EtatEcran{
+Eteint --> Allume: appuyerBoutonDroite()
+Allume --> Eteint: appuyerBoutonDroite()
+
+}
+[*] --> Eteint
+EtatEcran --> EnCharge: brancher()
 EnCharge --> Eteint : débrancher()
 
 

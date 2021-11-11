@@ -29,3 +29,59 @@ end fork
 |Réceptionniste|
 stop
 @enduml
+
+@startuml Diagramme classe 
+class Client {
+  rendreVoiture()
+  payerFacture()
+  partir()
+}
+class Voiture {
+  kilometrage:long
+  essence:int
+  setState(EtatVoiture)
+}
+class Cle 
+class Agent {
+  inspecterVoiture()
+  nettoyerVoiture()
+  
+}
+class Receptioniste{
+  noterKmEtEssence()
+  genererFacture()
+}
+class Facture{
+  payé:bool
+}
+Voiture "1"--"1" Cle: demarre <
+Facture "1"--"1" Client: paye <
+Facture "1"--"1" Voiture: est pour la location de la >
+Receptioniste "1"--"*" Facture: rédige >
+
+
+class EtatVoiture{
+  +nettoyerVoiture()
+}
+class Sale {
+  + nettoyerVoiture()
+  - laverVoiture()
+  - rincerVoiture()
+  - secherVoiture()
+  - nettoyerInterieurVoiture()
+}
+class Propre 
+class Inspection {
+  setVoitureState(EtatVoiture)
+}
+
+
+Sale -u-|> EtatVoiture
+Propre -u-|> EtatVoiture
+Voiture -- EtatVoiture: est dans un état >
+Inspection "1"--"1" Voiture: est pour >
+Agent "1"--"*" Inspection: effectue >
+
+
+
+@enduml
