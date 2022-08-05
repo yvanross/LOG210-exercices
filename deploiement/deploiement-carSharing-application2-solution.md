@@ -28,15 +28,3 @@ ref: U0812 \@Peter LO 2010
 ![](/assets/exercices.gddoc.docx/image73.png){width="4.458333333333333in" height="3.7395833333333335in"}
 >
 > ref: U0812 \@Peter LO 2010
->
-> C\) Draw a deployment diagram given that the nodes are three client
-> PCs, a server and a printer. The communications protocol between the
-> clients and server is TCP/IP; and between the server and the printer
-> is a standard parallel printer protocol. The MCS.jar user interface
-> and the control objects will run on the clients. The CarSharing.jar
-> will run on the server. Server will also provide initialisation file
-> MCS.ini and an help file named MCS.help.
-
-![](/assets/exercices.gddoc.docx/image91.png){width="5.916666666666667in" height="3.5833333333333335in"}
-
-> ref: U0812 \@Peter LO 2010
