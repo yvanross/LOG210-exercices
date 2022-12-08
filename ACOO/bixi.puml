@@ -1,0 +1,74 @@
+@startuml MDD-cu4
+class Client {
+    nom: string
+}
+class CarteCredit {
+    numero:Integer
+    dateExpiration:Date
+    typeCredit:TypeCredit
+}
+
+class PaiementEmprunt {
+    approbation:String 
+    montant: Float
+}
+
+class SystemeAutorisationPaiementACredit
+class ConditionAbonnement{
+    duree: Integer 
+    prix: Float 
+    condition:String
+}
+class Abonnement {
+    dateDebut:Date
+    dateFin:Date
+}
+class EntrepriseVelo
+class Station
+class BorneDePaiement {
+    identifiant:integer 
+    /nbPlaceLibre: Integer
+}
+class PointAncrage{
+    identifiant:Integer
+    /estLibre: boolean
+}
+
+class Velo{
+    idVelo:integer
+}
+class Emprunt {
+    dateHeureDebut:DateTime 
+    dateheureFin: DateTime 
+}
+class PaiementAbonnement {
+    approbation:String 
+    montant: float
+}
+class IDVendeur {
+    IDV: idVendeur
+    typeCredit: TypeCredit
+}
+
+PaiementAbonnement "1" -- "1" Abonnement: est activé par <
+PaiementAbonnement "1" -- "1" CarteCredit: payé par >
+
+Client "1" -- "*" Abonnement: souhaite faire >
+Client "1" -- "1" CarteCredit: possède >
+CarteCredit "1" -- "*" PaiementEmprunt: établit le crédit pour >
+PaiementEmprunt "*" -- "1" SystemeAutorisationPaiementACredit: autorise <
+PaiementAbonnement "*" -- "1" SystemeAutorisationPaiementACredit: autorise <
+EntrepriseVelo "1" -- "*" Station: possède >
+Station "1" -- "*" PointAncrage: possède >
+Station "1" -- "1" BorneDePaiement: possède >
+BorneDePaiement "1" -- "*" Emprunt: enregistre >
+PointAncrage "1" -- "0..1" Velo: héberge >
+Velo "1" -- "1" Emprunt: est pour <
+Emprunt "1" -- "0..1" PaiementEmprunt: est réglé par >
+Emprunt "*" -- "1" Abonnement: permet <
+ConditionAbonnement "1" -- "*" Abonnement: s'applique >
+EntrepriseVelo "1" -- "*" Velo: possède >
+Station "1" -- "*" Abonnement: permet >
+EntrepriseVelo "1" -l- "*" IDVendeur: possède plusieurs contrat >
+IDVendeur -- SystemeAutorisationPaiementACredit: fait autoriser les paiement\n avec le type de crédit >
+@enduml

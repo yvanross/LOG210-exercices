@@ -17,11 +17,13 @@ attend l'introduction d'une carte bancaire du Client. Quand le système
 est dans cet état, l'Administrateur peut aussi l'éteindre.
 
 
-
+# Diagramme d'état
 ![](http://www.plantuml.com/plantuml/img/ZP0n3i8m34NtdC9iW8IwTq15J2oeU-aGDHPOQbFakDofNACNmw52ZH03w__lszykWbYMeMjDjQrXjzl3GGIzEwgAa8ERniuo8vj4Nx3pgLI8l73l1c9yssRn8bdoz1IbWgL07DNAqnqUjYM7zHUSZaq2g_KIsTIGNJnwnYi5qMemZSqDcv-JFdTOxuTMqGn2pq8y5vsh_KkdZ4RYmtBTBKZUCPf2pVZ85m00){width="4.930555555555555in" height="4.361111111111111in"}
 
+# Diagramme de classe
+
+![](etat-guichet-automatique-bancaire/Diagramme%20de%20classe.png)
 
 
-
-
-
+# Diagramme de séquence
+![](etat-guichet-automatique-bancaire/diagramme%20de%20sequence.png)

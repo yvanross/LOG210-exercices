@@ -1,0 +1,73 @@
+@startuml Diagramme de classe
+
+class "AttenteCarte" as AC {
+    introduireCarte(Guichet)
+    eteindre(Guichet)
+}
+
+class "AttenteNip" as AN{
+    annuler(Guichet)
+    saisirNip(Guichet,nig:string)
+}
+
+class "Pret" as P{
+    annuler(guichet)
+
+}
+
+class "<<Abstract>>EtatGuichet" as EG {
+    introduireCarte(Gichet)
+    annuler(Guichet)
+    saisirNip(Guichet,nig:string)
+    eteindre(Guichet)
+}
+
+class "Guichet" as G{
+    introduireCarte(noCarte)
+    annuler()
+    saisirNip(nig:string)
+    eteindre()
+    getState():EtatGuichet
+    setState(EtatGuichet)
+
+}
+G -d-> EG
+AC -u-|> EG
+AN -u-|> EG
+P -u-|> EG
+
+@enduml
+
+@startuml diagramme de sequence
+
+X --> Guichet**: create()
+Guichet --> AttenteCarte**: ac=create()
+AttenteCarte -->Guichet: setState(ac)
+
+X--> Guichet: introduireCarte(noCarte)
+Guichet -> Guichet: an = getState()
+Guichet ->AttenteCarte: introduireCarte(this,noCarte)
+AttenteCarte -> AttenteNip**: an=Create(Guichet)
+AttenteCarte -> Guichet: setState(an:AttenteNip)
+
+X -> Guichet: saisirNip(nip:string):
+Guichet -> Guichet: an = getState()
+Guichet ->AttenteNip: saisirNip(Guichet,nip)
+loop   tentative < 3
+    alt nipValide & tentative < 3
+        AttenteNip -> Pret**: create(Guichet)
+        AttenteNip->Guichet: setState(pret)
+        AttenteNip --> Guichet
+        Guichet --> X
+        else
+        note left of Guichet: tentative += 1
+    end
+end
+X->Guichet: annuler()
+Guichet -> Guichet: pret  = getState()
+Guichet ->Pret: annuler(Guichet)
+participant "ac2:AttenteCarte" as AC2
+Pret -> AC2**: ac2=create(Guichet)
+Pret -> Guichet: setState(ac2: AttenteCarte)
+
+@enduml

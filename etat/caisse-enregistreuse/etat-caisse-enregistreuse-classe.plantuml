@@ -1,4 +1,16 @@
-@startuml
+@startuml diagramme-etat
+[*] --> AttenteDeVente
+AttenteDeVente -> SaisieArticles: creerNouvelleVente
+SaisieArticles --> SaisieArticles: saisirArticle
+SaisieArticles -> AttenteDePaiement: terminerVente
+AttenteDePaiement --> AttenteDeVente: creerPaiementEnEspeces
+AttenteDePaiement -> AutorisationPaiement: creerPaiementACredit
+AttenteDePaiement -> AutorisationPaiement: creerPaiementParCheque
+AutorisationPaiement --> AttenteDeVente: autoriser
+
+@enduml
+
+@startuml diagramme-classe
 
 
 class Caisse {
@@ -63,7 +75,9 @@ note left of EtatCaisse: Toutes ces opérations\ngénèrent une exception\npar d
 @enduml
 
 
-@startuml
+@startuml DS-changement-enum 
+    
+
 skinparam Style strictuml
 
 participant X
@@ -113,4 +127,17 @@ SA -> IS : IEtatCaisse av2 = \ncreerNouvelleVente(this)
 IS --> Exception**: throw("Operation not \navailable for this state")
 X <-- IS 
 deactivate C
+@enduml
+
+
+@startumlm  etat-paiement-sans-autorisation
+skinparam Style strictuml
+
+title Etats - Types de paiements
+[*] -> AttenteVente
+AttenteVente --> CreationVente: creerNouvelleVente()
+CreationVente --> CreationVente: [reste des artiches]\nsaisirArtiche(codeArticle, quantite)
+CreationVente --> AttentePaiement: terminerVente()
+AttentePaiement --> AttenteVente: creerPaiement(montant)
+
 @enduml

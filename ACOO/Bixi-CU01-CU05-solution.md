@@ -53,7 +53,7 @@
 
 ### CU04-MDD-Location Vélo
 
-![](/assets/exercices.gddoc.docx/image38.png)à
+![](/assets/exercices.gddoc.docx/image38.png)
 
 ## Diagramme de séquence système (DSS)
 
