@@ -739,3 +739,53 @@ Sejour"*" <-- "1" Chambre: est résservé par >
 ControleurReservation --> Commis
 ControleurReservation --> "*" Categorie
 @enduml
+
+
+//****************************************
+@startuml cu02-dcl
+class ControleurReservation<Controleur>{
+  +demarrerReservation()
+  +reserverChambres(quantity:Integer,dateArrive:String, dateDepart:String, categorie: String)
+  +confirmerReservation(nom:string, telephone: string)
+}
+class "Map<nom:String,categorie:Categorie>" as MC {
+  +get(nom:String): Categorie
+}
+
+class Hotel <Conteneur, Object physique>
+class Categorie <Description d'entité,**Catalogue**> {
+  -nom: String
+  +getChambresLibre(quantity:Integer, dateArrivé: String,dateDepart:String): [Chambre]
+}
+class Reservation <Transaction>{
+  -noConfirmation: String
+  +Reservation(commis:Commis)
+  +ajouterChambres([ch]:Chambre,dateArrive:String, dateDepart: String): String (json)
+  +confirmerReservation(cl:Client)
+}
+
+class LigneReservation <Ligne de transaction>{
+  -dateArrive: Date
+  -dateDepart: Date
+  +create([ch]:Chambre,dateArrive:String, dateDepart: String)
+}
+
+class Commis <Role>
+class Chambre <Objet physique, Contenu dans l'hotel, Produit d'une transaction>
+class Client <Role> {
+  -nom:string
+  -telephone:string
+  +Client(nom:string, telephone:string)
+}
+
+Hotel  *--> "*" Chambre: possède
+Chambre "*" --o Categorie: appartient
+Client  <--  Reservation: demande
+Commis  <--  Reservation: cree
+Hotel  *-- "*" Commis : Emploie
+Reservation "1" --> "*" LigneReservation: contient
+LigneReservation "1" --> "*" Chambre : sont reservées par <
+ControleurReservation --> MC
+ControleurReservation --> Commis
+MC --> "*" Categorie
+@enduml
